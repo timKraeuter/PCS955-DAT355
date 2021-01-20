@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.example.bowling:Tournament xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.example.bowling="http://org/eclipse/example/bowling">
+  <matchups>
+    <games>
+      <player href="players.bowling#//@players.1"/>
+    </games>
+    <games>
+      <player href="players.bowling#//@players.0"/>
+    </games>
+  </matchups>
+  <matchups>
+    <games>
+      <player href="players.bowling#//@players.0"/>
+    </games>
+  </matchups>
+  <matchups/>
+  <matchups/>
+  <matchups/>
+  <matchups/>
+  <matchups/>
+</org.eclipse.example.bowling:Tournament>

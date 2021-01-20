@@ -7,6 +7,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -26,6 +27,7 @@ import bowling.Tournament;
 public abstract class AbstractTournamentExampleDialog extends Dialog {
 
 	protected Label numberOfMatchups;
+	protected Resource resource;
 
 	protected AbstractTournamentExampleDialog(Shell parentShell) {
 		super(parentShell);
