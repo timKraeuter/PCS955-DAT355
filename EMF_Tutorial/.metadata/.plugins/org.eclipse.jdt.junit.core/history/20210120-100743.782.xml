@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BowlingTests" project="org.eclipse.example.bowlingmodel.tests" tests="1" started="0" failures="0" errors="0" ignored="0">
+  <testcase name="bowling Tests" classname="bowling Tests" incomplete="true"/>
+</testrun>

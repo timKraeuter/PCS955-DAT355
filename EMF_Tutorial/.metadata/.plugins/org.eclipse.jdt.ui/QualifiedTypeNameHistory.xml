@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="bowling.Matchup"/>
+    <fullyQualifiedTypeName name="bowling.BowlingFactory"/>
+    <fullyQualifiedTypeName name="bowling.Game"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EObject"/>
+    <fullyQualifiedTypeName name="bowling.BowlingPackage"/>
+    <fullyQualifiedTypeName name="bowling.Player"/>
+    <fullyQualifiedTypeName name="bowling.League"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.common.util.Diagnostic"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.util.Diagnostician"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.util.EcoreUtil"/>
+</qualifiedTypeNameHistroy>
