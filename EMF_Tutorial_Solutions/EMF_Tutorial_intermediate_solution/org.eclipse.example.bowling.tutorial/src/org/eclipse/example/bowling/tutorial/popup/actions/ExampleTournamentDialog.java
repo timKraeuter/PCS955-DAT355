@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Shell;
 
@@ -20,7 +22,9 @@ import bowling.Matchup;
 import bowling.Tournament;
 
 public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
-	protected NumberofMatchupListener numberOfMatchupListener;
+	private NumberofMatchupListener numberOfMatchupListener;
+	private AdapterFactoryContentProvider contentProvider;
+	private AdapterFactoryLabelProvider labelProvider;
 
 
 	@Override
@@ -76,16 +80,23 @@ public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
 			}
 			super.notifyChanged(msg);
 		}
-		}
+	}
 	
 	@Override
 	protected void initializeTreeviewer(TreeViewer treeViewer) {
-		//initialize a TreeViewer to show the Matchups and Games of the opened Tournament
+		labelProvider = new AdapterFactoryLabelProvider(getAdapterFactory());
+		contentProvider = new AdapterFactoryContentProvider(getAdapterFactory());
+		treeViewer.setLabelProvider(labelProvider);
+		treeViewer.setContentProvider(contentProvider);
+		treeViewer.setInput(getTournament());
 	}
 
 	@Override
 	public boolean close() {
 		//remove all listeners
+		getTournament().eAdapters().remove(numberOfMatchupListener);
+		labelProvider.dispose();
+		contentProvider.dispose();
 		super.close();
 		return true;
 	}
