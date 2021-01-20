@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -19,6 +20,7 @@ import bowling.Matchup;
 import bowling.Tournament;
 
 public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
+	protected NumberofMatchupListener numberOfMatchupListener;
 
 
 	@Override
@@ -60,12 +62,21 @@ public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
 
 	@Override
 	protected void initializeListener() {
-		//initialize a listener for the Label displaying the number of Matchups
+	  // initialize a listener for the Label displaying the number of Matchups
+	  numberOfMatchupListener = new NumberofMatchupListener();
+	  getTournament().eAdapters().add(numberOfMatchupListener);
 	}
 
 	private final class NumberofMatchupListener extends AdapterImpl {
-		//Implement a listener to update the Label. Call updateNumberOfMatchups
-	}
+		// Implement a listener to update the Label. Call updateNumberOfMatchups
+		@Override
+		public void notifyChanged(Notification msg) {
+			if (msg.getFeature().equals(BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+				updateNumberOfMatchups();
+			}
+			super.notifyChanged(msg);
+		}
+		}
 	
 	@Override
 	protected void initializeTreeviewer(TreeViewer treeViewer) {
