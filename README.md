@@ -14,7 +14,6 @@
 ### How to use it?
 1. Import the existing projects from the folder **ATL-Tutorial** using it as your workspace (or importing it into another workspace).
 2. In the project **Families2Persons_Tim** you can find the launch configuration **Families2Persons.launch**. Run it to transform the families into the persons model.
-3. The familie located in the project **no.tk.families** in the file **sample-Families.xmi** will be transformed to the file **generatedPersons.xmi** (not part of the VCS!) in the project **no.tk.persons**
-4.The resulting file should look like this:
+3. The familie located in the project **no.tk.families** in the file **sample-Families.xmi** will be transformed to the file **generatedPersons.xmi** (not part of the VCS!) in the project **no.tk.persons**.The resulting file should look like this:
 
 ![persons](https://raw.githubusercontent.com/timKraeuter/PCS955-DAT355/main/ATL_Tutorial/persons_result.png)
