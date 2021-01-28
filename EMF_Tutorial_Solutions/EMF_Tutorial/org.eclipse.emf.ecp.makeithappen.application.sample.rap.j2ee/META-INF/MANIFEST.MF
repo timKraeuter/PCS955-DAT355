@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MakeItHappen Sample J2ee RAP
+Bundle-SymbolicName: org.eclipse.emf.ecp.makeithappen.application.sample.rap.j2ee
+Bundle-Version: 1.25.0.qualifier
+Bundle-Vendor: Eclipse Modeling Project
+Export-Package: org.eclipse.emf.ecp.makeithappen.application.sample.rap.j2ee;version="1.4.0";x-internal:=true
+Require-Bundle: org.eclipse.rap.rwt;bundle-version="[2.0.0,4.0.0)",
+ org.eclipse.emf.ecp.ui.view.swt;bundle-version="[1.25.0,1.25.1)",
+ org.eclipse.emf.ecp.makeithappen.model;bundle-version="[1.25.0,1.25.1)",
+ org.eclipse.rap.jface;bundle-version="[2.0.0,4.0.0)",
+ org.eclipse.emf.ecp.edit;bundle-version="[1.25.0,1.25.1)",
+ org.eclipse.rap.jface.databinding;bundle-version="[2.0.0,4.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.eclipse.emf.ecp.makeithappen.application.sample.rap.j2ee
+Service-Component: OSGI-INF/makeithappenApplicationConfiguration.xml
+Bundle-ActivationPolicy: lazy
