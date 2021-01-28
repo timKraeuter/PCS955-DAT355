@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated families -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="no.tk.Families.presentation.FamiliesModelWizardID"
+            name="%_UI_FamiliesModelWizard_label"
+            class="no.tk.Families.presentation.FamiliesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/FamiliesModelFile.gif">
+         <description>%_UI_FamiliesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated families -->
+      <editor
+            id="no.tk.Families.presentation.FamiliesEditorID"
+            name="%_UI_FamiliesEditor_label"
+            icon="icons/full/obj16/FamiliesModelFile.gif"
+            extensions="families"
+            class="no.tk.Families.presentation.FamiliesEditor"
+            contributorClass="no.tk.Families.presentation.FamiliesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

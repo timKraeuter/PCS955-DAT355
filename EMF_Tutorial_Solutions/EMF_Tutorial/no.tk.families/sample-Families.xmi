@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<no.tk:Family
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:no.tk="https://families"
+    lastName="Kräuter">
+  <father firstName="Karl-Otto"/>
+  <mother firstName="Maria"/>
+  <sons firstName="Tim"/>
+  <sons firstName="Jan"/>
+  <daughters
+      firstName="Jessica"/>
+  <daughters
+      firstName="ImaginarySister"/>
+</no.tk:Family>

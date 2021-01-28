@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<no.tk:Family xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:no.tk="https://families">
+  <father firstName="Father"/>
+  <mother firstName="Mother"/>
+  <sons firstName="Son 1"/>
+  <sons firstName="Son 2"/>
+  <daughters firstName="Daughter 1"/>
+  <daughters firstName="Daughter 2"/>
+</no.tk:Family>
