@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r="http://www.hvl.no/pcs955/mt/relational">
+  <tables name="Table" primaryKey="//@tables.0/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
+    <columns name="name">
+      <type size="4000"/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="Table" definedOnColumns="//@tables.0/@columns.0"/>
+  </tables>
+  <tables name="Row" primaryKey="//@tables.1/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="Row" definedOnColumns="//@tables.1/@columns.0"/>
+  </tables>
+  <tables name="Cell" primaryKey="//@tables.2/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
+    <columns name="value">
+      <type size="4000"/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="Cell" definedOnColumns="//@tables.2/@columns.0"/>
+  </tables>
+  <tables name="ColumnGroup" primaryKey="//@tables.3/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
+    <columns name="caption">
+      <type size="4000"/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="ColumnGroup" definedOnColumns="//@tables.3/@columns.0"/>
+  </tables>
+  <tables name="Column" primaryKey="//@tables.4/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
+    <columns name="title">
+      <type size="4000"/>
+    </columns>
+    <columns name="type">
+      <type/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="Column" definedOnColumns="//@tables.4/@columns.0"/>
+  </tables>
+  <tables name="columnGroups junction tabel">
+    <columns name="fk ColumnGroup">
+      <type dataType="NUMBER"/>
+    </columns>
+    <columns name="fk Table">
+      <type dataType="NUMBER"/>
+    </columns>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to ColumnGroup" definedOnColumns="//@tables.5/@columns.0" target="//@tables.3/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Table" definedOnColumns="//@tables.5/@columns.1" target="//@tables.0/@constraints.0"/>
+  </tables>
+  <tables name="rows junction tabel">
+    <columns name="fk Row">
+      <type dataType="NUMBER"/>
+    </columns>
+    <columns name="fk Table">
+      <type dataType="NUMBER"/>
+    </columns>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Row" definedOnColumns="//@tables.6/@columns.0" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Table" definedOnColumns="//@tables.6/@columns.1" target="//@tables.0/@constraints.0"/>
+  </tables>
+  <tables name="cells junction tabel">
+    <columns name="fk Cell">
+      <type dataType="NUMBER"/>
+    </columns>
+    <columns name="fk Row">
+      <type dataType="NUMBER"/>
+    </columns>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Cell" definedOnColumns="//@tables.7/@columns.0" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Row" definedOnColumns="//@tables.7/@columns.1" target="//@tables.1/@constraints.0"/>
+  </tables>
+  <tables name="column junction tabel">
+    <columns name="fk Column">
+      <type dataType="NUMBER"/>
+    </columns>
+    <columns name="fk Cell">
+      <type dataType="NUMBER"/>
+    </columns>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Column" definedOnColumns="//@tables.8/@columns.0" target="//@tables.4/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Cell" definedOnColumns="//@tables.8/@columns.1" target="//@tables.2/@constraints.0"/>
+  </tables>
+  <tables name="columns junction tabel">
+    <columns name="fk Column">
+      <type dataType="NUMBER"/>
+    </columns>
+    <columns name="fk ColumnGroup">
+      <type dataType="NUMBER"/>
+    </columns>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Column" definedOnColumns="//@tables.9/@columns.0" target="//@tables.4/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to ColumnGroup" definedOnColumns="//@tables.9/@columns.1" target="//@tables.3/@constraints.0"/>
+  </tables>
+</r:Schema>

@@ -119,6 +119,4 @@ to junctionTable : OUT!Table {
 	junctionTable.name = reference.name + " junction tabel";
 	var targetClassTable = reference.eReferenceType.equivalent();
     junctionTable.createForeignKey(targetClassTable);
-	
-	"transformed references".println();
 }
