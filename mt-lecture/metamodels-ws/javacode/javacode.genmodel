@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/javacode/src" modelPluginID="javacode" modelName="Javacode"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>javacode.ecore</foreignModel>
+  <genPackages prefix="Javacode" disposableProviderFactory="true" ecorePackage="javacode.ecore#/">
+    <genClasses ecoreClass="javacode.ecore#//ClassFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//ClassFile/methods"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference javacode.ecore#//ClassFile/mainMethod"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="javacode.ecore#//AbstractStatement"/>
+    <genClasses ecoreClass="javacode.ecore#//Method">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute javacode.ecore#//Method/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//Method/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="javacode.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute javacode.ecore#//Expression/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="javacode.ecore#//WhileLoop">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//WhileLoop/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//WhileLoop/body"/>
+    </genClasses>
+    <genClasses ecoreClass="javacode.ecore#//IfThenElse">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//IfThenElse/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//IfThenElse/ifBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference javacode.ecore#//IfThenElse/elseBranch"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

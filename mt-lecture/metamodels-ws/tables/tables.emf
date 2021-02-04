@@ -1,0 +1,33 @@
+@namespace(uri="http://www.hvl.no/pcs955/mt/table", prefix="tables")
+package tables;
+
+class Table {
+	attr String name;
+	val ColumnGroup[*] columnGroups;
+	val Row[*] rows;
+}
+
+class Row {
+	val Cell[*] cells;
+}
+
+class Cell {
+	attr String value;
+	ref Column[1] column;
+}
+
+
+class ColumnGroup {
+	attr String caption;
+	val Column[+] columns; 
+}
+
+class Column {
+	attr String title;
+	attr ColumnType type;
+}
+
+enum ColumnType {
+	TEXT=0;
+	NUMERIC=1;
+}

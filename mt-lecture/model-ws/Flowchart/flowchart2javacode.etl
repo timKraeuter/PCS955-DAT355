@@ -1,0 +1,100 @@
+
+pre {
+ var progStmts : Sequence;
+}
+
+operation OUT!AbstractStatement comingAfter() : Sequence {
+	var idx = progStmts.indexOf(self);
+	var result : Sequence;
+	for (stmt in progStmts) {
+		if (loopCount > idx) {
+			result.add(stmt);
+		}
+	}
+	return result;
+}
+
+operation IN!Node next() : Sequence {
+   return IN!Transition.all().select(t|t.src=self).collect(t|t.trg).flatten();
+} 
+
+operation IN!Event isStart() : Boolean {
+	return IN!Flowchart.all.first.start = self;
+}
+
+operation IN!Event isEnd() : Boolean {
+	return IN!Flowchart.all.first.end = self;
+}
+
+rule FlowChart2Class 
+transform f : IN!Flowchart 
+to c : OUT!ClassFile {
+    var main = f.start.equivalent();
+	c.methods.add(main);
+	c.mainMethod = main;
+}
+
+@lazy 
+rule StartEvent2Method 
+transform e : IN!Event 
+to m : OUT!Method {
+	guard : e.isStart()
+	m.name = "main";
+	e.next().first().equivalent();
+}
+
+@lazy 
+rule EndEvent2Exp 
+transform e : IN!Event 
+to e : OUT!Expression {
+	guard : e.isEnd()
+	progStmts.add(e);
+	e.expression = "System.exit(0);";
+	OUT!Method.all.select(m|m.name="main").first.statements = progStmts;
+}
+
+@lazy
+rule Ass2Expr 
+transform a : IN!Assignment
+to e : OUT!Expression {
+	progStmts.add(e);
+	e.expression = a.text + ";";
+	a.next().first().equivalent();
+}
+
+@lazy
+rule Out2Expr
+transform o : IN!Output 
+to e : OUT!Expression {
+	progStmts.add(e);
+	e.expression = "System.out.println(" + o.text + ");";
+	o.next().first().equivalent();
+}
+
+@lazy
+rule In2Expr
+transform i : IN!Input
+to e : OUT!Expression {
+	progStmts.add(e);
+   e.expression = i.text + " = new Scanner(System.in).next()";
+   i.next().first().equivalent();
+}
+
+@lazy
+rule Dec2While 
+transform i : IN!Decision
+to w : OUT!WhileLoop, c : OUT!Expression {
+   w.condition = c;
+   c.expression = i.text;
+   
+   var nested = IN!Transition.all().select(t|t.src=i and t.lbl="true").first.trg.equivalent().comingAfter();
+   
+   progStmts.removeAll(nested);
+  
+   w.body = nested;
+   progStmts.add(w);
+   
+   var next = IN!Transition.all().select(t|t.src=i and t.lbl="false").first();
+   next.trg.equivalent();
+}
+

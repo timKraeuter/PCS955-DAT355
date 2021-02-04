@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="flowchart">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="TransitionFigureTargetDecoration"/>
+    <descriptors name="EventFigure">
+      <actualFigure xsi:type="gmfgraph:Ellipse" name="EventFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" green="255"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="EventLabelFigure" text="Event"/>
+      </actualFigure>
+      <accessors accessor="getFigureEventLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="AssignmentFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="AssignmentFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="255" green="255" blue="255"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="AssignmentLabelFigure" text="Assignment"/>
+      </actualFigure>
+      <accessors accessor="getFigureAssignmentLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DecisionFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="DecisionFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="238" green="130" blue="238"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="DecisionLabelFigure" text="Decision"/>
+      </actualFigure>
+      <accessors accessor="getFigureDecisionLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="InputFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="InputFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" green="100" blue="255"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="InputLabelFigure" text="Input"/>
+      </actualFigure>
+      <accessors accessor="getFigureInputLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="OutputFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="OutputFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="210" green="105" blue="30"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="OutputLabelFigure" text="Output"/>
+      </actualFigure>
+      <accessors accessor="getFigureOutputLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="TransitionFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="TransitionFigure" targetDecoration="//@figures.0/@figures.0"/>
+    </descriptors>
+    <descriptors name="TransitionLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="TransitionLabelLabel" text="Transition"/>
+    </descriptors>
+  </figures>
+  <nodes name="Event" figure="EventFigure"/>
+  <nodes name="Assignment" figure="AssignmentFigure"/>
+  <nodes name="Decision" figure="DecisionFigure"/>
+  <nodes name="Input" figure="InputFigure"/>
+  <nodes name="Output" figure="OutputFigure"/>
+  <connections name="Transition" figure="TransitionFigure"/>
+  <labels name="EventLabel" figure="EventFigure" elementIcon="false" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="AssignmentLabel" figure="AssignmentFigure" elementIcon="false" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="DecisionLabel" figure="DecisionFigure" elementIcon="false" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="InputLabel" figure="InputFigure" elementIcon="false" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="OutputLabel" figure="OutputFigure" elementIcon="false" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="TransitionLabel" figure="TransitionLabelFigure" elementIcon="false"/>
+</gmfgraph:Canvas>

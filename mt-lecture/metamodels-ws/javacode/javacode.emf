@@ -1,0 +1,37 @@
+@namespace(
+	uri="http://www.hvl.no/pcs955/mt/javacode",
+	prefix="java")
+package javacode;
+
+class ClassFile {
+	val Method[*] methods;
+	ref Method[?] mainMethod;
+	
+}
+
+abstract class AbstractStatement {
+	
+}
+
+class Method {
+	attr String name;
+	val AbstractStatement[*] statements;
+}
+
+
+
+class Expression extends AbstractStatement {
+	attr String expression;
+}
+
+class WhileLoop extends AbstractStatement {
+	val Expression[1] condition;
+	val AbstractStatement[*] body;
+}
+
+class IfThenElse extends AbstractStatement {
+	val Expression[1] condition;
+	val AbstractStatement[*] ifBranch;
+	val AbstractStatement[*] elseBranch;
+}
+

@@ -1,0 +1,6 @@
+rule Table2HTML transform t : Table {
+		template : "table2html.egl"		
+		target : "output/" + t.name + ".html"
+}
+
+	

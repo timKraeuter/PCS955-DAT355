@@ -1,0 +1,4 @@
+rule DecisionTable2HTML transform table : DecisionTable {
+	template : "DecisionTable2HTML.egl"
+	target : "gen/" + table.name + ".html"
+}

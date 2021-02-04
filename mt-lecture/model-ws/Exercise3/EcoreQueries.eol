@@ -1,0 +1,26 @@
+"Number of classes:".println();
+EClass.all().size().println();
+
+"".println();
+
+"All classes:".println();
+for (clazz in EClass.all) {
+	clazz.name.println();
+}
+
+"".println();
+
+
+"All attributes in Table:".println();
+for (att in EClass.all.select(c|c.name = "Table").get(0).eStructuralFeatures.select(f|f.isTypeOf(EAttribute))) {
+	att.name.println();
+}
+
+"".println();
+
+
+"All references in Table:".println();
+for (att in EClass.all.select(c|c.name = "Table").get(0).eStructuralFeatures.select(f|f.isTypeOf(EReference))) {
+	att.name.println();
+}
+

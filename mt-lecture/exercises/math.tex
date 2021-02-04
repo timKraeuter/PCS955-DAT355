@@ -1,0 +1,322 @@
+% Macros for writing latex math
+
+\makeatletter
+
+\newcommand{\pto}{}% just for safety
+\newcommand{\pgets}{}% just for safety
+\DeclareRobustCommand{\pto}{\mathrel{\mathpalette\p@to@gets\to}}
+\DeclareRobustCommand{\pgets}{\mathrel{\mathpalette\p@to@gets\gets}}
+\newcommand{\p@to@gets}[2]{%
+	\ooalign{\hidewidth$\m@th#1\mapstochar\mkern5mu$\hidewidth\cr$\m@th#1\to$\cr}%
+}
+\makeatother
+
+% Commonly used general concepts
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\absolute}[1]{\lvert{}{#1}\rvert{}}
+\newcommand{\semantics}[1]{\llbracket{}{#1}\rrbracket{}}
+\newcommand{\inverse}[1]{{#1}^{-1}}
+\newcommand{\dual}[1]{{#1}^{op}}
+\newcommand{\kleeneStar}[1]{{#1}^*}
+\newcommand{\binprod}[2]{{#1} \times {#2}}
+\newcommand{\bincoprod}[2]{{#1} + {#2}}
+
+
+\newcommand{\rewriteStep}[4]{{#1} \stackrel{{#2}@{#3}}{\rightsquigarrow} {#4}}
+
+
+
+
+
+% Arrows
+\newcommand{\arrow}[3]{{#2}: {#1} \to {#3}}
+\newcommand{\inlinearrow}[3]{{#1} \xrightarrow{#2} {#3}}
+\newcommand{\longinlinearrow}[3]{\xymatrix{{#1} \ar[r]|{#2} & {#3}}}
+\newcommand{\partialarrow}[3]{{#2}: {#1} \rightharpoonup {#3}}
+\newcommand{\partialinlinearrow}[3]{{#1} \xrightharpoonup{#2} {#3}}
+\newcommand{\partiallonginlinearrow}[3]{\xymatrix{{#1} \ar@{-^{`}}[r]|{#2} & {#3}}}
+\newcommand{\relationarrow}[3]{{#2}: {#1} \pto {#3}}
+\newcommand{\relationinlinearrow}[3]{{#1} \overset{#2}{\pto} {#3}}
+\newcommand{\relationlonginlinearrow}[3]{\xymatrix{{#1} \ar@{-|>}[r]|{#2} & {#3}}}
+\newcommand{\inclusionarrow}[3]{{#2}: {#1} \hookrightarrow {#3}}
+\newcommand{\inlineinclusionarrow}[3]{{#1} \xhookrightarrow{#2} {#3}}
+\newcommand{\longinlininclusionearrow}[3]{\xymatrix{{#1} \ar@{^{(}->}[r]|{#2} & {#3}}}
+\newcommand{\monoarrow}[3]{{#2}: {#1} \rightarrowtail {#3}}
+\newcommand{\inlinemonoarrow}[3]{{#1} \xrightarrowtail{#2} {#3}}
+\newcommand{\longinlinemonoarrow}[3]{\xymatrix{{#1} \ar@{>->}[r]|{#2} & {#3}}}
+\newcommand{\epiarrow}[3]{{#2}: {#1} \twoheadrightarrow {#3}}
+\newcommand{\inlineepiarrow}[3]{{#1} \xtwoheadrightarrow{#2} {#3}}
+\newcommand{\longinlineepiarrow}[3]{\xymatrix{{#1} \ar@{->>}[r]|{#2} & {#3}}}
+
+\newcommand{\worra}[3]{{#2}: {#1} \leftarrow {#3}}
+\newcommand{\inlineworra}[3]{{#1} \xleftarrow{#2} {#3}}
+\newcommand{\longinlineworra}[3]{\xymatrix{{#1} & {#3} \ar[l]|{#2} }}
+
+\newcommand{\inlinespan}[5]{{#1} \xleftarrow{#2} {#3} \xrightarrow{#4} {#5}}
+\newcommand{\inlinecospan}[5]{{#1} \xrightarrow{#2} {#3} \xleftarrow{#4} {#5}}
+
+% Commonly used concepts where notions may have to be tweaked from time to time
+\newcommand{\compose}[2]{{#2} \circ {#1}}
+\newcommand{\powerset}[1]{\wp{}{#1}}
+\newcommand{\identity}[1]{id_{#1}}
+\newcommand{\isomorphic}{\cong}
+\newcommand{\cat}[1]{\mathbb{#1}}
+\newcommand{\functor}[1]{\ensuremath{#1}}
+\newcommand{\homset}[3]{{#1}({#2},{#3})}
+
+
+\newcommand{\catArrows}[1]{\cat{#1}^{\to}}
+\newcommand{\catObjects}[1]{\absolute{{#1}}}
+\newcommand{\sliceCat}[2]{{#1}\downarrow{}{#2}}
+\newcommand{\cosliceCat}[2]{{#1}\uparrow{}{#2}}
+\newcommand{\proofStep}[1]{\langle{}\mbox{#1}\rangle{}}
+
+
+% Adjoints
+\newcommand{\leftAdjointTo}[2]{{#1}\dashv{}{#2}}
+\newcommand{\unit}[1]{\eta_{#1}}
+\newcommand{\counit}[1]{\varepsilon_{#1}}
+
+% Subobject functor
+\newcommand{\Sb}[1]{Sub({#1})}
+\newcommand{\subob}{\sqsubseteq}
+\newcommand{\supob}{\sqsupseteq}
+\newcommand{\subobject}[1]{\left[{#1}\right]}
+\newcommand{\preimg}[2]{{#1}^{-1}{#2}}
+\newcommand{\image}[1]{Im({#1})}
+
+
+% pullback functor
+\newcommand{\pbFunctor}[2]{{#1}^{-1}{#2}}
+\newcommand{\upperAdjoint}[2]{\forall_{#1}{#2}}
+\newcommand{\lowerAdjoint}[2]{\exists_{#1}{#2}}
+
+
+% Some functor variables
+\newcommand{\F}{\functor{F}}
+\newcommand{\G}{\functor{G}}
+\newcommand{\U}{\functor{U}}
+\renewcommand{\U}{\mathcal{U}}
+\newcommand{\Graping}{\Gamma}
+
+
+
+% Diagrams
+
+\newcommand{\diagr}[1]{\mathcal{#1}}
+\newcommand{\diagrShape}{\cat{S}}
+
+
+% Partial arrows
+\newcommand{\dodef}[1]{dom({#1)}}
+\newcommand{\inclPart}[1]{\subseteq_{#1}}
+\newcommand{\totalPart}[1]{{#1}}
+\newcommand{\inlinespanofpartialMonomap}[5]{
+	\xymatrix{{#1} & {#3} \ar@{>->}[l]_{#2}\ar[r]^{#4} & {#5}}
+}
+\newcommand{\inlinespanofpartialmap}[5]{{#1} \xhookleftarrow{#2} {#3} \xrightarrow{#4} {#5}}
+%\newcommand{\inlinespan}[5]{{#1} \xleftarrow{#2} {#3} \xrightarrow{#4} {#5}}
+%\newcommand{\inlinecospan}[5]{{#1} \xrightarrow{#2} {#3} \xleftarrow{#4} {#5}}
+\newcommand{\partArrName}[2]{[{#1},{#2}\rangle}
+%\newcommand{\partialarrow}[3]{{#2}: {#1} \rightharpoonup {#3}}
+\newcommand{\subobjClass}[1]{[#1]}
+\newcommand{\subobjLessEq}{\sqsubseteq}
+\newcommand{\subobjMeet}{\sqcap}
+\newcommand{\subobjJoin}{\sqcup}
+\newcommand{\subobjBigJoin}{\bigsqcup}
+
+\newcommand{\inlinepartialarrow}[3]{{#1} \xrightharpoonup{#2} {#3}}
+
+% Category of all Sets and functions
+\newcommand{\catSet}{\mathbb{S}\mathbb{E}\mathbb{T}}
+% Category of all small Categories and morphisms
+\newcommand{\catCat}{\mathbb{C}\mathbb{A}\mathbb{T}}
+% Category of partial graphs
+\newcommand{\relCat}[1]{\code{Rel}(#1)}
+\newcommand{\parCat}[1]{\code{Par}(#1)}
+\newcommand{\spanCat}[1]{\code{Span}(#1)}
+\newcommand{\algCat}[1]{\code{Alg}(#1)}
+
+
+% Cat of comprehensive systems
+\newcommand{\CS}{\cat{C}\cat{S}}
+\newcommand{\RCS}{\cat{R}\cat{C}\cat{S}}
+\newcommand{\TRCS}[1]{\cat{T}\cat{R}\cat{C}\cat{S}({#1})}
+\newcommand{\catBase}{\cat{B}}
+\newcommand{\catSchema}{\cat{I}}
+\newcommand{\cs}[1]{\mathbf{#1}}
+\newcommand{\csLoopVar}{j}
+\newcommand{\csLoopVarAll}{i}
+\newcommand{\csArrow}[3]{\mathbf{\arrow{#1}{#2}{#3}}}
+\newcommand{\csArrowDouble}[3]{\mathbf{\arrow{#1}{#2}{#3}}}
+\newcommand{\csWitns}[1]{{#1}^{0}}
+\newcommand{\csProj}[2]{\lowercase{#1}^{#2}}
+\newcommand{\csProjForall}[1]{\lowercase{#1}^{\csLoopVar}}
+\newcommand{\csProjDom}[2]{\dodef{\lowercase{#1}^{#2}}}
+\newcommand{\csProjDomForall}[1]{\dodef{\lowercase{#1}^{\csLoopVar}}}
+\newcommand{\csProjIncl}[2]{\inclPart{\lowercase{#1}^{#2}}}
+\newcommand{\csProjInclForall}[1]{\inclPart{\lowercase{#1}^{\csLoopVar}}}
+\newcommand{\csProjTotal}[2]{\totalPart{\lowercase{#1}^{#2}}}
+\newcommand{\csProjTotalForall}[1]{\totalPart{\lowercase{#1}^{\csLoopVar}}}
+\newcommand{\csCmpnt}[2]{{#1}^{#2}}
+\newcommand{\csCmpntForall}[1]{{#1}^{\csLoopVar}}
+\newcommand{\csArrOnWtns}[1]{{#1}_0}
+\newcommand{\csArrOnCmpnt}[2]{{#1}_{#2}}
+\newcommand{\csArrOnCmpntForall}[1]{{#1}_{\csLoopVar}}
+\newcommand{\csArrOnDodef}[2]{{#1}_{-{#2}}}
+\newcommand{\csArrOnDodefForall}[1]{{#1}_{-{\csLoopVar}}}
+%Paper specific
+\newcommand{\specialmonos}{\mathscr{M}}
+\newcommand{\specialmonoarrow}[3]{\xymatrix{{#1} \ar@{(->}[r]|{#2} & {#3}}}
+
+
+
+
+
+
+
+
+% All the macros for creating Defitions, Theorems, Proposition etc.
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{myfact}{Fact}
+\newtheorem{myconj}{Conjecture}
+\newtheorem{lemma}{Lemma}
+\newtheorem{myclaim}{Claim}
+\newtheorem{corollary}{Corollary}
+\newtheorem{myparadox}{Paradox}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{counterexmpl}{Counterexample}
+\newtheorem{myaxiom}{Axiom}
+\newtheorem{myprinc}{Principle}
+\newtheorem{myobs}{Observation}
+\newtheorem{myreq}{Requirement}
+
+
+\theoremstyle{remark}
+\newtheorem{myexampl}{Example}
+\newtheorem{myremark}{Remark}
+\newtheorem{myconv}{Convention}
+\newtheorem{myexerc}{Exercise}
+
+
+\newcommand{\mkTheorem}[3]{
+	\begin{mytheo}[{#1}]
+	\label{#2}
+	{#3}
+	\end{mytheo}
+}
+
+\newcommand{\mkProposition}[3]{
+	\begin{myprop}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myprop}
+}
+
+\newcommand{\mkFact}[3]{
+	\begin{myfact}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myfact}
+}
+
+\newcommand{\mkConjecture}[3]{
+	\begin{myconj}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myconj}
+}
+
+\newcommand{\mkLemma}[3]{
+	\begin{mylemma}[{#1}]
+		\label{#2}
+		{#3}
+	\end{mylemma}
+}
+
+\newcommand{\mkClaim}[3]{
+	\begin{myclaim}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myclaim}
+}
+\newcommand{\mkCorollary}[3]{
+	\begin{mycorr}[{#1}]
+		\label{#2}
+		{#3}
+	\end{mycorr}
+}
+\newcommand{\mkParadox}[3]{
+	\begin{myparadox}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myparadox}
+}
+
+
+\newcommand{\mkDefinition}[3]{
+	\begin{mydef}[{#1}]
+	\label{#2}
+	{#3}
+	\end{mydef}
+}
+
+\newcommand{\mkAxiom}[3]{
+	\begin{myaxiom}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myaxiom}
+}
+
+\newcommand{\mkPrinciple}[3]{
+	\begin{myprinc}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myprinc}
+}
+
+\newcommand{\mkObservation}[3]{
+	\begin{myobs}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myobs}
+}
+
+\newcommand{\mkRequirement}[3]{
+	\begin{myreq}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myreq}
+}
+
+\newcommand{\mkExample}[3]{
+	\begin{myexampl}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myexampl}
+}
+
+\newcommand{\mkRemark}[3]{
+	\begin{myremark}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myremark}
+}
+
+\newcommand{\mkConvention}[3]{
+	\begin{myconv}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myconv}
+}
+
+\newcommand{\mkExercise}[3]{
+	\begin{myexerc}[{#1}]
+		\label{#2}
+		{#3}
+	\end{myexerc}
+}

@@ -1,0 +1,152 @@
+\documentclass{article}
+
+ 
+\input{preamble}
+\input{math}
+
+
+
+
+
+\title{Model Transformation - Exercises}
+\author{}
+\date{}
+
+
+
+
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{Exercise 1: Miscellaneous}
+	
+	\begin{enumerate}
+		\item Find more examples of model-to-text and model-to-model transformations from your previous developer/student experience. 
+		Classify them along the dimensions:
+		\begin{itemize}
+			\item in-place vs. out-place
+			\item homogenous vs. heterogeneous
+			\item declarative or imperative
+		\end{itemize}
+		\item Would you consider the different components of a compiler (lexer, parser, optimizer, code generator, see also Fig.~\ref{fig:compilerPipeline}) as model transformations? Why or why not? 
+	\end{enumerate}
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.32\linewidth]{figures/haskell-pipeline}
+		\caption{Haskell compiler pipeline}
+		\label{fig:compilerPipeline}
+	\end{figure}
+	
+	\clearpage
+	
+	\section*{Exercise 2: Blog generator (m2t)}
+	
+	In this exercise, your task is to write a model-to-text transformation with EGL that provides a \emph{web blog} generation functionality similar to tools like e.g. \emph{Jekyll}\footnote{\url{https://jekyllrb.com/}}.
+	The blog content is abstractly defined in a \emph{BLOg Description Language (BLODL)} (Fig.~\ref{fig:blogDSL}, which is defined by the metamodel in Fig.~\ref{fig:blogDSLMetampdel}.
+	The resulting file structure (Fig.~\ref{fig:fileStructure}) should contain a folder for each blog \emph{post} containing the respective \emph{html} file and referenced \emph{images}\footnote{This will require you to copy files. For this recall that you can write EOL statements in EGX-scripts, which again allows to call arbitrary Java methods.}.
+	The root should contain an html file with hyperlinks to all blog posts.
+	Feel free to also add your own custom CSS styles into the generation.
+	
+	
+	\begin{figure}[bth]
+		\centering
+		\begin{subfigure}[c]{\linewidth}
+				\centering
+			\includegraphics[width=\linewidth]{figures/blog-dsl}
+			\caption{Blog DSL}
+			\label{fig:blogDSL}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.5\linewidth}
+					\centering
+			\includegraphics[width=\linewidth]{figures/file-structure}
+			\caption{Resulting File Structure}
+			\label{fig:fileStructure}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.45\linewidth}
+					\centering
+		\includegraphics[width=\linewidth]{figures/blog-dsl-metamodel}
+		\caption{Blog DSL Metamodel}
+		\label{fig:blogDSLMetampdel}
+	\end{subfigure}
+	\end{figure}
+	
+	\clearpage
+	
+	\section*{Exercise 3: Object-Relational-Mapping (m2m)}
+	
+	In this exercise, your task is to write a model-to-model transformation using ETL that performs an object-relational mapping between \texttt{Ecore} and the relational model \cite{Codd1970}.
+	Recall that an \texttt{.ecore} model is yet another model that is typed over the \texttt{Ecore} metamodel.
+	An excerpt of the relevant concepts is shown in Fig.~\ref{fig:ecore} (You do not need to consider methods and other more technical details.).
+	To find the complete definition of the Ecore metamodel, open the \emph{Plug-in Dependencies} of any project in the \texttt{metamodel-ws} workspace and then navigate to \emph{org.eclipse.emf.ecore\_...} $\rightarrow$ \emph{model} 	$\rightarrow$ \texttt{Ecore.ecore}.
+	A metamodel of the relational model, that we are using in this exercise is found in \texttt{metamodel-ws/relational-model/relational.ecore}.
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figures/ecore}
+		\caption{Ecore metamodel (simplified)}
+		\label{fig:ecore}
+	\end{figure}
+	
+	It is recommended to study both metamodels carefully before you begin and develop your solution step-wise.
+	
+	
+	\begin{enumerate}
+		\item Start with a \texttt{Schema} for every \texttt{EPackage} and for every \texttt{EClass} in the package you generate a corresponding \texttt{Table} that contains a single numeric \emph{id} \texttt{Column} with a \texttt{PrimaryKey} constraint on it. 
+		The name of the \texttt{Table} should correspond to the \texttt{EClass}, i.e. identical, capitalized or etc.
+		
+		\item In the next iteration, create a \texttt{Column} in each \texttt{Table} for every \texttt{EAttribute} of the corresponding \texttt{EClass}\footnote{You may require to use the ETL-method \texttt{equivalent()} here}. 
+		\texttt{EDataType}s translate as follows:
+		\begin{itemize}
+			\item \texttt{EString} $\rightarrow$ \texttt{Varchar(4000)}
+			\item \texttt{ELong/EInteger,EShort,EByte} $\rightarrow$ \texttt{Number(32,0)}
+			\item \texttt{EFloat/EDoubke} $\rightarrow$ \texttt{Number(32,4)}
+			\item \texttt{EBoolean} $\rightarrow$ \texttt{Number(1,0)}
+			\item \texttt{EEnum} $\rightarrow$ \texttt{Number(2,0)}
+		\end{itemize}
+		
+		
+		\item In the third iteration, the task is to translate \texttt{EReference}s to \texttt{ForeignKey}s.
+		Here, you have to pay attention to multiplicities:
+		A many-to-one relation from a table/class $A$ to table/class $B$ is realized by adding a new numeric column to $A$ that has a foreign key to the primary key of $B$.
+		Many-to-many relations, require to create a new \emph{junction} table with two columns pointing with foreign keys to the respective primary keys of $A$ and $B$.
+		
+		\item In the final iteration,  inheritance must be handled. 
+		Implement all three strategies \cite{Fowler2012}
+		\begin{itemize}
+			\item Single Table Inheritance (table per inheritance hierarchy)\footnote{\url{https://martinfowler.com/eaaCatalog/singleTableInheritance.html}},
+			\item Class Table Inheritance (table per class)\footnote{\url{https://martinfowler.com/eaaCatalog/classTableInheritance.html}},
+			\item Concrete Table Inheritance (table per concrete class)\footnote{\url{https://martinfowler.com/eaaCatalog/concreteTableInheritance.html}}.
+		\end{itemize}
+		and design a mechanism such that the user can configure which inheritance mapping strategy should be used\footnote{There are many possibilities, one may chose to use \texttt{EAnnotation}s, an external configuration file etc.}.
+		
+		
+	\end{enumerate}
+	
+	\clearpage
+	
+	\section*{Exercise 4: Bidirectional Transformations}
+	
+	\begin{enumerate}
+		\item Let $A$ and $B$ be two models where $A$ has $5$ and $B$ has $4$ elements.
+		What is the maximum number of elements in the trace-model \cite{DrivalosKolovosPF2009} of a transformation between $A$ and $B$ if we assume that there cannot be two trace-links referring to the same pair of objects taken from an $A$ and $B$?
+		\item Below, you will find a list of transformations. For each case you will have to decide in what direction which can define a \textsc{Get} (derivation) and in which direction you require \textsc{Put} (back propagation).
+		Maybe it is also sometime possible to define a \textsc{Get} in both directions or you even require a \textsc{Put} in both directions?
+		If you require a \textsc{Put}, clearly state \emph{what} additional information you require from the \emph{source}.
+		\begin{itemize}
+			\item pairs of numbers \texttt{(Int,Int)} $\leftrightarrow$ their sum \texttt{(Int)}
+			\item \texttt{Person} entities with \texttt{givenName} and \texttt{familyName} fields $\leftrightarrow$ \texttt{Person} entities with \texttt{name} fields.
+			\item sets \{unordered,unique\} $\leftrightarrow$ lists \{ordered,non-unique\}
+			\item an \texttt{Ecore} model $\leftrightarrow$ an XSD file
+			\item java classes $\leftrightarrow$ database schema
+			\item state machines $\leftrightarrow$ hierarchical state machines
+			\item C-code $\leftrightarrow$ Python-code
+		\end{itemize}
+	\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{library.bib}
+\end{document}

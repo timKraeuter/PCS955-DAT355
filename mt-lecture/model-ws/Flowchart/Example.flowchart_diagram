@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:flow="http://www.hvl.no/pcs955/mt/flowchart" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmi:id="_tmF38GINEeuIk5NXYnmSew" type="Flowchart" name="Example.flowchart_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_uiWE0GINEeuIk5NXYnmSew" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_uiXS8GINEeuIk5NXYnmSew" type="5001"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_uiWr4GINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_uiWr4WINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_uiWr4mINEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Event" href="Example.flowchart#//@nodes.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uiWr42INEeuIk5NXYnmSew" x="56" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_vc7dwGINEeuIk5NXYnmSew" type="2002">
+    <children xmi:type="notation:DecorationNode" xmi:id="_vc8E0GINEeuIk5NXYnmSew" type="5002"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_vc7dwWINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vc7dwmINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_vc7dw2INEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Assignment" href="Example.flowchart#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vc7dxGINEeuIk5NXYnmSew" x="128" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_xGI3QGINEeuIk5NXYnmSew" type="2003">
+    <children xmi:type="notation:DecorationNode" xmi:id="_xGI3RWINEeuIk5NXYnmSew" type="5003"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_xGI3QWINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_xGI3QmINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_xGI3Q2INEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Decision" href="Example.flowchart#//@nodes.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xGI3RGINEeuIk5NXYnmSew" x="344" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_0pawwGINEeuIk5NXYnmSew" type="2005">
+    <children xmi:type="notation:DecorationNode" xmi:id="_0pbX0GINEeuIk5NXYnmSew" type="5005"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_0pawwWINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_0pawwmINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_0paww2INEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Output" href="Example.flowchart#//@nodes.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0pawxGINEeuIk5NXYnmSew" x="424" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_2t3UwGINEeuIk5NXYnmSew" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2t3UxWINEeuIk5NXYnmSew" type="5004"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_2t3UwWINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_2t3UwmINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_2t3Uw2INEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Input" href="Example.flowchart#//@nodes.4"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2t3UxGINEeuIk5NXYnmSew" x="196" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_5JgQwGINEeuIk5NXYnmSew" type="2002">
+    <children xmi:type="notation:DecorationNode" xmi:id="_5JgQxWINEeuIk5NXYnmSew" type="5002"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_5JgQwWINEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_5JgQwmINEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_5JgQw2INEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Assignment" href="Example.flowchart#//@nodes.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5JgQxGINEeuIk5NXYnmSew" x="264" y="112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_F9vYQGIOEeuIk5NXYnmSew" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_F9v_UGIOEeuIk5NXYnmSew" type="5001"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_F9vYQWIOEeuIk5NXYnmSew"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_F9vYQmIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_F9vYQ2IOEeuIk5NXYnmSew"/>
+    <element xmi:type="flow:Event" href="Example.flowchart#//@nodes.6"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F9vYRGIOEeuIk5NXYnmSew" x="512" y="112"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_tmF38WINEeuIk5NXYnmSew"/>
+  <element xmi:type="flow:Flowchart" href="Example.flowchart#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_HJ0J0GIOEeuIk5NXYnmSew" type="4001" source="_uiWE0GINEeuIk5NXYnmSew" target="_vc7dwGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_HJ0J0WIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HJ0J0mIOEeuIk5NXYnmSew" points="[20, 2, -52, 2]$[65, 20, -7, 20]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ICHq0GIOEeuIk5NXYnmSew" type="4001" source="_vc7dwGINEeuIk5NXYnmSew" target="_2t3UwGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_ICHq0WIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ICHq0mIOEeuIk5NXYnmSew" points="[20, 4, -49, 4]$[63, 20, -6, 20]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Ib1LUGIOEeuIk5NXYnmSew" type="4001" source="_2t3UwGINEeuIk5NXYnmSew" target="_5JgQwGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Ib1LUWIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.2"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ib1LUmIOEeuIk5NXYnmSew" points="[22, -2, -47, -2]$[92, -2, 23, -2]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_JJsW4GIOEeuIk5NXYnmSew" type="4001" source="_5JgQwGINEeuIk5NXYnmSew" target="_xGI3QGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_JJsW4WIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.3"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JJsW4mIOEeuIk5NXYnmSew" points="[23, 3, -55, 3]$[58, 3, -20, 3]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Jh4NYGIOEeuIk5NXYnmSew" type="4001" source="_xGI3QGINEeuIk5NXYnmSew" target="_0pawwGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Jh4NYWIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.4"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Jh4NYmIOEeuIk5NXYnmSew" points="[20, 0, -52, 0]$[60, 0, -12, 0]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Jh6CkGIOEeuIk5NXYnmSew" id="(0.24489795918367346,0.5)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_MED2QGIOEeuIk5NXYnmSew" type="4001" source="_0pawwGINEeuIk5NXYnmSew" target="_F9vYQGIOEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_MED2QWIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.5"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MED2QmIOEeuIk5NXYnmSew" points="[25, -4, -46, 0]$[64, -7, -7, -3]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MEFrcGIOEeuIk5NXYnmSew" id="(0.175,0.4)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_M4Q6YGIOEeuIk5NXYnmSew" type="4001" source="_xGI3QGINEeuIk5NXYnmSew" target="_vc7dwGINEeuIk5NXYnmSew">
+    <styles xmi:type="notation:FontStyle" xmi:id="_M4Q6YWIOEeuIk5NXYnmSew" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="flow:Transition" href="Example.flowchart#//@transitions.6"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_M4Q6YmIOEeuIk5NXYnmSew" points="[0, 20, 216, 20]$[0, 52, 216, 52]$[-216, 52, 0, 52]$[-216, 20, 0, 20]"/>
+  </edges>
+</notation:Diagram>

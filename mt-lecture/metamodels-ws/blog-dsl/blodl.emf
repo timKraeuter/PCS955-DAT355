@@ -1,0 +1,33 @@
+@namespace(
+	uri="http://www.hvl.no/pcs955/blogdsl",
+	prefix="blog")
+package blogdsl;
+
+class Blog {
+	attr String author;
+	attr String authorEmail;
+	val Post[*] posts;
+}
+
+class Post {
+	attr String title;
+	attr String shortTitle;
+	attr String publishedDate;
+	attr String[*] categories;
+	val Content[+] content;
+}
+
+abstract class Content {
+}
+
+class Paragraph extends Content {
+	attr String markdownContent;
+}
+
+class Image extends Content {
+	attr String fileURL;
+	attr String caption;
+}
+
+
+

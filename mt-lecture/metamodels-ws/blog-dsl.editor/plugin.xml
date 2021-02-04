@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated blodl -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="blogdsl.presentation.BlogdslModelWizardID"
+            name="%_UI_BlogdslModelWizard_label"
+            class="blogdsl.presentation.BlogdslModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BlogdslModelFile.gif">
+         <description>%_UI_BlogdslModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated blodl -->
+      <editor
+            id="blogdsl.presentation.BlogdslEditorID"
+            name="%_UI_BlogdslEditor_label"
+            icon="icons/full/obj16/BlogdslModelFile.gif"
+            extensions="blogdsl"
+            class="blogdsl.presentation.BlogdslEditor"
+            contributorClass="blogdsl.presentation.BlogdslActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

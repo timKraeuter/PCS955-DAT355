@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r:Schema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r="http://www.hvl.no/pcs955/mt/relational">
+  <tables name="A" primaryKey="//@tables.0/@constraints.0">
+    <columns name="id">
+      <type size="10" dataType="NUMBER"/>
+    </columns>
+    <columns name="f">
+      <type size="1000"/>
+    </columns>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="pk_A" definedOnColumns="//@tables.0/@columns.0"/>
+  </tables>
+  <tables name="B" primaryKey="//@tables.1/@constraints.0">
+    <columns name="id">
+      <type size="10" dataType="NUMBER"/>
+    </columns>
+    <columns name="a_id"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="pk_B" definedOnColumns="//@tables.1/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="fk_B_to_A" definedOnColumns="//@tables.1/@columns.1" target="//@tables.0/@constraints.0"/>
+  </tables>
+</r:Schema>

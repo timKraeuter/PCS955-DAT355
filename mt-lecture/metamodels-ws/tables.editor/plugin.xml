@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated tables -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="tables.presentation.TablesModelWizardID"
+            name="%_UI_TablesModelWizard_label"
+            class="tables.presentation.TablesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TablesModelFile.gif">
+         <description>%_UI_TablesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated tables -->
+      <editor
+            id="tables.presentation.TablesEditorID"
+            name="%_UI_TablesEditor_label"
+            icon="icons/full/obj16/TablesModelFile.gif"
+            extensions="tables"
+            class="tables.presentation.TablesEditor"
+            contributorClass="tables.presentation.TablesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

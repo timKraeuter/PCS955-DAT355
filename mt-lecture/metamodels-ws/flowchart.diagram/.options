@@ -1,0 +1,7 @@
+# Tracing options for the flowchart.diagram plug-in
+
+# Common issues
+flowchart.diagram/debug=false
+
+# Visual IDs
+flowchart.diagram/debug/visualID=false

@@ -1,0 +1,48 @@
+@namespace(
+	uri="http://www.hvl.no/pcs955/mt/flowchart",
+	prefix="flow")
+package flowchart;
+
+@gmf.diagram
+class Flowchart {
+	val Node[*] nodes;
+	val Transition[*] transitions;	
+	ref Event[1] start;
+	ref Event[1] end;
+}
+
+
+@gmf.link(source="src", target="trg",target.decoration="arrow",label="lbl")
+class Transition {
+	ref Node[1] src;
+	ref Node[1] trg;
+	attr String lbl;
+}
+
+abstract class Node {
+	attr String text;
+}
+
+@gmf.node(figure="ellipse",color="0,255,0",label="text",label.icon="false")
+class Event extends Node {
+}
+
+@gmf.node(label="text",figure="rounded",color="255,255,255",label.icon="false")
+class Assignment extends Node {
+}
+
+@gmf.node(figure="rectangle",color="238,130,238",label="text",label.icon="false")
+class Decision extends Node {
+}
+
+@gmf.node(figure="rectangle",color="0,100,255",label="text",label.pattern="Input: {0}",label.icon="false")
+class Input extends Node {
+}
+
+@gmf.node(figure="rectangle",color="210,105,30",label="text",label.pattern="Output: {0}",label.icon="false")
+class Output extends Node {
+}
+
+
+
+

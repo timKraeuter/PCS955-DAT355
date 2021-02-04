@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://www.hvl.no/pcs955/mt/javacode">
+  <java:ClassFile mainMethod="/0/@methods.0">
+    <methods name="main">
+      <statements xsi:type="java:WhileLoop">
+        <condition expression="i &lt;= 10"/>
+        <body xsi:type="java:Expression" expression="i := 1;"/>
+        <body xsi:type="java:Expression" expression="x = new Scanner(System.in).next()"/>
+        <body xsi:type="java:Expression" expression="i := i + x;"/>
+      </statements>
+      <statements xsi:type="java:Expression" expression="System.out.println(i);"/>
+      <statements xsi:type="java:Expression" expression="System.exit(0);"/>
+    </methods>
+  </java:ClassFile>
+  <java:ClassFile mainMethod="/1/@methods.0">
+    <methods name="main"/>
+  </java:ClassFile>
+  <java:ClassFile mainMethod="/2/@methods.0">
+    <methods name="main"/>
+  </java:ClassFile>
+</xmi:XMI>

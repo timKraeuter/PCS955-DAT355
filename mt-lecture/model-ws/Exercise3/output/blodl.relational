@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r="http://www.hvl.no/pcs955/mt/relational">
+  <r:Schema>
+    <tables name="Blog" primaryKey="/0/@tables.0/@constraints.0">
+      <columns name="id">
+        <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+      </columns>
+      <columns name="author">
+        <type size="4000"/>
+      </columns>
+      <columns name="authorEmail">
+        <type size="4000"/>
+      </columns>
+      <constraints xsi:type="r:PrimaryKeyConstraint" name="Blog" definedOnColumns="/0/@tables.0/@columns.0"/>
+    </tables>
+    <tables name="Post" primaryKey="/0/@tables.1/@constraints.0">
+      <columns name="id">
+        <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+      </columns>
+      <columns name="title">
+        <type size="4000"/>
+      </columns>
+      <columns name="shortTitle">
+        <type size="4000"/>
+      </columns>
+      <columns name="publishedDate">
+        <type size="4000"/>
+      </columns>
+      <columns name="categories">
+        <type size="4000"/>
+      </columns>
+      <constraints xsi:type="r:PrimaryKeyConstraint" name="Post" definedOnColumns="/0/@tables.1/@columns.0"/>
+    </tables>
+    <tables name="Content" primaryKey="/0/@tables.2/@constraints.0">
+      <columns name="id">
+        <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+      </columns>
+      <constraints xsi:type="r:PrimaryKeyConstraint" name="Content" definedOnColumns="/0/@tables.2/@columns.0"/>
+    </tables>
+    <tables name="Paragraph" primaryKey="/0/@tables.3/@constraints.0">
+      <columns name="id">
+        <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+      </columns>
+      <columns name="markdownContent">
+        <type size="4000"/>
+      </columns>
+      <constraints xsi:type="r:PrimaryKeyConstraint" name="Paragraph" definedOnColumns="/0/@tables.3/@columns.0"/>
+    </tables>
+    <tables name="Image" primaryKey="/0/@tables.4/@constraints.0">
+      <columns name="id">
+        <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+      </columns>
+      <columns name="fileURL">
+        <type size="4000"/>
+      </columns>
+      <columns name="caption">
+        <type size="4000"/>
+      </columns>
+      <constraints xsi:type="r:PrimaryKeyConstraint" name="Image" definedOnColumns="/0/@tables.4/@columns.0"/>
+    </tables>
+    <tables name="posts junction tabel">
+      <columns name="fk Post">
+        <type dataType="NUMBER"/>
+      </columns>
+      <columns name="fk Blog">
+        <type dataType="NUMBER"/>
+      </columns>
+      <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="/0/@tables.5/@columns.0" target="/0/@tables.1/@constraints.0"/>
+      <constraints xsi:type="r:ForeignKeyConstraint" name="to Blog" definedOnColumns="/0/@tables.5/@columns.1" target="/0/@tables.0/@constraints.0"/>
+    </tables>
+    <tables name="content junction tabel">
+      <columns name="fk Content">
+        <type dataType="NUMBER"/>
+      </columns>
+      <columns name="fk Post">
+        <type dataType="NUMBER"/>
+      </columns>
+      <constraints xsi:type="r:ForeignKeyConstraint" name="to Content" definedOnColumns="/0/@tables.6/@columns.0" target="/0/@tables.2/@constraints.0"/>
+      <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="/0/@tables.6/@columns.1" target="/0/@tables.1/@constraints.0"/>
+    </tables>
+  </r:Schema>
+  <r:Schema/>
+</xmi:XMI>

@@ -1,0 +1,52 @@
+@namespace(
+	uri="http://www.hvl.no/pcs955/mt/relational",
+	prefix="r")
+package relational;
+
+
+class Schema {
+	val Table[*] tables;
+}
+
+abstract class NamedElement {
+	attr String name;
+}
+
+class Table extends NamedElement {
+	val Column[*] columns;
+	val Constraint[*]#belongingTable constraints;
+	ref PrimaryKeyConstraint[?] primaryKey;
+}
+
+class Column extends NamedElement {
+	val ColumnType[1] type;
+}
+
+class ColumnType {
+	attr Integer size;
+	attr SQLDataType dataType;
+	attr Integer[?] decimalPlaces;
+}
+
+enum SQLDataType {
+	VARCHAR;
+	NUMBER;
+}
+
+abstract class Constraint extends NamedElement {
+	ref Column[*] definedOnColumns;
+	ref Table[1]#constraints belongingTable;
+}
+
+class ForeignKeyConstraint extends Constraint {
+	ref AbstractUniqueConstraint[1] target;
+}
+
+abstract class AbstractUniqueConstraint extends Constraint {
+}
+
+class UniqueConstraint extends AbstractUniqueConstraint {
+}
+
+class PrimaryKeyConstraint extends AbstractUniqueConstraint {
+}

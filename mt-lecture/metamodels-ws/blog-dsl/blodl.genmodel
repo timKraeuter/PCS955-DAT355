@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/blog-dsl/src" modelPluginID="blog-dsl" modelName="Blodl"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>blodl.ecore</foreignModel>
+  <genPackages prefix="Blogdsl" disposableProviderFactory="true" ecorePackage="blodl.ecore#/">
+    <genClasses ecoreClass="blodl.ecore#//Blog">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Blog/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Blog/authorEmail"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference blodl.ecore#//Blog/posts"/>
+    </genClasses>
+    <genClasses ecoreClass="blodl.ecore#//Post">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Post/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Post/shortTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Post/publishedDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Post/categories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference blodl.ecore#//Post/content"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="blodl.ecore#//Content"/>
+    <genClasses ecoreClass="blodl.ecore#//Paragraph">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Paragraph/markdownContent"/>
+    </genClasses>
+    <genClasses ecoreClass="blodl.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Image/fileURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute blodl.ecore#//Image/caption"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

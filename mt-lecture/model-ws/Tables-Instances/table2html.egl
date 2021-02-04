@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+	<title>[%= t.name %]</title>
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+<body>
+<table>
+<tr>
+<th style="align:center" colspan="[%= t.columnGroups.collect(cg|cg.columns.size()).sum() %]">[%= t.name %]</th>
+</tr>
+<tr>
+  [% for (cg in t.columnGroups) { %]
+  	<th colspan="[%= cg.columns.size() %]">[%= cg.caption %]</th>
+  [%  } %] 
+<tr>
+<tr>
+  [% for (c in t.columnGroups.columns.flatten()) { %]
+    <th>[%= c.title %]</th>
+  [% } %]
+</tr>
+[% for (r in t.rows) { %]
+<tr>
+  [% for (c in t.columnGroups.columns.flatten()) { %]
+  	[% var cell = r.cells.select(cell|cell.column=c).first();  %]
+  	<td>[%= cell.value %]</td>
+  [% } %]
+</tr
+[% } %]
+</table>
+[%= out.startPreserve("<!--","-->","customContent",true) %]
+<p> Your custom content goes here </p>
+[%= out.stopPreserve() %]
+</body>
+</html>

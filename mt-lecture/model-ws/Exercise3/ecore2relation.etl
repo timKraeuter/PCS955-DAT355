@@ -1,0 +1,124 @@
+rule EPackage2Schema
+transform package : IN!EPackage
+to schema : OUT!Schema {	
+	// Transforms classes and their attributes
+	var tables = package.eClassifiers.equivalent();
+	schema.tables = tables;
+    
+    // Transform references
+    var classes = IN!EClass.all();
+    // Add junction tables to the current schema for each reference of a class
+    for (class : IN!EClass in classes) {
+    	var junctionTables = class.eAllReferences.equivalent();
+    	schema.tables.addAll(junctionTables);
+    	// Add foreing key pointing to the table corresponding to the owner class
+    	for (junctionTable : OUT!Table in junctionTables) {
+			var ownerClassTable = class.equivalent();
+    		junctionTable.createForeignKey(ownerClassTable);
+		}
+	}
+}
+
+operation OUT!Table createForeignKey(targetTable: OUT!Table) : void {
+    // Create the FK column
+	var fkType = new OUT!ColumnType();
+	fkType.dataType = OUT!SQLDataType#NUMBER;
+	
+	var fkColumn = new OUT!Column();
+	fkColumn.name = "fk " + targetTable.name;
+	fkColumn.type = fkType;
+	
+	self.columns.add(fkColumn);
+	
+	// Create the FK constraint
+	var fkConstraint = new OUT!ForeignKeyConstraint();
+	fkConstraint.name = "to " + targetTable.name;
+	fkConstraint.belongingTable = self;
+	fkConstraint.definedOnColumns.add(fkColumn);
+	fkConstraint.target = targetTable.primaryKey;
+	
+	self.constraints.add(fkConstraint);
+}
+
+@lazy
+rule EClass2Table
+transform class : IN!EClass
+to table : OUT!Table {
+	// Name
+    table.name = class.name;
+    
+    // Primary key column
+	var primaryColumn = new OUT!Column();
+	primaryColumn.name = "id";
+	var primKeyType = new OUT!ColumnType();
+	primKeyType.size = 128; // Oracle DB uses 128, so we use (not specified in the assignment)
+	primKeyType.decimalPlaces = 0; // Integer so no decimal places
+	primKeyType.dataType = OUT!SQLDataType#NUMBER;
+	primaryColumn.type = primKeyType;
+    
+    table.columns.add(primaryColumn);
+    
+    // Primary key constraint
+	var pConstraint = new OUT!PrimaryKeyConstraint();
+	pConstraint.name = table.name;
+	
+	pConstraint.belongingTable = table;
+	pConstraint.definedOnColumns.add(primaryColumn);
+	table.primaryKey = pConstraint;
+	
+    // Transform each attribute
+    var attributeColumns = class.eAllAttributes.equivalent();
+    table.columns.addAll(attributeColumns);
+}
+
+@lazy
+rule EAttribute2Column
+transform attribute : IN!EAttribute
+to column : OUT!Column {
+	column.name = attribute.name;
+	column.type = attribute.getCorrespondingColumnType();
+}
+
+operation IN!EAttribute getCorrespondingColumnType() : OUT!ColumnType {
+	var type = new OUT!ColumnType();
+	switch (self.eAttributeType.name){
+		case "EString":
+			type.dataType = OUT!SQLDataType#VARCHAR;
+			type.size = 4000;
+		// Only strings in all the input models!!! Other cases not tested!
+		case "ELong":
+		case "EInteger":
+		case "EShort":
+		case "EByte":
+			type.dataType = OUT!SQLDataType#NUMBER;
+			type.size = 32;
+			type.decimalPlaces = 0;
+		case "EDouble":
+		case "EFloat":
+			type.dataType = OUT!SQLDataType#NUMBER;
+			type.size = 32;
+			type.decimalPlaces = 4;
+		case "EBoolean":
+			type.dataType = OUT!SQLDataType#NUMBER;
+			type.size = 1;
+			type.decimalPlaces = 0;
+		case "EEnum":
+			type.dataType = OUT!SQLDataType#NUMBER;
+			type.size = 2;
+			type.decimalPlaces = 0;
+	}
+	return type;
+}
+
+
+@lazy
+rule EReference2JunctionTable
+transform reference : IN!EReference
+to junctionTable : OUT!Table {
+	// TODO add target constraint
+	junctionTable.name = reference.name + " junction tabel";
+	var targetClassTable = reference.eReferenceType.equivalent();
+    junctionTable.createForeignKey(targetClassTable);
+	
+	"transformed references".println();
+}

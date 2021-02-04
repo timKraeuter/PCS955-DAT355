@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>[%= table.name %]</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+</style>
+</head>
+<body>
+<table >
+  <tr>
+  	<th rowspan="3"></th>
+    <th colspan="[%= table.inputSideColumns.size()%]">Input</th>
+    <th colspan="[%= table.inputSideColumns.size()%]">Output</th>
+  </tr>
+  <tr>
+    [% for (c in table.inputSideColumns) {%]
+    	<td>[%= c.name %]</td>
+    [%} %]
+    [% for (c in table.outputSideColumns) {%]
+    	<td>[%= c.name %]</td>
+    [%} %]
+  </tr>
+  <tr>
+  	[% for (c in table.inputSideColumns) {%]
+    	<td><pre>[%= c.type %]</pre></td>
+    [%} %]
+    [% for (c in table.outputSideColumns) {%]
+    	<td><pre>[%= c.type %]</pre></td>
+    [%} %]
+  </tr>
+  [% for (r in table.rows) {%]
+  <tr>
+  	<td>[%= loopCount %]</td>
+  	    [% for (c in table.inputSideColumns) {%]
+  	    [% var cl = r.cells.select(cell|cell.column = c); %]
+  	    [% if (cl.size() > 0) { %]
+  	    	<td>[%= cl.at(0).valueExpression %]</td>
+  	    [% } else { %]
+  	    	<td text-aling="center">-</td>
+  	    [% } %]
+  	    [% } %]
+  	 	[% for (c in table.outputSideColumns) {%]
+  	    [% var cl = r.cells.select(cell|cell.column = c); %]
+  	    [% if (cl.size() > 0) { %]
+  	    	<td>[%= cl.at(0).valueExpression %]</td>
+  	    [% } else { %]
+  	    	<td text-aling="center">-</td>
+  	    [% } %]
+  	    [% } %]
+  </tr>
+  [%} %]
+</table>
+</body>
+</html>

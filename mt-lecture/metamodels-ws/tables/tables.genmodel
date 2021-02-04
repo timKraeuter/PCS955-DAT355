@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tables/src" modelPluginID="tables" modelName="Tables"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false" operationReflection="false" importOrganizing="true">
+  <foreignModel>tables.ecore</foreignModel>
+  <genPackages prefix="Tables" disposableProviderFactory="true" ecorePackage="tables.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="tables.ecore#//ColumnType">
+      <genEnumLiterals ecoreEnumLiteral="tables.ecore#//ColumnType/TEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="tables.ecore#//ColumnType/NUMERIC"/>
+    </genEnums>
+    <genClasses ecoreClass="tables.ecore#//Table">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tables.ecore#//Table/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tables.ecore#//Table/columnGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tables.ecore#//Table/rows"/>
+    </genClasses>
+    <genClasses ecoreClass="tables.ecore#//Row">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tables.ecore#//Row/cells"/>
+    </genClasses>
+    <genClasses ecoreClass="tables.ecore#//Cell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tables.ecore#//Cell/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tables.ecore#//Cell/column"/>
+    </genClasses>
+    <genClasses ecoreClass="tables.ecore#//ColumnGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tables.ecore#//ColumnGroup/caption"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tables.ecore#//ColumnGroup/columns"/>
+    </genClasses>
+    <genClasses ecoreClass="tables.ecore#//Column">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tables.ecore#//Column/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tables.ecore#//Column/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
