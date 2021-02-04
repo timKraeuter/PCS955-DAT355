@@ -115,7 +115,7 @@ operation IN!EAttribute getCorrespondingColumnType() : OUT!ColumnType {
 rule EReference2JunctionTable
 transform reference : IN!EReference
 to junctionTable : OUT!Table {
-	// TODO add target constraint
+	// Every reference is modelled as a junction table (many-to-many), since this makes model generation and data migration under model change easier
 	junctionTable.name = reference.name + " junction tabel";
 	var targetClassTable = reference.eReferenceType.equivalent();
     junctionTable.createForeignKey(targetClassTable);
