@@ -57,24 +57,32 @@
     </columns>
     <constraints xsi:type="r:PrimaryKeyConstraint" name="Image" definedOnColumns="//@tables.4/@columns.0"/>
   </tables>
-  <tables name="posts junction tabel">
+  <tables name="posts junction table" primaryKey="//@tables.5/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Post">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Blog">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="//@tables.5/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Blog" definedOnColumns="//@tables.5/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="posts junction table" definedOnColumns="//@tables.5/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="//@tables.5/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Blog" definedOnColumns="//@tables.5/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="content junction tabel">
+  <tables name="content junction table" primaryKey="//@tables.6/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Content">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Post">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Content" definedOnColumns="//@tables.6/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="//@tables.6/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="content junction table" definedOnColumns="//@tables.6/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Content" definedOnColumns="//@tables.6/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Post" definedOnColumns="//@tables.6/@columns.2" target="//@tables.1/@constraints.0"/>
   </tables>
 </r:Schema>

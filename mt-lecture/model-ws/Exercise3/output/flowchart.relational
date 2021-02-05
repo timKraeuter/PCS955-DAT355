@@ -54,64 +54,88 @@
     </columns>
     <constraints xsi:type="r:PrimaryKeyConstraint" name="Output" definedOnColumns="//@tables.7/@columns.0"/>
   </tables>
-  <tables name="nodes junction tabel">
+  <tables name="nodes junction table" primaryKey="//@tables.8/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Node">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Flowchart">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.8/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.8/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="nodes junction table" definedOnColumns="//@tables.8/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.8/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.8/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="transitions junction tabel">
+  <tables name="transitions junction table" primaryKey="//@tables.9/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Transition">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Flowchart">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.9/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.9/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="transitions junction table" definedOnColumns="//@tables.9/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.9/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.9/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="start junction tabel">
+  <tables name="start junction table" primaryKey="//@tables.10/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Event">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Flowchart">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Event" definedOnColumns="//@tables.10/@columns.0" target="//@tables.3/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.10/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="start junction table" definedOnColumns="//@tables.10/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Event" definedOnColumns="//@tables.10/@columns.1" target="//@tables.3/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.10/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="end junction tabel">
+  <tables name="end junction table" primaryKey="//@tables.11/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Event">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Flowchart">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Event" definedOnColumns="//@tables.11/@columns.0" target="//@tables.3/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.11/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="end junction table" definedOnColumns="//@tables.11/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Event" definedOnColumns="//@tables.11/@columns.1" target="//@tables.3/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Flowchart" definedOnColumns="//@tables.11/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="src junction tabel">
+  <tables name="src junction table" primaryKey="//@tables.12/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Node">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Transition">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.12/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.12/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="src junction table" definedOnColumns="//@tables.12/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.12/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.12/@columns.2" target="//@tables.1/@constraints.0"/>
   </tables>
-  <tables name="trg junction tabel">
+  <tables name="trg junction table" primaryKey="//@tables.13/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Node">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Transition">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.13/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.13/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="trg junction table" definedOnColumns="//@tables.13/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Node" definedOnColumns="//@tables.13/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Transition" definedOnColumns="//@tables.13/@columns.2" target="//@tables.1/@constraints.0"/>
   </tables>
 </r:Schema>

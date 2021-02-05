@@ -46,7 +46,14 @@ transform class : IN!EClass
 to table : OUT!Table {
 	// Name
     table.name = class.name;
-    
+    table.addPrimaryKey();
+	
+    // Transform each attribute
+    var attributeColumns = class.eAllAttributes.equivalent();
+    table.columns.addAll(attributeColumns);
+}
+
+operation OUT!Table addPrimaryKey() : void {
     // Primary key column
 	var primaryColumn = new OUT!Column();
 	primaryColumn.name = "id";
@@ -56,19 +63,15 @@ to table : OUT!Table {
 	primKeyType.dataType = OUT!SQLDataType#NUMBER;
 	primaryColumn.type = primKeyType;
     
-    table.columns.add(primaryColumn);
+    self.columns.add(primaryColumn);
     
     // Primary key constraint
 	var pConstraint = new OUT!PrimaryKeyConstraint();
-	pConstraint.name = table.name;
+	pConstraint.name = self.name;
 	
-	pConstraint.belongingTable = table;
+	pConstraint.belongingTable = self;
 	pConstraint.definedOnColumns.add(primaryColumn);
-	table.primaryKey = pConstraint;
-	
-    // Transform each attribute
-    var attributeColumns = class.eAllAttributes.equivalent();
-    table.columns.addAll(attributeColumns);
+	self.primaryKey = pConstraint;
 }
 
 @lazy
@@ -115,8 +118,11 @@ operation IN!EAttribute getCorrespondingColumnType() : OUT!ColumnType {
 rule EReference2JunctionTable
 transform reference : IN!EReference
 to junctionTable : OUT!Table {
-	// Every reference is modelled as a junction table (many-to-many), since this makes model generation and data migration under model change easier
-	junctionTable.name = reference.name + " junction tabel";
+	// Every reference is modelled as a junction table (many-to-many),
+	// since this results in an uniform reference handling for both types of associations and facilitates refactorings between the two them.
+	junctionTable.name = reference.name + " junction table";
+	// We also add a primary key for junction tables since it is easier and better than adding a multi column primary key
+	junctionTable.addPrimaryKey();
 	var targetClassTable = reference.eReferenceType.equivalent();
     junctionTable.createForeignKey(targetClassTable);
 }

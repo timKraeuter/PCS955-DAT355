@@ -42,84 +42,116 @@
     </columns>
     <constraints xsi:type="r:PrimaryKeyConstraint" name="IfThenElse" definedOnColumns="//@tables.5/@columns.0"/>
   </tables>
-  <tables name="methods junction tabel">
+  <tables name="methods junction table" primaryKey="//@tables.6/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Method">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk ClassFile">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.6/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to ClassFile" definedOnColumns="//@tables.6/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="methods junction table" definedOnColumns="//@tables.6/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.6/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to ClassFile" definedOnColumns="//@tables.6/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="mainMethod junction tabel">
+  <tables name="mainMethod junction table" primaryKey="//@tables.7/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Method">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk ClassFile">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.7/@columns.0" target="//@tables.2/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to ClassFile" definedOnColumns="//@tables.7/@columns.1" target="//@tables.0/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="mainMethod junction table" definedOnColumns="//@tables.7/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.7/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to ClassFile" definedOnColumns="//@tables.7/@columns.2" target="//@tables.0/@constraints.0"/>
   </tables>
-  <tables name="statements junction tabel">
+  <tables name="statements junction table" primaryKey="//@tables.8/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk AbstractStatement">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk Method">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.8/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.8/@columns.1" target="//@tables.2/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="statements junction table" definedOnColumns="//@tables.8/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.8/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Method" definedOnColumns="//@tables.8/@columns.2" target="//@tables.2/@constraints.0"/>
   </tables>
-  <tables name="guard junction tabel">
+  <tables name="guard junction table" primaryKey="//@tables.9/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Expression">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk WhileLoop">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Expression" definedOnColumns="//@tables.9/@columns.0" target="//@tables.3/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to WhileLoop" definedOnColumns="//@tables.9/@columns.1" target="//@tables.4/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="guard junction table" definedOnColumns="//@tables.9/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Expression" definedOnColumns="//@tables.9/@columns.1" target="//@tables.3/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to WhileLoop" definedOnColumns="//@tables.9/@columns.2" target="//@tables.4/@constraints.0"/>
   </tables>
-  <tables name="body junction tabel">
+  <tables name="body junction table" primaryKey="//@tables.10/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk AbstractStatement">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk WhileLoop">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.10/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to WhileLoop" definedOnColumns="//@tables.10/@columns.1" target="//@tables.4/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="body junction table" definedOnColumns="//@tables.10/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.10/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to WhileLoop" definedOnColumns="//@tables.10/@columns.2" target="//@tables.4/@constraints.0"/>
   </tables>
-  <tables name="guard junction tabel">
+  <tables name="guard junction table" primaryKey="//@tables.11/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk Expression">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk IfThenElse">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to Expression" definedOnColumns="//@tables.11/@columns.0" target="//@tables.3/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.11/@columns.1" target="//@tables.5/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="guard junction table" definedOnColumns="//@tables.11/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to Expression" definedOnColumns="//@tables.11/@columns.1" target="//@tables.3/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.11/@columns.2" target="//@tables.5/@constraints.0"/>
   </tables>
-  <tables name="ifBranch junction tabel">
+  <tables name="ifBranch junction table" primaryKey="//@tables.12/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk AbstractStatement">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk IfThenElse">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.12/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.12/@columns.1" target="//@tables.5/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="ifBranch junction table" definedOnColumns="//@tables.12/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.12/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.12/@columns.2" target="//@tables.5/@constraints.0"/>
   </tables>
-  <tables name="elseBranch junction tabel">
+  <tables name="elseBranch junction table" primaryKey="//@tables.13/@constraints.0">
+    <columns name="id">
+      <type size="128" dataType="NUMBER" decimalPlaces="0"/>
+    </columns>
     <columns name="fk AbstractStatement">
       <type dataType="NUMBER"/>
     </columns>
     <columns name="fk IfThenElse">
       <type dataType="NUMBER"/>
     </columns>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.13/@columns.0" target="//@tables.1/@constraints.0"/>
-    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.13/@columns.1" target="//@tables.5/@constraints.0"/>
+    <constraints xsi:type="r:PrimaryKeyConstraint" name="elseBranch junction table" definedOnColumns="//@tables.13/@columns.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to AbstractStatement" definedOnColumns="//@tables.13/@columns.1" target="//@tables.1/@constraints.0"/>
+    <constraints xsi:type="r:ForeignKeyConstraint" name="to IfThenElse" definedOnColumns="//@tables.13/@columns.2" target="//@tables.5/@constraints.0"/>
   </tables>
 </r:Schema>
