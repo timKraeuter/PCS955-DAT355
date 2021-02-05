@@ -19,12 +19,12 @@ to schema : OUT!Schema {
     	// Add foreing key pointing to the table corresponding to the owner class
     	for (junctionTable : OUT!Table in junctionTables) {
 			var ownerClassTable = class.equivalent();
-    		junctionTable.createForeignKey(ownerClassTable);
+    		junctionTable.addForeignKey(ownerClassTable);
 		}
 	}
 }
 
-operation OUT!Table createForeignKey(targetTable: OUT!Table) : void {
+operation OUT!Table addForeignKey(targetTable: OUT!Table) : void {
     // Create the FK column
 	var fkType = new OUT!ColumnType();
 	fkType.dataType = OUT!SQLDataType#NUMBER;
@@ -129,5 +129,5 @@ to junctionTable : OUT!Table {
 	// We also add a primary key for junction tables since it is easier and better than adding a multi column primary key
 	junctionTable.addPrimaryKey();
 	var targetClassTable = reference.eReferenceType.equivalent();
-    junctionTable.createForeignKey(targetClassTable);
+    junctionTable.addForeignKey(targetClassTable);
 }
