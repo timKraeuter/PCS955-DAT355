@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+ 		<h1>[%= blogpost.title %] </h1>
+ 		<h2>Published: [%= blogpost.publishedDate %]</h2>
+ 		<h3>Categories: [% for (category in blogpost.categories) { %] [%= category %] [%  } %] </h3>
+ 		[% for (content in blogpost.content) { %]
+  [%  } %] 
+</html>
