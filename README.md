@@ -17,3 +17,6 @@
 3. The familie located in the project **no.tk.families** in the file **sample-Families.xmi** will be transformed to the file **generatedPersons.xmi** (not part of the VCS!) in the project **no.tk.persons**. The resulting file should look like this:
 
 ![persons](https://raw.githubusercontent.com/timKraeuter/PCS955-DAT355/main/ATL_Tutorial/persons_result.png)
+
+## Epsilon
+- Can be found in the subfolder mt-lecture with its own readme file.
