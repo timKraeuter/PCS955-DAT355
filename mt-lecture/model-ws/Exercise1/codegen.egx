@@ -1,0 +1,6 @@
+rule Blog2HTML transform b : Blog {
+		template : "blog2html.egl"		
+		target : "output/" + b.author + ".html"
+}
+
+	
