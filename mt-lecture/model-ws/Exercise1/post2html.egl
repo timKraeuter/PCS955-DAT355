@@ -7,7 +7,7 @@
  			<h4>[%= content.markdownContent %]</h4>
   		[%  } else {%] 
  			<figure>
-  				<img src="[%= content.fileURL %]" style="width:100%"><!-- The file was added manually. TBD: Invoke Javacode and copy file! -->
+  				<img src="[%= content.fileURL %]"><!-- The file was added manually. TBD: Invoke Javacode and copy file! -->
   				<figcaption>[%= content.caption %]</figcaption>
 			</figure>
   		[%  } %] 
