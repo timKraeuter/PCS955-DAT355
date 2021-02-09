@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<h1>Author: [%= b.author %], e-mail: [%= b.authorEmail %]</h1>
 <h1>Blog-Entries:</h1>
  [% for (post in b.posts) { %]
  <a href="./[%= post.shortTitle + "/" + post.shortTitle + ".html"%]"><h2>[%= post.title %] </h2></a>
