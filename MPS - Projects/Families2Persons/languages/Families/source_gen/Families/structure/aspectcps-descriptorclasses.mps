@@ -186,7 +186,7 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="false" />
-      <property role="TrG5h" value="props_Familiy" />
+      <property role="TrG5h" value="props_Family" />
       <node concept="3uibUv" id="7" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptPresentation" resolve="ConceptPresentation" />
       </node>
@@ -304,7 +304,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="U" role="37vLTJ">
-                        <ref role="3cqZAo" node="2" resolve="props_Familiy" />
+                        <ref role="3cqZAo" node="2" resolve="props_Family" />
                       </node>
                     </node>
                   </node>
@@ -312,18 +312,18 @@
                 <node concept="3clFbC" id="C" role="3clFbw">
                   <node concept="10Nm6u" id="X" role="3uHU7w" />
                   <node concept="37vLTw" id="Y" role="3uHU7B">
-                    <ref role="3cqZAo" node="2" resolve="props_Familiy" />
+                    <ref role="3cqZAo" node="2" resolve="props_Family" />
                   </node>
                 </node>
               </node>
               <node concept="3cpWs6" id="A" role="3cqZAp">
                 <node concept="37vLTw" id="Z" role="3cqZAk">
-                  <ref role="3cqZAo" node="2" resolve="props_Familiy" />
+                  <ref role="3cqZAo" node="2" resolve="props_Family" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1B" resolve="Familiy" />
+              <ref role="3cqZAo" node="1B" resolve="Family" />
               <ref role="1PxDUh" node="1_" resolve="LanguageConceptSwitch" />
             </node>
           </node>
@@ -455,7 +455,7 @@
       <property role="2dlcS1" value="false" />
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="Familiy" />
+      <property role="TrG5h" value="Family" />
       <node concept="3Tm1VV" id="1M" role="1B3o_S" />
       <node concept="10Oyi0" id="1N" role="1tU5fm" />
       <node concept="3cmrfG" id="1O" role="33vP2m">
@@ -508,7 +508,7 @@
                 <property role="1adDun" value="0x73822226716969d6L" />
               </node>
               <node concept="37vLTw" id="29" role="37wK5m">
-                <ref role="3cqZAo" node="1B" resolve="Familiy" />
+                <ref role="3cqZAo" node="1B" resolve="Family" />
               </node>
             </node>
           </node>
@@ -610,12 +610,12 @@
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myConceptFamiliy" />
+      <property role="TrG5h" value="myConceptFamily" />
       <node concept="3uibUv" id="2W" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
       <node concept="1rXfSq" id="2X" role="33vP2m">
-        <ref role="37wK5l" node="2U" resolve="createDescriptorForFamiliy" />
+        <ref role="37wK5l" node="2U" resolve="createDescriptorForFamily" />
       </node>
     </node>
     <node concept="312cEg" id="2E" role="jymVt">
@@ -707,7 +707,7 @@
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
             <node concept="37vLTw" id="3t" role="37wK5m">
-              <ref role="3cqZAo" node="2D" resolve="myConceptFamiliy" />
+              <ref role="3cqZAo" node="2D" resolve="myConceptFamily" />
             </node>
             <node concept="37vLTw" id="3u" role="37wK5m">
               <ref role="3cqZAo" node="2E" resolve="myConceptMember" />
@@ -744,12 +744,12 @@
             <node concept="3clFbS" id="3G" role="3Kbo56">
               <node concept="3cpWs6" id="3I" role="3cqZAp">
                 <node concept="37vLTw" id="3J" role="3cqZAk">
-                  <ref role="3cqZAo" node="2D" resolve="myConceptFamiliy" />
+                  <ref role="3cqZAo" node="2D" resolve="myConceptFamily" />
                 </node>
               </node>
             </node>
             <node concept="10M0yZ" id="3H" role="3Kbmr1">
-              <ref role="3cqZAo" node="1B" resolve="Familiy" />
+              <ref role="3cqZAo" node="1B" resolve="Family" />
               <ref role="1PxDUh" node="1_" resolve="LanguageConceptSwitch" />
             </node>
           </node>
@@ -826,7 +826,7 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="createDescriptorForFamiliy" />
+      <property role="TrG5h" value="createDescriptorForFamily" />
       <node concept="3clFbS" id="42" role="3clF47">
         <node concept="3cpWs8" id="45" role="3cqZAp">
           <node concept="3cpWsn" id="4f" role="3cpWs9">
@@ -841,7 +841,7 @@
                   <property role="Xl_RC" value="Families" />
                 </node>
                 <node concept="Xl_RD" id="4k" role="37wK5m">
-                  <property role="Xl_RC" value="Familiy" />
+                  <property role="Xl_RC" value="Family" />
                 </node>
                 <node concept="1adDum" id="4l" role="37wK5m">
                   <property role="1adDun" value="0xa882308c6c724214L" />

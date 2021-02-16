@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptFamiliy = createDescriptorForFamiliy();
+  /*package*/ final ConceptDescriptor myConceptFamily = createDescriptorForFamily();
   /*package*/ final ConceptDescriptor myConceptMember = createDescriptorForMember();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -28,15 +28,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptFamiliy, myConceptMember);
+    return Arrays.asList(myConceptFamily, myConceptMember);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.Familiy:
-        return myConceptFamiliy;
+      case LanguageConceptSwitch.Family:
+        return myConceptFamily;
       case LanguageConceptSwitch.Member:
         return myConceptMember;
       default:
@@ -49,8 +49,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForFamiliy() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Families", "Familiy", 0xa882308c6c724214L, 0x8d920ec0b6d4f486L, 0x73822226716969d6L);
+  private static ConceptDescriptor createDescriptorForFamily() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Families", "Family", 0xa882308c6c724214L, 0x8d920ec0b6d4f486L, 0x73822226716969d6L);
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:a51cbf13-89a6-4218-9a46-a48cbd054538(Families.structure)/8323252609840933334");

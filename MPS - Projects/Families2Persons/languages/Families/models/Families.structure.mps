@@ -39,7 +39,7 @@
   </registry>
   <node concept="1TIwiD" id="7e28ypLqmBm">
     <property role="EcuMT" value="8323252609840933334" />
-    <property role="TrG5h" value="Familiy" />
+    <property role="TrG5h" value="Family" />
     <property role="19KtqR" value="true" />
     <property role="R4oN_" value="the &quot;lastName&quot; property of the family is inherited as &quot;name&quot; from INamedConcept" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />

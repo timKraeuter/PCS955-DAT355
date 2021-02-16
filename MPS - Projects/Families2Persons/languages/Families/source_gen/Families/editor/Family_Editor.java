@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class Familiy_Editor extends DefaultNodeEditor {
+public class Family_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new Familiy_EditorBuilder_a(editorContext, node).createCell();
+    return new Family_EditorBuilder_a(editorContext, node).createCell();
   }
 }

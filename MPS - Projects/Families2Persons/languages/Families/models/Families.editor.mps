@@ -49,7 +49,7 @@
     </language>
   </registry>
   <node concept="24kQdi" id="7e28ypLqoa7">
-    <ref role="1XX52x" to="lgan:7e28ypLqmBm" resolve="Familiy" />
+    <ref role="1XX52x" to="lgan:7e28ypLqmBm" resolve="Family" />
     <node concept="3EZMnI" id="7e28ypLqoaD" role="2wV5jI">
       <node concept="3F0ifn" id="7e28ypLqoaN" role="3EZMnx">
         <property role="3F0ifm" value="family" />

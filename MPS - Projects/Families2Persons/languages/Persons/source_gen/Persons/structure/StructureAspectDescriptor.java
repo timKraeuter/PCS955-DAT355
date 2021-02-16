@@ -15,6 +15,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptFemale = createDescriptorForFemale();
   /*package*/ final ConceptDescriptor myConceptMale = createDescriptorForMale();
   /*package*/ final ConceptDescriptor myConceptPerson = createDescriptorForPerson();
+  /*package*/ final ConceptDescriptor myConceptPersonRegister = createDescriptorForPersonRegister();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -29,7 +30,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptFemale, myConceptMale, myConceptPerson);
+    return Arrays.asList(myConceptFemale, myConceptMale, myConceptPerson, myConceptPersonRegister);
   }
 
   @Override
@@ -42,6 +43,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptMale;
       case LanguageConceptSwitch.Person:
         return myConceptPerson;
+      case LanguageConceptSwitch.PersonRegister:
+        return myConceptPersonRegister;
       default:
         return null;
     }
@@ -54,7 +57,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForFemale() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Persons", "Female", 0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x7382222671696b7aL);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
     b.super_("Persons.structure.Person", 0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x7382222671696ab2L);
     b.origin("r:a460a563-26d7-479d-b8d8-4780d86779a7(Persons.structure)/8323252609840933754");
     b.version(2);
@@ -62,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForMale() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Persons", "Male", 0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x7382222671696b79L);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
     b.super_("Persons.structure.Person", 0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x7382222671696ab2L);
     b.origin("r:a460a563-26d7-479d-b8d8-4780d86779a7(Persons.structure)/8323252609840933753");
     b.version(2);
@@ -74,6 +77,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:a460a563-26d7-479d-b8d8-4780d86779a7(Persons.structure)/8323252609840933554");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPersonRegister() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Persons", "PersonRegister", 0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x2927891fcedcef0cL);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:a460a563-26d7-479d-b8d8-4780d86779a7(Persons.structure)/2965489649354338060");
+    b.version(2);
+    b.aggregate("persons", 0x2927891fcedcef45L).target(0x91cc9005a0364c2eL, 0xbabb65eb287c094cL, 0x7382222671696ab2L).optional(true).ordered(true).multiple(true).origin("2965489649354338117").done();
     return b.create();
   }
 }

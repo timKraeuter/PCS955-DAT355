@@ -12,6 +12,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Female;
   private ConceptPresentation props_Male;
   private ConceptPresentation props_Person;
+  private ConceptPresentation props_PersonRegister;
 
   @Override
   @Nullable
@@ -39,6 +40,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Person = cpb.create();
         }
         return props_Person;
+      case LanguageConceptSwitch.PersonRegister:
+        if (props_PersonRegister == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_PersonRegister = cpb.create();
+        }
+        return props_PersonRegister;
     }
     return null;
   }

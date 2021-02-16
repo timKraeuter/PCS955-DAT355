@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="Families.editor.EditorAspectDescriptorImpl">
-    <classNode dependClassName="Families.editor.Familiy_Editor" />
+    <classNode dependClassName="Families.editor.Family_Editor" />
     <classNode dependClassName="Families.editor.Member_Editor" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
@@ -13,14 +13,14 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorAspectDescriptorBase" />
   </dependency>
-  <dependency className="Families.editor.Familiy_Editor">
-    <classNode dependClassName="Families.editor.Familiy_EditorBuilder_a" />
+  <dependency className="Families.editor.Family_Editor">
+    <classNode dependClassName="Families.editor.Family_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
-  <dependency className="Families.editor.Familiy_EditorBuilder_a">
+  <dependency className="Families.editor.Family_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />

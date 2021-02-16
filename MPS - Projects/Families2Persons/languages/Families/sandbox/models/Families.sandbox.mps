@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="a882308c-6c72-4214-8d92-0ec0b6d4f486" name="Families" version="0" />
+    <use id="91cc9005-a036-4c2e-babb-65eb287c094c" name="Persons" version="0" />
   </languages>
   <imports />
   <registry>
@@ -13,7 +14,7 @@
     </language>
     <language id="a882308c-6c72-4214-8d92-0ec0b6d4f486" name="Families">
       <concept id="8323252609840933350" name="Families.structure.Member" flags="ng" index="2UOJ0" />
-      <concept id="8323252609840933334" name="Families.structure.Familiy" flags="ng" index="2UOJK">
+      <concept id="8323252609840933334" name="Families.structure.Family" flags="ng" index="2UOJK">
         <child id="8323252609840933423" name="father" index="2UOw9" />
         <child id="8323252609840933420" name="daughters" index="2UOwa" />
         <child id="8323252609840933427" name="mother" index="2UOwl" />

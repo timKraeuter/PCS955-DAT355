@@ -13,6 +13,7 @@
   <sourcePath />
   <languageVersions>
     <language slang="l:a882308c-6c72-4214-8d92-0ec0b6d4f486:Families" version="0" />
+    <language slang="l:91cc9005-a036-4c2e-babb-65eb287c094c:Persons" version="0" />
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
   </languageVersions>
   <dependencyVersions>

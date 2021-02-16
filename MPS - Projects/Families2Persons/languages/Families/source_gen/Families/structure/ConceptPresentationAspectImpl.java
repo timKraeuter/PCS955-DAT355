@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_Familiy;
+  private ConceptPresentation props_Family;
   private ConceptPresentation props_Member;
 
   @Override
@@ -17,14 +17,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.Familiy:
-        if (props_Familiy == null) {
+      case LanguageConceptSwitch.Family:
+        if (props_Family == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("the \"lastName\" property of the family is inherited as \"name\" from INamedConcept");
           cpb.presentationByName();
-          props_Familiy = cpb.create();
+          props_Family = cpb.create();
         }
-        return props_Familiy;
+        return props_Family;
       case LanguageConceptSwitch.Member:
         if (props_Member == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
