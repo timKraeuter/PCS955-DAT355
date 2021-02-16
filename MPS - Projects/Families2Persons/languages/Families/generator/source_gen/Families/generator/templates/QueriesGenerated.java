@@ -31,19 +31,19 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.mother$AcVz), PROPS.name$MnvL) + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.mother$AcVz), PROPS.name$MnvL) + " " + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.father$AbZv), PROPS.name$MnvL) + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.father$AbZv), PROPS.name$MnvL) + " " + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt) ? SPropertyOperations.getString((SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt)), PROPS.name$MnvL) : ""));
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + " " + ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt) ? SPropertyOperations.getString((SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt)), PROPS.name$MnvL) : ""));
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt) ? SPropertyOperations.getString((SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt)), PROPS.name$MnvL) : ""));
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + " " + ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt) ? SPropertyOperations.getString((SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Family$Kt)), PROPS.name$MnvL) : ""));
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+    return "Familiy " + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + " Register";
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.sons$_XUz);

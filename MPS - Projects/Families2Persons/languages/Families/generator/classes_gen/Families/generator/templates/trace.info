@@ -15,11 +15,11 @@
   </root>
   <root nodeRef="r:37e02cdd-f4bf-41be-8476-5bf366d5abfd(Families.generator.templates@generator)/2965489649354402673">
     <file name="QueriesGenerated.java">
-      <node id="2965489649354518460" at="33,88,34,193" concept="1" />
-      <node id="2965489649354522131" at="36,88,37,193" concept="1" />
-      <node id="2965489649354526617" at="39,88,40,325" concept="1" />
-      <node id="2965489649354528661" at="42,88,43,325" concept="1" />
-      <node id="2965489649354403284" at="45,88,46,78" concept="1" />
+      <node id="2965489649354518460" at="33,88,34,199" concept="1" />
+      <node id="2965489649354522131" at="36,88,37,199" concept="1" />
+      <node id="2965489649354526617" at="39,88,40,331" concept="1" />
+      <node id="2965489649354528661" at="42,88,43,331" concept="1" />
+      <node id="2965489649354403284" at="45,88,46,105" concept="1" />
       <node id="2965489649354525921" at="48,104,49,76" concept="1" />
       <node id="2965489649354528107" at="51,104,52,81" concept="1" />
       <node id="2965489649354525914" at="56,14,57,58" concept="0" />
@@ -43,11 +43,11 @@
       <node id="2965489649354402989" at="45,0,48,0" concept="2" trace="propertyMacro_GetValue_1_4#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="2965489649354525914" at="48,0,51,0" concept="2" trace="sourceNodesQuery_1_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="2965489649354528100" at="51,0,54,0" concept="2" trace="sourceNodesQuery_1_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
-      <scope id="2965489649354518436" at="33,88,34,193" />
-      <scope id="2965489649354521838" at="36,88,37,193" />
-      <scope id="2965489649354526611" at="39,88,40,325" />
-      <scope id="2965489649354528655" at="42,88,43,325" />
-      <scope id="2965489649354402990" at="45,88,46,78" />
+      <scope id="2965489649354518436" at="33,88,34,199" />
+      <scope id="2965489649354521838" at="36,88,37,199" />
+      <scope id="2965489649354526611" at="39,88,40,331" />
+      <scope id="2965489649354528655" at="42,88,43,331" />
+      <scope id="2965489649354402990" at="45,88,46,105" />
       <scope id="2965489649354525915" at="48,104,49,76" />
       <scope id="2965489649354528101" at="51,104,52,81" />
       <scope id="2965489649354525914" at="74,15,75,87" />
