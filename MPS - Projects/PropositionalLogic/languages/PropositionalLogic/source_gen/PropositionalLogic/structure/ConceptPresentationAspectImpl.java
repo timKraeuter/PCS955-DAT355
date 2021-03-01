@@ -82,7 +82,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TruthTableList:
         if (props_TruthTableList == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("TruthTableList");
+          cpb.presentationByName();
           props_TruthTableList = cpb.create();
         }
         return props_TruthTableList;

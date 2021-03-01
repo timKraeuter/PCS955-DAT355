@@ -161,6 +161,7 @@
     </node>
   </node>
   <node concept="2BBEZ2" id="6ZT9w1ectSx">
+    <property role="TrG5h" value="Axioms" />
     <node concept="1L_FTf" id="6ZT9w1ectSy" role="2BBEZ3">
       <property role="TrG5h" value="A1" />
       <node concept="1L_ynY" id="6ZT9w1ectSA" role="1L_FTc">
@@ -234,6 +235,101 @@
           </node>
           <node concept="1L_y8F" id="6ZT9w1ectUJ" role="1L_yn2">
             <property role="TrG5h" value="B" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1L_FTf" id="7P9G_74VmdA">
+    <property role="TrG5h" value="5.13 Induction base case n=1" />
+    <node concept="2B$Xdd" id="7P9G_74VmdC" role="1L_FTc">
+      <node concept="2B$Xdd" id="7P9G_74VmdJ" role="1L_y8W">
+        <node concept="1L_y8F" id="7P9G_74VmdQ" role="1L_y8W">
+          <property role="TrG5h" value="Q1" />
+        </node>
+        <node concept="1L_y8F" id="7P9G_74VmdT" role="1L_yn2">
+          <property role="TrG5h" value="Q0" />
+        </node>
+      </node>
+      <node concept="2B$Xdd" id="7P9G_74VmdW" role="1L_yn2">
+        <node concept="1L_y8I" id="7P9G_74Vme3" role="1L_y8W">
+          <node concept="1L_y8F" id="7P9G_74Vme8" role="1L_yn1">
+            <property role="TrG5h" value="Q1" />
+          </node>
+        </node>
+        <node concept="1L_y8I" id="7P9G_74Vmee" role="1L_yn2">
+          <node concept="1L_y8F" id="7P9G_74Vmej" role="1L_yn1">
+            <property role="TrG5h" value="Q0" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1L_FTf" id="7P9G_74Vmem">
+    <property role="TrG5h" value="5.13 Induction base case n=2" />
+    <node concept="2B$Xdd" id="7P9G_74Vmey" role="1L_FTc">
+      <node concept="2B$Xdd" id="7P9G_74VmeD" role="1L_y8W">
+        <node concept="1L_y8F" id="7P9G_74VmeK" role="1L_y8W">
+          <property role="TrG5h" value="Q2" />
+        </node>
+        <node concept="2B$Xdd" id="7P9G_74VmeN" role="1L_yn2">
+          <node concept="1L_y8F" id="7P9G_74VmeU" role="1L_y8W">
+            <property role="TrG5h" value="Q1" />
+          </node>
+          <node concept="1L_y8F" id="7P9G_74VmeX" role="1L_yn2">
+            <property role="TrG5h" value="Q0" />
+          </node>
+        </node>
+      </node>
+      <node concept="2B$Xdd" id="7P9G_74Vmfz" role="1L_yn2">
+        <node concept="1L_y8I" id="7P9G_74VmfE" role="1L_y8W">
+          <node concept="1L_y8F" id="7P9G_74VmfJ" role="1L_yn1">
+            <property role="TrG5h" value="Q2" />
+          </node>
+        </node>
+        <node concept="2B$Xdd" id="7P9G_74VmfM" role="1L_yn2">
+          <node concept="1L_y8F" id="7P9G_74VmfT" role="1L_y8W">
+            <property role="TrG5h" value="Q1" />
+          </node>
+          <node concept="1L_y8I" id="7P9G_74VmfZ" role="1L_yn2">
+            <node concept="1L_y8F" id="7P9G_74Vmg4" role="1L_yn1">
+              <property role="TrG5h" value="Q0" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1L_FTf" id="7P9G_74Vmg7">
+    <property role="TrG5h" value="5.13 (*) property induction step" />
+    <node concept="2B$Xdd" id="7P9G_74Vmg9" role="1L_FTc">
+      <node concept="2B$Xdd" id="7P9G_74Vmgg" role="1L_y8W">
+        <node concept="1L_y8I" id="7P9G_74Vmgn" role="1L_y8W">
+          <node concept="1L_y8F" id="7P9G_74Vmgs" role="1L_yn1">
+            <property role="TrG5h" value="A" />
+          </node>
+        </node>
+        <node concept="2B$Xdd" id="7P9G_74Vmgv" role="1L_yn2">
+          <node concept="1L_y8F" id="7P9G_74VmgA" role="1L_y8W">
+            <property role="TrG5h" value="B" />
+          </node>
+          <node concept="1L_y8F" id="7P9G_74VmgD" role="1L_yn2">
+            <property role="TrG5h" value="C" />
+          </node>
+        </node>
+      </node>
+      <node concept="2B$Xdd" id="7P9G_74VmgG" role="1L_yn2">
+        <node concept="1L_y8F" id="7P9G_74VmgN" role="1L_y8W">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="2B$Xdd" id="7P9G_74Vmh9" role="1L_yn2">
+          <node concept="1L_y8I" id="7P9G_74Vmhm" role="1L_y8W">
+            <node concept="1L_y8F" id="7P9G_74Vmhr" role="1L_yn1">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+          <node concept="1L_y8F" id="7P9G_74Vmhj" role="1L_yn2">
+            <property role="TrG5h" value="C" />
           </node>
         </node>
       </node>

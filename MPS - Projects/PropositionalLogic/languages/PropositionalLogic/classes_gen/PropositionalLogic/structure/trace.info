@@ -15,7 +15,7 @@
       <unit at="10,0,46,0" name="PropositionalLogic.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="14,0,161,0" name="PropositionalLogic.structure.StructureAspectDescriptor" />
+      <unit at="14,0,162,0" name="PropositionalLogic.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:df54d4c9-5944-4d7f-8e74-b53699d13c63(PropositionalLogic.structure)/4185657982991750121">
@@ -312,26 +312,26 @@
     <file name="StructureAspectDescriptor.java">
       <node id="4379134174977989657" at="24,0,25,0" concept="1" trace="myConceptTwoSidedImplication" />
       <node id="4379134174977989657" at="64,53,65,44" concept="4" />
-      <node id="4379134174977989657" at="152,77,153,171" concept="3" />
-      <node id="4379134174977989657" at="153,171,154,34" concept="0" />
-      <node id="4379134174977989657" at="154,34,155,121" concept="0" />
-      <node id="4379134174977989657" at="155,121,156,105" concept="0" />
-      <node id="4379134174977989657" at="156,105,157,17" concept="0" />
-      <node id="4379134174977989657" at="157,17,158,22" concept="4" />
-      <node id="4379134174977989657" at="152,0,160,0" concept="6" trace="createDescriptorForTwoSidedImplication#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="4379134174977989657" at="153,77,154,171" concept="3" />
+      <node id="4379134174977989657" at="154,171,155,34" concept="0" />
+      <node id="4379134174977989657" at="155,34,156,121" concept="0" />
+      <node id="4379134174977989657" at="156,121,157,105" concept="0" />
+      <node id="4379134174977989657" at="157,105,158,17" concept="0" />
+      <node id="4379134174977989657" at="158,17,159,22" concept="4" />
+      <node id="4379134174977989657" at="153,0,161,0" concept="6" trace="createDescriptorForTwoSidedImplication#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4379134174977989657" at="64,53,65,44" />
-      <scope id="4379134174977989657" at="152,77,158,22">
+      <scope id="4379134174977989657" at="153,77,159,22">
         <var name="b" id="4379134174977989657" />
       </scope>
-      <scope id="4379134174977989657" at="152,0,160,0" />
+      <scope id="4379134174977989657" at="153,0,161,0" />
     </file>
   </root>
   <root nodeRef="r:df54d4c9-5944-4d7f-8e74-b53699d13c63(PropositionalLogic.structure)/4379134174978334870">
     <file name="ConceptPresentationAspectImpl.java">
       <node id="4379134174978334870" at="20,0,21,0" concept="1" trace="props_TruthTableList" />
       <node id="4379134174978334870" at="83,43,84,76" concept="3" />
-      <node id="4379134174978334870" at="84,76,85,48" concept="0" />
-      <node id="4379134174978334870" at="85,48,86,46" concept="0" />
+      <node id="4379134174978334870" at="84,76,85,35" concept="0" />
+      <node id="4379134174978334870" at="85,35,86,46" concept="0" />
       <node id="4379134174978334870" at="87,9,88,36" concept="4" />
       <node id="4379134174978334870" at="82,48,87,9" concept="2" />
       <scope id="4379134174978334870" at="83,43,86,46">
@@ -348,16 +348,17 @@
       <node id="4379134174978334870" at="62,48,63,39" concept="4" />
       <node id="4379134174978334870" at="144,72,145,166" concept="3" />
       <node id="4379134174978334870" at="145,166,146,33" concept="0" />
-      <node id="4379134174978334870" at="146,33,147,105" concept="0" />
-      <node id="4379134174978334870" at="147,105,148,17" concept="0" />
-      <node id="4379134174978334871" at="148,17,149,197" concept="0" />
-      <node id="4379134174978334870" at="149,197,150,22" concept="4" />
-      <node id="4379134174978334870" at="144,0,152,0" concept="6" trace="createDescriptorForTruthTableList#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="4379134174978334870" at="146,33,147,71" concept="0" />
+      <node id="4379134174978334870" at="147,71,148,105" concept="0" />
+      <node id="4379134174978334870" at="148,105,149,17" concept="0" />
+      <node id="4379134174978334871" at="149,17,150,197" concept="0" />
+      <node id="4379134174978334870" at="150,197,151,22" concept="4" />
+      <node id="4379134174978334870" at="144,0,153,0" concept="6" trace="createDescriptorForTruthTableList#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4379134174978334870" at="62,48,63,39" />
-      <scope id="4379134174978334870" at="144,72,150,22">
+      <scope id="4379134174978334870" at="144,72,151,22">
         <var name="b" id="4379134174978334870" />
       </scope>
-      <scope id="4379134174978334870" at="144,0,152,0" />
+      <scope id="4379134174978334870" at="144,0,153,0" />
     </file>
   </root>
 </debug-info>

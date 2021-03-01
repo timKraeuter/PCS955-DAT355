@@ -144,6 +144,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTruthTableList() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("PropositionalLogic", "TruthTableList", 0xc8418222bda489cL, 0x8be629cedccd87d2L, 0x3cc5cf549b5b6096L);
     b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:df54d4c9-5944-4d7f-8e74-b53699d13c63(PropositionalLogic.structure)/4379134174978334870");
     b.version(2);
     b.aggregate("tables", 0x3cc5cf549b5b6097L).target(0xc8418222bda489cL, 0x8be629cedccd87d2L, 0x3a1671c24b80cf8dL).optional(true).ordered(true).multiple(true).origin("4379134174978334871").done();

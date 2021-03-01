@@ -235,6 +235,9 @@
     <ref role="1XX52x" to="ben7:3N5NPirmQ2m" resolve="TruthTableList" />
     <node concept="3EZMnI" id="3N5NPirn8mJ" role="2wV5jI">
       <node concept="2iRfu4" id="3N5NPirn8mK" role="2iSdaV" />
+      <node concept="3F0A7n" id="7P9G_74Vb6m" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
       <node concept="3F2HdR" id="3N5NPirn8mN" role="3EZMnx">
         <ref role="1NtTu8" to="ben7:3N5NPirmQ2n" resolve="tables" />
         <node concept="2iRfu4" id="3N5NPirn8mO" role="2czzBx" />
