@@ -587,5 +587,23 @@
       </node>
     </node>
   </node>
+  <node concept="1L_FTf" id="30I90ZrFDOo">
+    <property role="TrG5h" value="Exercise 4.1.(1)" />
+    <node concept="1L_ynY" id="2bxELjRYDEb" role="1L_FTc">
+      <node concept="1L_y8I" id="2bxELjRYDEi" role="1L_y8W">
+        <node concept="1L_y8F" id="2bxELjRYDEn" role="1L_yn1">
+          <property role="TrG5h" value="A" />
+        </node>
+      </node>
+      <node concept="1L_ynY" id="2bxELjRYDEq" role="1L_yn2">
+        <node concept="1L_y8F" id="2bxELjRYDEx" role="1L_y8W">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="1L_y8F" id="2bxELjRYDE$" role="1L_yn2">
+          <property role="TrG5h" value="B" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

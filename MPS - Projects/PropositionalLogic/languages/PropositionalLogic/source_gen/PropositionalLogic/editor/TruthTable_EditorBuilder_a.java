@@ -181,7 +181,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         if ((boolean) Formula__BehaviorDescriptor.evaluatable_id3N5NPiroyCD.invoke(SLinkOperations.getTarget(myNode, LINKS.formula$Uw8M))) {
           return TruthTable__BehaviorDescriptor.evalTruthTable_idJ56wWN0_jn.invoke(myNode, SLinkOperations.getTarget(myNode, LINKS.formula$Uw8M));
         } else {
-          return "";
+          return "a\n b \r\n c";
         }
       }
     }, myNode);

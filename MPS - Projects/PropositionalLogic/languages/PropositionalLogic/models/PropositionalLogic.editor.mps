@@ -74,7 +74,9 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD" />
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -214,7 +216,9 @@
                 <node concept="9aQIb" id="3N5NPirpCKy" role="9aQIa">
                   <node concept="3clFbS" id="3N5NPirpCKz" role="9aQI4">
                     <node concept="3cpWs6" id="3N5NPiroSKS" role="3cqZAp">
-                      <node concept="Xl_RD" id="3N5NPiroSL8" role="3cqZAk" />
+                      <node concept="Xl_RD" id="3N5NPiroSL8" role="3cqZAk">
+                        <property role="Xl_RC" value="a\n b\r\n c" />
+                      </node>
                     </node>
                   </node>
                 </node>
