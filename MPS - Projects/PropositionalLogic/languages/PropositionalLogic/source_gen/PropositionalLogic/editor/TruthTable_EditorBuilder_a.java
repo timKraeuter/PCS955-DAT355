@@ -34,6 +34,8 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import PropositionalLogic.behavior.Formula__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import de.slisson.mps.tables.runtime.cells.TableEditor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -46,7 +48,6 @@ import de.slisson.mps.tables.runtime.gridmodel.HeaderGrid;
 import java.util.ArrayList;
 import de.slisson.mps.tables.runtime.gridmodel.GridAdapter;
 import PropositionalLogic.behavior.TruthTable__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import de.slisson.mps.tables.runtime.gridmodel.GridElementFactory;
 import de.slisson.mps.tables.runtime.gridmodel.IGridElement;
@@ -89,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createTable_1());
+    editorCell.addEditorCell(createAlternation_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -194,6 +195,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
+  private EditorCell createAlternation_0() {
+    boolean alternationCondition = true;
+    alternationCondition = nodeCondition_bp9if8_a4a();
+    EditorCell editorCell = null;
+    if (alternationCondition) {
+      editorCell = createTable_1();
+    } else {
+      editorCell = createConstant_2();
+    }
+    return editorCell;
+  }
+  private boolean nodeCondition_bp9if8_a4a() {
+    return (boolean) Formula__BehaviorDescriptor.evaluatable_id3N5NPiroyCD.invoke(SLinkOperations.getTarget(myNode, LINKS.formula$Uw8M));
+  }
   private EditorCell createTable_0(final EditorContext editorContext, final SNode node) {
 
     final Wrappers._T<TableEditor> editorCell = new Wrappers._T<TableEditor>(null);
@@ -218,13 +233,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
                 List<HeaderGrid> headerGrids = new ArrayList<HeaderGrid>(0);
                 grid.setRowHeaders(headerGrids);
               }
-              final Grid childGrid = createTableCellQuery_bp9if8_a4a(editorContext, node);
+              final Grid childGrid = createTableCellQuery_bp9if8_a0e0(editorContext, node);
               childGrid.setSpanX(Math.max(1, grid.getColumnHeadersSizeX()));
               childGrid.setSpanY(Math.max(1, grid.getRowHeadersSizeY()));
               grid.setElement(0, 0, childGrid);
 
               editorCell.value = new TableEditor(editorContext, node, grid);
-              editorCell.value.setCellId("Table_bp9if8_e0");
+              editorCell.value.setCellId("Table_bp9if8_a4a");
               Style style = new StyleImpl();
               style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
               editorCell.value.getStyle().putAll(style);
@@ -248,7 +263,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createTable_1() {
     return createTable_0(getEditorContext(), myNode);
   }
-  public Grid createTableCellQuery_bp9if8_a4a(final EditorContext editorContext, final SNode node) {
+  public Grid createTableCellQuery_bp9if8_a0e0(final EditorContext editorContext, final SNode node) {
     final Grid grid = new Grid();
     final GridAdapter gridAdapter = new GridAdapter(grid, editorContext, node);
 
@@ -392,6 +407,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 
     return grid;
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+    editorCell.setCellId("Constant_bp9if8_a4a");
+    editorCell.setDefaultText("");
+    return editorCell;
   }
 
   private static final class PROPS {

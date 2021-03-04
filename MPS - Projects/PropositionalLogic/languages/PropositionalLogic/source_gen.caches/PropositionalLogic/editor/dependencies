@@ -166,6 +166,7 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
   <dependency className="PropositionalLogic.editor.TruthTable_EditorBuilder_a">
+    <classNode dependClassName="PropositionalLogic.behavior.Formula__BehaviorDescriptor" />
     <classNode dependClassName="PropositionalLogic.behavior.TruthTable__BehaviorDescriptor" />
     <classNode dependClassName="de.slisson.mps.hacks.editor.EditorCacheHacks" />
     <classNode dependClassName="de.slisson.mps.tables.runtime.cells.ChildsTracker" />
