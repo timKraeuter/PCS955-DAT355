@@ -210,9 +210,8 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.StringBuilder" />
-    <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.lang.Void" />
+    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.LinkedList" />

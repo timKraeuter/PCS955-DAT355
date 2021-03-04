@@ -34,11 +34,30 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import PropositionalLogic.behavior.Formula__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import de.slisson.mps.tables.runtime.cells.TableEditor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import de.slisson.mps.hacks.editor.EditorCacheHacks;
+import de.slisson.mps.tables.runtime.cells.ChildsTracker;
+import de.slisson.mps.tables.runtime.cells.PartialTableExtractor;
+import de.slisson.mps.tables.runtime.gridmodel.Grid;
+import java.util.List;
+import de.slisson.mps.tables.runtime.gridmodel.HeaderGrid;
+import java.util.ArrayList;
+import de.slisson.mps.tables.runtime.gridmodel.GridAdapter;
 import PropositionalLogic.behavior.TruthTable__BehaviorDescriptor;
-import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import de.slisson.mps.tables.runtime.gridmodel.GridElementFactory;
+import de.slisson.mps.tables.runtime.gridmodel.IGridElement;
+import de.slisson.mps.tables.runtime.substitute.CellQuerySubstituteInfo;
+import de.slisson.mps.tables.runtime.cells.TableUtils;
+import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.openapi.editor.cells.CellAction;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import de.slisson.mps.tables.runtime.style.ITableStyleFactory;
+import org.apache.log4j.Logger;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -70,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createReadOnlyModelAccessor_0());
+    editorCell.addEditorCell(createTable_1());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -175,25 +194,204 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createReadOnlyModelAccessor_0() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
-      public String getText() {
-        if ((boolean) Formula__BehaviorDescriptor.evaluatable_id3N5NPiroyCD.invoke(SLinkOperations.getTarget(myNode, LINKS.formula$Uw8M))) {
-          return TruthTable__BehaviorDescriptor.evalTruthTable_idJ56wWN0_jn.invoke(myNode, SLinkOperations.getTarget(myNode, LINKS.formula$Uw8M));
-        } else {
-          return "a\n b \r\n c";
-        }
+  private EditorCell createTable_0(final EditorContext editorContext, final SNode node) {
+
+    final Wrappers._T<TableEditor> editorCell = new Wrappers._T<TableEditor>(null);
+    _FunctionTypes._void_P0_E0 creator = new _FunctionTypes._void_P0_E0() {
+      public void invoke() {
+        EditorCacheHacks.noCaching(editorContext, new Runnable() {
+          public void run() {
+            try {
+
+              ChildsTracker.pushNewInstance();
+              PartialTableExtractor.pushNewInstance();
+              Grid grid = new Grid();
+
+              // column headers 
+              {
+                List<HeaderGrid> headerGrids = new ArrayList<HeaderGrid>(0);
+                grid.setColumnHeaders(headerGrids);
+              }
+
+              // row headers 
+              {
+                List<HeaderGrid> headerGrids = new ArrayList<HeaderGrid>(0);
+                grid.setRowHeaders(headerGrids);
+              }
+              final Grid childGrid = createTableCellQuery_bp9if8_a4a(editorContext, node);
+              childGrid.setSpanX(Math.max(1, grid.getColumnHeadersSizeX()));
+              childGrid.setSpanY(Math.max(1, grid.getRowHeadersSizeY()));
+              grid.setElement(0, 0, childGrid);
+
+              editorCell.value = new TableEditor(editorContext, node, grid);
+              editorCell.value.setCellId("Table_bp9if8_e0");
+              Style style = new StyleImpl();
+              style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+              editorCell.value.getStyle().putAll(style);
+
+
+              editorCell.value.init();
+            } finally {
+              PartialTableExtractor.popInstance();
+              ChildsTracker.popInstance(true);
+            }
+          }
+        });
       }
-    }, myNode);
-    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
-    editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setCellId("ReadOnlyModelAccessor_bp9if8_e0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
-    style.set(StyleAttributes.EDITABLE, false);
-    editorCell.getStyle().putAll(style);
-    return editorCell;
+    };
+
+    creator.invoke();
+
+    return editorCell.value;
+
+  }
+  private EditorCell createTable_1() {
+    return createTable_0(getEditorContext(), myNode);
+  }
+  public Grid createTableCellQuery_bp9if8_a4a(final EditorContext editorContext, final SNode node) {
+    final Grid grid = new Grid();
+    final GridAdapter gridAdapter = new GridAdapter(grid, editorContext, node);
+
+    try {
+      getCellFactory().pushCellContext();
+      getCellFactory().addCellContextHints();
+      getCellFactory().removeCellContextHints();
+      new Object() {
+        private List<List<String>> rows;
+        {
+          rows = TruthTable__BehaviorDescriptor.evalTruthTableToStringTable_id6oIDTZMP5Rt.invoke(node, SLinkOperations.getTarget(node, LINKS.formula$Uw8M));
+        }
+        public int getSizeX() {
+          List<String> sampleRow = ListSequence.fromList(rows).getElement(0);
+          return ListSequence.fromList(sampleRow).count();
+        }
+        public int getSizeY() {
+          return ListSequence.fromList(rows).count();
+        }
+        public void loadElements() {
+          final int sizeX = getSizeX();
+          final int sizeY = getSizeY();
+
+          for (int xi = 0; xi < sizeX; xi++) {
+            for (int yi = 0; yi < sizeY; yi++) {
+              final int x = xi;
+              final int y = yi;
+              // (instance of StringType) 
+              Object queryResult_ = queryCellsSafely(node, x, y);
+              grid.setElement(x, y, new GridElementFactory(editorContext, node, false, false, grid).create(queryResult_));
+
+              // set headers 
+
+              IGridElement currentGridElement = grid.getElement(x, y);
+
+              // set substitute info 
+              if (currentGridElement instanceof Grid && !(((Grid) currentGridElement).isEmpty())) {
+                Grid currentGrid = ((Grid) currentGridElement);
+                for (int indexX = 0; indexX < currentGrid.getSizeX(); indexX++) {
+                  for (int indexY = 0; indexY < currentGrid.getSizeY(); indexY++) {
+                    IGridElement listElement = currentGrid.getElement(indexX, indexY);
+                    final int index = Math.max(indexX, indexY);
+
+                    listElement.setSubstituteInfo(new CellQuerySubstituteInfo(editorContext, node, (queryResult_ instanceof SNode ? ((SNode) queryResult_) : SNodeOperations.cast(TableUtils.getSNode(listElement, CONCEPTS.BaseConcept$gP), CONCEPTS.BaseConcept$gP)), CONCEPTS.BaseConcept$gP, null) {
+                      public SNode substituteNode(SNode currentNode, SNode newValue) {
+                        return doSubstituteNode(node, x, y, index, editorContext, currentNode, newValue);
+                      }
+                    });
+
+                    if (canCreate(x, y, index)) {
+                      listElement.setInsertBeforeAction(new AbstractCellAction() {
+                        public void execute(EditorContext p0) {
+                          createNode(x, y, index);
+                        }
+                      });
+                    }
+                    if (canCreate(x, y, index + 1)) {
+                      listElement.setInsertAction(new AbstractCellAction() {
+                        public void execute(EditorContext p0) {
+                          createNode(x, y, index + 1);
+                        }
+                      });
+                    }
+                  }
+                }
+              } else {
+                final SNode nodeAtPosition = (queryResult_ instanceof SNode ? ((SNode) queryResult_) : SNodeOperations.cast(TableUtils.getSNode(currentGridElement, CONCEPTS.BaseConcept$gP), CONCEPTS.BaseConcept$gP));
+                gridAdapter.setSubstituteInfo(x, y, new CellQuerySubstituteInfo(editorContext, node, nodeAtPosition, CONCEPTS.BaseConcept$gP, null) {
+                  public SNode substituteNode(SNode currentNode, SNode newValue) {
+                    return doSubstituteNode(node, x, y, 0, editorContext, currentNode, newValue);
+                  }
+                });
+                if (canCreate(x, y, 0)) {
+                  currentGridElement = grid.getElement(x, y);
+
+                  CellAction insertAction = new AbstractCellAction() {
+                    public void execute(EditorContext p0) {
+                      createNode(x, y, 0);
+                    }
+                  };
+                  currentGridElement.setInsertBeforeAction(insertAction);
+                  currentGridElement.setInsertAction(insertAction);
+                  currentGridElement.setPasteAction(new AbstractCellAction() {
+                    public void execute(EditorContext ec) {
+                      SNode nodeFromClipboard = CopyPasteUtil.getNodeFromClipboard(SNodeOperations.getModel(node));
+                      if (nodeFromClipboard != null && SNodeOperations.isInstanceOf(nodeFromClipboard, CONCEPTS.BaseConcept$gP)) {
+                        if ((SNodeOperations.getParent(nodeFromClipboard) != null)) {
+                          nodeFromClipboard = SNodeOperations.copyNode(nodeFromClipboard);
+                        }
+                        doSubstituteNode(node, x, y, 0, editorContext, nodeAtPosition, nodeFromClipboard);
+                      }
+                    }
+                  });
+                }
+              }
+
+
+              // style 
+              final Object queryResult = queryResult_;
+              grid.getElement(x, y).setStyle(new ITableStyleFactory() {
+                public Style createStyle(final int columnIndex, final int rowIndex) {
+                  Style style = new StyleImpl();
+                  final EditorCell editorCell = null;
+                  return style;
+                }
+              }.createStyle(x, y));
+            }
+          }
+        }
+        public boolean canCreate(int columnIndex, int rowIndex, int listIndex) {
+          return true;
+        }
+        public SNode createNode(int columnIndex, int rowIndex, int listIndex) {
+          return doSubstituteNode(node, columnIndex, rowIndex, listIndex, editorContext, null, null);
+        }
+
+        public Object queryCellsSafely(final SNode node, final int columnIndex, final int rowIndex) {
+          try {
+            return queryCells(node, columnIndex, rowIndex);
+          } catch (Exception ex) {
+            Logger.getLogger(getClass()).error("Failed to query cell [" + rowIndex + ", " + columnIndex + "]", ex);
+            return new EditorCell_Error(editorContext, node, "!exception! for [" + rowIndex + ", " + columnIndex + "]:" + ex.getMessage());
+          }
+        }
+
+        private Object queryCells(final SNode node, final int columnIndex, final int rowIndex) {
+          List<String> row = ListSequence.fromList(rows).getElement(rowIndex);
+          return ListSequence.fromList(row).getElement(columnIndex);
+        }
+
+        public SNode doSubstituteNode(SNode node, int columnIndex, int rowIndex, int listIndex, EditorContext editorContext, SNode currentNode, SNode newValue) {
+          currentNode = SNodeOperations.cast(currentNode, CONCEPTS.BaseConcept$gP);
+          newValue = SNodeOperations.cast(newValue, CONCEPTS.BaseConcept$gP);
+          return null;
+        }
+      }.loadElements();
+
+    } finally {
+      getCellFactory().popCellContext();
+    }
+
+
+    return grid;
   }
 
   private static final class PROPS {
@@ -202,6 +400,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   private static final class LINKS {

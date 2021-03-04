@@ -6,19 +6,20 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.List;
 import java.util.Map;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.LinkedList;
 import java.util.HashMap;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -27,37 +28,52 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class TruthTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc8418222bda489cL, 0x8be629cedccd87d2L, 0x3a1671c24b80cf8dL, "PropositionalLogic.structure.TruthTable");
 
-  public static final SMethod<String> evalTruthTable_idJ56wWN0_jn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("evalTruthTable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("J56wWN0_jn").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<List<String>>> evalTruthTableToStringTable_id6oIDTZMP5Rt = new SMethodBuilder<List<List<String>>>(new SJavaCompoundTypeImpl((Class<List<List<String>>>) ((Class) Object.class))).name("evalTruthTableToStringTable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6oIDTZMP5Rt").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<String>> evalTruthTable_id6oIDTZMLJHX = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("evalTruthTable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6oIDTZMLJHX").build(SMethodBuilder.createJavaParameter((Class<List<Map<String, Boolean>>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<Map<String, Boolean>>> prepareTruthTable_idJ56wWMYGlt = new SMethodBuilder<List<Map<String, Boolean>>>(new SJavaCompoundTypeImpl((Class<List<Map<String, Boolean>>>) ((Class) Object.class))).name("prepareTruthTable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("J56wWMYGlt").build(SMethodBuilder.createJavaParameter((Class<List<String>>) ((Class) Object.class), ""));
   public static final SMethod<Void> appendToTruthTable_idJ56wWMYOss = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendToTruthTable").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("J56wWMYOss").build(SMethodBuilder.createJavaParameter((Class<List<String>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<Map<String, Boolean>>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<String, Boolean>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evalTruthTable_idJ56wWN0_jn, prepareTruthTable_idJ56wWMYGlt, appendToTruthTable_idJ56wWMYOss);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evalTruthTableToStringTable_id6oIDTZMP5Rt, evalTruthTable_id6oIDTZMLJHX, prepareTruthTable_idJ56wWMYGlt, appendToTruthTable_idJ56wWMYOss);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static String evalTruthTable_idJ56wWN0_jn(@NotNull SNode __thisNode__, final SNode formula) {
-    List<String> names = ListSequence.fromList(new LinkedList<String>());
+  /*package*/ static List<List<String>> evalTruthTableToStringTable_id6oIDTZMP5Rt(@NotNull SNode __thisNode__, final SNode formula) {
+    final List<List<String>> result = ListSequence.fromList(new ArrayList<List<String>>());
+    final List<String> names = ListSequence.fromList(new ArrayList<String>());
     Formula__BehaviorDescriptor.addAtomicFormulaeNames_idJ56wWMX7vv.invoke(formula, names);
+    //  Add the first row 
+    List<String> headerRow = ListSequence.fromList(new ArrayList<String>());
+    ListSequence.fromList(headerRow).addSequence(ListSequence.fromList(names));
+    ListSequence.fromList(headerRow).addElement("Result");
+    ListSequence.fromList(result).addElement(headerRow);
 
     List<Map<String, Boolean>> unevaluatedTT = TruthTable__BehaviorDescriptor.prepareTruthTable_idJ56wWMYGlt.invoke(__thisNode__, names);
 
-    final StringBuilder stringBuilder = new StringBuilder();
-    ListSequence.fromList(names).visitAll(new IVisitor<String>() {
-      public void visit(String aFormulaName) {
-        stringBuilder.append(aFormulaName);
-        stringBuilder.append(" ");
-      }
-    });
-    stringBuilder.append(System.getProperty("line.separator"));
     ListSequence.fromList(unevaluatedTT).visitAll(new IVisitor<Map<String, Boolean>>() {
-      public void visit(Map<String, Boolean> it) {
-        boolean oneResult = (boolean) Formula__BehaviorDescriptor.evaluate_id3Cmss9bwMFB.invoke(formula, it);
-        stringBuilder.append((oneResult ? "1 " : "0 "));
+      public void visit(final Map<String, Boolean> valuation) {
+        final List<String> row = ListSequence.fromList(new ArrayList<String>());
+        ListSequence.fromList(names).visitAll(new IVisitor<String>() {
+          public void visit(String name) {
+            ListSequence.fromList(row).addElement((MapSequence.fromMap(valuation).get(name) ? "1" : "0"));
+          }
+        });
+        ListSequence.fromList(row).addElement(((boolean) Formula__BehaviorDescriptor.evaluate_id3Cmss9bwMFB.invoke(formula, valuation) ? "1" : "0"));
+        ListSequence.fromList(result).addElement(row);
       }
     });
 
-    return stringBuilder.toString();
+    return result;
+  }
+  /*package*/ static List<String> evalTruthTable_id6oIDTZMLJHX(@NotNull SNode __thisNode__, List<Map<String, Boolean>> unevaluatedTT, final SNode formula) {
+    final List<String> result = ListSequence.fromList(new LinkedList<String>());
+    ListSequence.fromList(unevaluatedTT).visitAll(new IVisitor<Map<String, Boolean>>() {
+      public void visit(Map<String, Boolean> it) {
+        boolean oneResult = (boolean) Formula__BehaviorDescriptor.evaluate_id3Cmss9bwMFB.invoke(formula, it);
+        ListSequence.fromList(result).addElement((oneResult ? "1" : "0"));
+      }
+    });
+    return result;
   }
   /*package*/ static List<Map<String, Boolean>> prepareTruthTable_idJ56wWMYGlt(@NotNull SNode __thisNode__, List<String> atomicFormulaNames) {
     if (ListSequence.fromList(atomicFormulaNames).isEmpty()) {
@@ -117,10 +133,12 @@ public final class TruthTable__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((String) evalTruthTable_idJ56wWN0_jn(node, (SNode) parameters[0]));
+        return (T) ((List<List<String>>) evalTruthTableToStringTable_id6oIDTZMP5Rt(node, (SNode) parameters[0]));
       case 1:
-        return (T) ((List<Map<String, Boolean>>) prepareTruthTable_idJ56wWMYGlt(node, (List<String>) parameters[0]));
+        return (T) ((List<String>) evalTruthTable_id6oIDTZMLJHX(node, (List<Map<String, Boolean>>) parameters[0], (SNode) parameters[1]));
       case 2:
+        return (T) ((List<Map<String, Boolean>>) prepareTruthTable_idJ56wWMYGlt(node, (List<String>) parameters[0]));
+      case 3:
         appendToTruthTable_idJ56wWMYOss(node, (List<String>) parameters[0], (List<Map<String, Boolean>>) parameters[1], (Map<String, Boolean>) parameters[2]);
         return null;
       default:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="9th3g7y979ykiuo6qy4rlu8xcdagx8b">
+<product version="3" modelHash="-3jd9qslr295k6s6xterhfxhom9zlrlz">
   <files names="And__BehaviorDescriptor.java:AtomicFormula__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:BinaryFormula__BehaviorDescriptor.java:Formula__BehaviorDescriptor.java:Implication__BehaviorDescriptor.java:Not__BehaviorDescriptor.java:Or__BehaviorDescriptor.java:TruthTable__BehaviorDescriptor.java:TwoSidedImplication__BehaviorDescriptor.java" />
 </product>
 

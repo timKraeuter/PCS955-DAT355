@@ -7,6 +7,9 @@
   <imports />
   <registry>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1156234966388" name="shortDescription" index="OYnhT" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -36,6 +39,7 @@
     <property role="TrG5h" value="5.9.(3)" />
     <node concept="2B$Xdd" id="3N5NPirmemS" role="1L_FTc">
       <node concept="1L_ynZ" id="3N5NPirm$b7" role="1L_y8W">
+        <property role="OYnhT" value="!&quot;§" />
         <node concept="1L_y8F" id="3N5NPirm$be" role="1L_y8W">
           <property role="TrG5h" value="A" />
         </node>
@@ -323,15 +327,13 @@
           <property role="TrG5h" value="A" />
         </node>
         <node concept="2B$Xdd" id="7P9G_74Vmh9" role="1L_yn2">
-          <node concept="1L_y8I" id="7P9G_74Vmhm" role="1L_y8W">
-            <node concept="1L_y8I" id="7P9G_74Vmhy" role="1L_yn1">
-              <node concept="1L_y8F" id="7P9G_74VmhD" role="1L_yn1">
-                <property role="TrG5h" value="B" />
-              </node>
-            </node>
-          </node>
           <node concept="1L_y8F" id="7P9G_74Vmhj" role="1L_yn2">
             <property role="TrG5h" value="C" />
+          </node>
+          <node concept="1L_y8I" id="6oIDTZMSnhR" role="1L_y8W">
+            <node concept="1L_y8F" id="6oIDTZMSnhW" role="1L_yn1">
+              <property role="TrG5h" value="B" />
+            </node>
           </node>
         </node>
       </node>
