@@ -45,7 +45,7 @@ public final class TruthTable__BehaviorDescriptor extends BaseBHDescriptor {
     //  Add the first row 
     List<String> headerRow = ListSequence.fromList(new ArrayList<String>());
     ListSequence.fromList(headerRow).addSequence(ListSequence.fromList(names));
-    ListSequence.fromList(headerRow).addElement("Result");
+    ListSequence.fromList(headerRow).addElement(Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(formula));
     ListSequence.fromList(result).addElement(headerRow);
 
     List<Map<String, Boolean>> unevaluatedTT = TruthTable__BehaviorDescriptor.prepareTruthTable_idJ56wWMYGlt.invoke(__thisNode__, names);

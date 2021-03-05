@@ -26,8 +26,9 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> addAtomicFormulaeNames_idJ56wWMX7vv = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addAtomicFormulaeNames").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("J56wWMX7vv").build(SMethodBuilder.createJavaParameter((Class<List<String>>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> evaluatable_id3N5NPiroyCD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("evaluatable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3N5NPiroyCD").build();
   public static final SMethod<String> getBinarySymbol_id7P0OLlYl3ad = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBinarySymbol").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7P0OLlYl3ad").build();
+  public static final SMethod<String> toString_id3aaZQdR$$TK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3aaZQdR$$TK").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, getBinarySymbol_id7P0OLlYl3ad);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, getBinarySymbol_id7P0OLlYl3ad, toString_id3aaZQdR$$TK);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -38,6 +39,21 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean evaluatable_id3N5NPiroyCD(@NotNull SNode __thisNode__) {
     return (boolean) Formula__BehaviorDescriptor.evaluatable_id3N5NPiroyCD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.first$ZhL9)) && (boolean) Formula__BehaviorDescriptor.evaluatable_id3N5NPiroyCD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.second$Zifb));
+  }
+  /*package*/ static String toString_id3aaZQdR$$TK(@NotNull SNode __thisNode__) {
+    String result = "";
+    if ((boolean) Formula__BehaviorDescriptor.isAtomic_id7P0OLlYkvyF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.first$ZhL9))) {
+      result += Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.first$ZhL9));
+    } else {
+      result += "( " + Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.first$ZhL9)) + " )";
+    }
+    result += " " + BinaryFormula__BehaviorDescriptor.getBinarySymbol_id7P0OLlYl3ad.invoke(__thisNode__) + " ";
+    if ((boolean) Formula__BehaviorDescriptor.isAtomic_id7P0OLlYkvyF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.second$Zifb))) {
+      result += Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.second$Zifb));
+    } else {
+      result += "( " + Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.second$Zifb)) + " )";
+    }
+    return result;
   }
 
   /*package*/ BinaryFormula__BehaviorDescriptor() {
@@ -60,6 +76,8 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
         return null;
       case 1:
         return (T) ((Boolean) evaluatable_id3N5NPiroyCD(node));
+      case 3:
+        return (T) ((String) toString_id3aaZQdR$$TK(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
