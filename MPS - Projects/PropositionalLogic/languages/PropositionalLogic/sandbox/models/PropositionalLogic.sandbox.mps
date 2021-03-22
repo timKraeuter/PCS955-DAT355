@@ -692,5 +692,59 @@
       </node>
     </node>
   </node>
+  <node concept="2BBEZ2" id="2eoGoG8hjpy">
+    <property role="TrG5h" value="Misc" />
+    <node concept="1L_FTf" id="2eoGoG8hjpz" role="2BBEZ3">
+      <property role="TrG5h" value="FOL (4) proof" />
+      <node concept="1L_ynY" id="2eoGoG8hjpB" role="1L_FTc">
+        <node concept="1L_ynY" id="2eoGoG8hjpI" role="1L_y8W">
+          <node concept="1L_y8F" id="2eoGoG8hjpP" role="1L_y8W">
+            <property role="TrG5h" value="X" />
+          </node>
+          <node concept="1L_y8I" id="2eoGoG8hjpS" role="1L_yn2">
+            <node concept="1L_y8F" id="2eoGoG8hjpX" role="1L_yn1">
+              <property role="TrG5h" value="X" />
+            </node>
+          </node>
+        </node>
+        <node concept="1L_y8I" id="2eoGoG8hjq0" role="1L_yn2">
+          <node concept="1L_y8F" id="2eoGoG8hjq5" role="1L_yn1">
+            <property role="TrG5h" value="X" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1L_FTf" id="3KSCDy8r4um" role="2BBEZ3">
+      <property role="TrG5h" value="DT FOL Proof" />
+      <node concept="2B$Xdd" id="3KSCDy8r4uy" role="1L_FTc">
+        <node concept="1L_ynY" id="3KSCDy8r4uD" role="1L_y8W">
+          <node concept="1L_y8F" id="3KSCDy8r4uQ" role="1L_y8W">
+            <property role="TrG5h" value="A" />
+          </node>
+          <node concept="1L_ynY" id="3KSCDy8r4uW" role="1L_yn2">
+            <node concept="1L_y8F" id="3KSCDy8r4v3" role="1L_y8W">
+              <property role="TrG5h" value="E" />
+            </node>
+            <node concept="1L_y8F" id="3KSCDy8r4v6" role="1L_yn2">
+              <property role="TrG5h" value="G" />
+            </node>
+          </node>
+        </node>
+        <node concept="1L_ynY" id="3KSCDy8r4v9" role="1L_yn2">
+          <node concept="1L_y8F" id="3KSCDy8r4vg" role="1L_y8W">
+            <property role="TrG5h" value="E" />
+          </node>
+          <node concept="1L_ynY" id="3KSCDy8r4vj" role="1L_yn2">
+            <node concept="1L_y8F" id="3KSCDy8r4vq" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="3KSCDy8r4vt" role="1L_yn2">
+              <property role="TrG5h" value="G" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
