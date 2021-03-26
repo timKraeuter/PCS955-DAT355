@@ -1,8 +1,8 @@
 # Implementation of a DSL for Propositional Logic (PL) in MPS.
 The motivation is to quickly check if PL-Formulas are tautologies or provably equivalent to each other.
-This is done by calculating a boolean table as seen in the following two examples.
+This is done by calculating a boolean table as seen in the next two examples.
 
-The follwing formula is a tautology since it always evaluates to 1 (true).
+The following formula is a tautology since it always evaluates to 1 (true).
 
 ![PL in MPS sample1](https://raw.githubusercontent.com/timKraeuter/PCS955-DAT355/main/MPS%20-%20Projects/PropositionalLogic/pl_sample_1.png "Example 1")
 
