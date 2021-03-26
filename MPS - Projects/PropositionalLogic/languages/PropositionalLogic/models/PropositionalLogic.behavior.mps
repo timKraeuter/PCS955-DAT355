@@ -10,6 +10,7 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="ben7" ref="r:df54d4c9-5944-4d7f-8e74-b53699d13c63(PropositionalLogic.structure)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -38,6 +39,7 @@
       </concept>
       <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -379,6 +381,27 @@
       </node>
       <node concept="17QB3L" id="3aaZQdR$NrB" role="3clF45" />
     </node>
+    <node concept="13i0hz" id="1OkDAl2ZW42" role="13h7CS">
+      <property role="TrG5h" value="getSubformulaList" />
+      <ref role="13i0hy" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+      <node concept="3Tm1VV" id="1OkDAl2ZW43" role="1B3o_S" />
+      <node concept="3clFbS" id="1OkDAl2ZW47" role="3clF47">
+        <node concept="3cpWs6" id="1OkDAl2ZWlO" role="3cqZAp">
+          <node concept="2ShNRf" id="1OkDAl2ZWmc" role="3cqZAk">
+            <node concept="Tc6Ow" id="1OkDAl2ZXJS" role="2ShVmc">
+              <node concept="3Tqbb2" id="1OkDAl2ZY1S" role="HW$YZ">
+                <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="_YKpA" id="1OkDAl2ZW48" role="3clF45">
+        <node concept="3Tqbb2" id="1OkDAl2ZW49" role="_ZDj9">
+          <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="3Cmss9bwMFs">
     <ref role="13h7C2" to="ben7:3Cmss9bw5fK" resolve="Formula" />
@@ -443,6 +466,18 @@
       <node concept="3Tm1VV" id="3aaZQdR$$TL" role="1B3o_S" />
       <node concept="17QB3L" id="3aaZQdR$$Ur" role="3clF45" />
       <node concept="3clFbS" id="3aaZQdR$$TN" role="3clF47" />
+    </node>
+    <node concept="13i0hz" id="1OkDAl2ZDap" role="13h7CS">
+      <property role="13i0iv" value="true" />
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="getSubformulaList" />
+      <node concept="3Tm1VV" id="1OkDAl2ZDaq" role="1B3o_S" />
+      <node concept="_YKpA" id="1OkDAl2ZDb8" role="3clF45">
+        <node concept="3Tqbb2" id="1OkDAl2ZDbk" role="_ZDj9">
+          <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1OkDAl2ZDas" role="3clF47" />
     </node>
   </node>
   <node concept="13h7C7" id="3Cmss9bwQmJ">
@@ -623,6 +658,54 @@
         </node>
       </node>
       <node concept="17QB3L" id="3aaZQdR$JYT" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1OkDAl2ZO3j" role="13h7CS">
+      <property role="TrG5h" value="getSubformulaList" />
+      <ref role="13i0hy" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+      <node concept="3Tm1VV" id="1OkDAl2ZO3k" role="1B3o_S" />
+      <node concept="3clFbS" id="1OkDAl2ZO3l" role="3clF47">
+        <node concept="3cpWs8" id="1OkDAl2ZO3m" role="3cqZAp">
+          <node concept="3cpWsn" id="1OkDAl2ZO3n" role="3cpWs9">
+            <property role="TrG5h" value="subformula" />
+            <node concept="_YKpA" id="1OkDAl2ZO3o" role="1tU5fm">
+              <node concept="3Tqbb2" id="1OkDAl2ZO3p" role="_ZDj9">
+                <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1OkDAl2ZO3q" role="33vP2m">
+              <node concept="2OqwBi" id="1OkDAl2ZO3r" role="2Oq$k0">
+                <node concept="13iPFW" id="1OkDAl2ZO3s" role="2Oq$k0" />
+                <node concept="3TrEf2" id="1OkDAl2ZQ9t" role="2OqNvi">
+                  <ref role="3Tt5mk" to="ben7:3Cmss9bw5g3" resolve="formula" />
+                </node>
+              </node>
+              <node concept="2qgKlT" id="1OkDAl2ZO3u" role="2OqNvi">
+                <ref role="37wK5l" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1OkDAl2ZR$i" role="3cqZAp">
+          <node concept="2OqwBi" id="1OkDAl2ZSN0" role="3clFbG">
+            <node concept="37vLTw" id="1OkDAl2ZR$g" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OkDAl2ZO3n" resolve="subformula" />
+            </node>
+            <node concept="TSZUe" id="1OkDAl2ZTIZ" role="2OqNvi">
+              <node concept="13iPFW" id="1OkDAl2ZTM2" role="25WWJ7" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1OkDAl2ZO3C" role="3cqZAp">
+          <node concept="37vLTw" id="1OkDAl2ZRil" role="3cqZAk">
+            <ref role="3cqZAo" node="1OkDAl2ZO3n" resolve="subformula" />
+          </node>
+        </node>
+      </node>
+      <node concept="_YKpA" id="1OkDAl2ZO3E" role="3clF45">
+        <node concept="3Tqbb2" id="1OkDAl2ZO3F" role="_ZDj9">
+          <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="3Cmss9bwTSh">
@@ -1064,6 +1147,75 @@
       </node>
       <node concept="17QB3L" id="3aaZQdR$_mA" role="3clF45" />
     </node>
+    <node concept="13i0hz" id="1OkDAl2ZE9F" role="13h7CS">
+      <property role="TrG5h" value="getSubformulaList" />
+      <ref role="13i0hy" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+      <node concept="3Tm1VV" id="1OkDAl2ZE9G" role="1B3o_S" />
+      <node concept="3clFbS" id="1OkDAl2ZE9K" role="3clF47">
+        <node concept="3cpWs8" id="1OkDAl2ZEFF" role="3cqZAp">
+          <node concept="3cpWsn" id="1OkDAl2ZEFI" role="3cpWs9">
+            <property role="TrG5h" value="firstSubformula" />
+            <node concept="_YKpA" id="1OkDAl2ZEFB" role="1tU5fm">
+              <node concept="3Tqbb2" id="1OkDAl2ZEG1" role="_ZDj9">
+                <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1OkDAl2ZFjF" role="33vP2m">
+              <node concept="2OqwBi" id="1OkDAl2ZERn" role="2Oq$k0">
+                <node concept="13iPFW" id="1OkDAl2ZEHu" role="2Oq$k0" />
+                <node concept="3TrEf2" id="1OkDAl2ZEZP" role="2OqNvi">
+                  <ref role="3Tt5mk" to="ben7:3Cmss9bw5fY" resolve="first" />
+                </node>
+              </node>
+              <node concept="2qgKlT" id="1OkDAl2ZFuB" role="2OqNvi">
+                <ref role="37wK5l" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1OkDAl2ZGMS" role="3cqZAp">
+          <node concept="2OqwBi" id="1OkDAl2ZHV7" role="3clFbG">
+            <node concept="37vLTw" id="1OkDAl2ZGMQ" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OkDAl2ZEFI" resolve="firstSubformula" />
+            </node>
+            <node concept="liA8E" id="1OkDAl2ZJVa" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
+              <node concept="2OqwBi" id="1OkDAl2ZN2D" role="37wK5m">
+                <node concept="2OqwBi" id="1OkDAl2ZMz7" role="2Oq$k0">
+                  <node concept="13iPFW" id="1OkDAl2ZMnt" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="1OkDAl2ZMI_" role="2OqNvi">
+                    <ref role="3Tt5mk" to="ben7:3Cmss9bw5g0" resolve="second" />
+                  </node>
+                </node>
+                <node concept="2qgKlT" id="1OkDAl2ZNkg" role="2OqNvi">
+                  <ref role="37wK5l" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1OkDAl2ZUsI" role="3cqZAp">
+          <node concept="2OqwBi" id="1OkDAl2ZUMP" role="3clFbG">
+            <node concept="37vLTw" id="1OkDAl2ZUsG" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OkDAl2ZEFI" resolve="firstSubformula" />
+            </node>
+            <node concept="TSZUe" id="1OkDAl2ZVDp" role="2OqNvi">
+              <node concept="13iPFW" id="1OkDAl2ZVFd" role="25WWJ7" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1OkDAl2ZFDk" role="3cqZAp">
+          <node concept="37vLTw" id="1OkDAl2ZFEG" role="3cqZAk">
+            <ref role="3cqZAo" node="1OkDAl2ZEFI" resolve="firstSubformula" />
+          </node>
+        </node>
+      </node>
+      <node concept="_YKpA" id="1OkDAl2ZE9L" role="3clF45">
+        <node concept="3Tqbb2" id="1OkDAl2ZE9M" role="_ZDj9">
+          <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="J56wWMYGli">
     <ref role="13h7C2" to="ben7:3Cmss9bwcYd" resolve="TruthTable" />
@@ -1125,6 +1277,26 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="1OkDAl30sSp" role="3cqZAp" />
+        <node concept="3cpWs8" id="1OkDAl30tIO" role="3cqZAp">
+          <node concept="3cpWsn" id="1OkDAl30tIR" role="3cpWs9">
+            <property role="TrG5h" value="subFormula" />
+            <node concept="_YKpA" id="1OkDAl30tIK" role="1tU5fm">
+              <node concept="3Tqbb2" id="1OkDAl30u1n" role="_ZDj9">
+                <ref role="ehGHo" to="ben7:3Cmss9bw5fK" resolve="Formula" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1OkDAl30ufh" role="33vP2m">
+              <node concept="37vLTw" id="1OkDAl30u5J" role="2Oq$k0">
+                <ref role="3cqZAo" node="6oIDTZMP5Ru" resolve="formula" />
+              </node>
+              <node concept="2qgKlT" id="1OkDAl30umt" role="2OqNvi">
+                <ref role="37wK5l" node="1OkDAl2ZDap" resolve="getSubformulaList" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1OkDAl30tsE" role="3cqZAp" />
         <node concept="3SKdUt" id="6oIDTZMPfD5" role="3cqZAp">
           <node concept="1PaTwC" id="6oIDTZMPfD6" role="1aUNEU">
             <node concept="3oM_SD" id="6oIDTZMPfD7" role="1PaTwD">
@@ -1169,18 +1341,81 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6oIDTZMPkew" role="3cqZAp">
-          <node concept="2OqwBi" id="6oIDTZMPl8z" role="3clFbG">
-            <node concept="37vLTw" id="6oIDTZMPkeu" role="2Oq$k0">
-              <ref role="3cqZAo" node="6oIDTZMPgsx" resolve="headerRow" />
+        <node concept="3SKdUt" id="1OkDAl2ZCbn" role="3cqZAp">
+          <node concept="1PaTwC" id="1OkDAl2ZCbo" role="1aUNEU">
+            <node concept="3oM_SD" id="1OkDAl2ZCbp" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
-            <node concept="TSZUe" id="6oIDTZMPlVP" role="2OqNvi">
-              <node concept="2OqwBi" id="3aaZQdR$$zQ" role="25WWJ7">
-                <node concept="37vLTw" id="3aaZQdR$$nI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6oIDTZMP5Ru" resolve="formula" />
+            <node concept="3oM_SD" id="1OkDAl2ZCds" role="1PaTwD">
+              <property role="3oM_SC" value="Plugin" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl2ZCtS" role="1PaTwD">
+              <property role="3oM_SC" value="string" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl2ZCtW" role="1PaTwD">
+              <property role="3oM_SC" value="representations" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl2ZCu1" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl2ZCu7" role="1PaTwD">
+              <property role="3oM_SC" value="each" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$F2" role="1PaTwD">
+              <property role="3oM_SC" value="subformula" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$Fk" role="1PaTwD">
+              <property role="3oM_SC" value="(a" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$FL" role="1PaTwD">
+              <property role="3oM_SC" value="formula" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$FV" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$G6" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$Gi" role="1PaTwD">
+              <property role="3oM_SC" value="subformula" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$GX" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1OkDAl30$Hb" role="1PaTwD">
+              <property role="3oM_SC" value="itself)" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1OkDAl30uQC" role="3cqZAp">
+          <node concept="2OqwBi" id="1OkDAl30wgh" role="3clFbG">
+            <node concept="37vLTw" id="1OkDAl30uQA" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OkDAl30tIR" resolve="subFormula" />
+            </node>
+            <node concept="2es0OD" id="1OkDAl30xM7" role="2OqNvi">
+              <node concept="1bVj0M" id="1OkDAl30xM9" role="23t8la">
+                <node concept="3clFbS" id="1OkDAl30xMa" role="1bW5cS">
+                  <node concept="3clFbF" id="1OkDAl30xQO" role="3cqZAp">
+                    <node concept="2OqwBi" id="1OkDAl30yFD" role="3clFbG">
+                      <node concept="37vLTw" id="1OkDAl30xQN" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6oIDTZMPgsx" resolve="headerRow" />
+                      </node>
+                      <node concept="TSZUe" id="1OkDAl30zrI" role="2OqNvi">
+                        <node concept="2OqwBi" id="1OkDAl30zJO" role="25WWJ7">
+                          <node concept="37vLTw" id="1OkDAl30z$T" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1OkDAl30xMb" resolve="it" />
+                          </node>
+                          <node concept="2qgKlT" id="1OkDAl30$4l" role="2OqNvi">
+                            <ref role="37wK5l" node="3aaZQdR$$TK" resolve="toString" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
-                <node concept="2qgKlT" id="3aaZQdR$RRO" role="2OqNvi">
-                  <ref role="37wK5l" node="3aaZQdR$$TK" resolve="toString" />
+                <node concept="Rh6nW" id="1OkDAl30xMb" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="1OkDAl30xMc" role="1tU5fm" />
                 </node>
               </node>
             </node>
@@ -1283,29 +1518,89 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="6oIDTZMPxES" role="3cqZAp">
-                    <node concept="2OqwBi" id="6oIDTZMPywt" role="3clFbG">
-                      <node concept="37vLTw" id="6oIDTZMPxEQ" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6oIDTZMPnWu" resolve="row" />
+                  <node concept="3SKdUt" id="1OkDAl2ZAHE" role="3cqZAp">
+                    <node concept="1PaTwC" id="1OkDAl2ZAHF" role="1aUNEU">
+                      <node concept="3oM_SD" id="1OkDAl2ZAHG" role="1PaTwD">
+                        <property role="3oM_SC" value="" />
                       </node>
-                      <node concept="TSZUe" id="6oIDTZMPzlc" role="2OqNvi">
-                        <node concept="3K4zz7" id="6oIDTZMP$UG" role="25WWJ7">
-                          <node concept="Xl_RD" id="6oIDTZMP_5q" role="3K4E3e">
-                            <property role="Xl_RC" value="1" />
-                          </node>
-                          <node concept="Xl_RD" id="6oIDTZMP_fV" role="3K4GZi">
-                            <property role="Xl_RC" value="0" />
-                          </node>
-                          <node concept="2OqwBi" id="6oIDTZMPzOY" role="3K4Cdx">
-                            <node concept="37vLTw" id="6oIDTZMPzz1" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6oIDTZMP5Ru" resolve="formula" />
-                            </node>
-                            <node concept="2qgKlT" id="6oIDTZMP$9p" role="2OqNvi">
-                              <ref role="37wK5l" node="3Cmss9bwMFB" resolve="evaluate" />
-                              <node concept="37vLTw" id="6oIDTZMP$uV" role="37wK5m">
-                                <ref role="3cqZAo" node="6oIDTZMP5SH" resolve="valuation" />
+                      <node concept="3oM_SD" id="1OkDAl2ZAIr" role="1PaTwD">
+                        <property role="3oM_SC" value="Iterate" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCun" role="1PaTwD">
+                        <property role="3oM_SC" value="over" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZAYV" role="1PaTwD">
+                        <property role="3oM_SC" value="subformula" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZAYZ" role="1PaTwD">
+                        <property role="3oM_SC" value="list" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZAZ4" role="1PaTwD">
+                        <property role="3oM_SC" value="and" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZAZa" role="1PaTwD">
+                        <property role="3oM_SC" value="evaluate" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZBp6" role="1PaTwD">
+                        <property role="3oM_SC" value="each" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCIF" role="1PaTwD">
+                        <property role="3oM_SC" value="one" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCIP" role="1PaTwD">
+                        <property role="3oM_SC" value="with" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCJ0" role="1PaTwD">
+                        <property role="3oM_SC" value="the" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCJc" role="1PaTwD">
+                        <property role="3oM_SC" value="given" />
+                      </node>
+                      <node concept="3oM_SD" id="1OkDAl2ZCJp" role="1PaTwD">
+                        <property role="3oM_SC" value="valuation." />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="1OkDAl30_07" role="3cqZAp">
+                    <node concept="2OqwBi" id="1OkDAl30Ajb" role="3clFbG">
+                      <node concept="37vLTw" id="1OkDAl30_05" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1OkDAl30tIR" resolve="subFormula" />
+                      </node>
+                      <node concept="2es0OD" id="1OkDAl30BJD" role="2OqNvi">
+                        <node concept="1bVj0M" id="1OkDAl30BJF" role="23t8la">
+                          <node concept="3clFbS" id="1OkDAl30BJG" role="1bW5cS">
+                            <node concept="3clFbF" id="1OkDAl30C08" role="3cqZAp">
+                              <node concept="2OqwBi" id="1OkDAl30CTQ" role="3clFbG">
+                                <node concept="37vLTw" id="1OkDAl30C07" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6oIDTZMPnWu" resolve="row" />
+                                </node>
+                                <node concept="TSZUe" id="1OkDAl30E2I" role="2OqNvi">
+                                  <node concept="3K4zz7" id="1OkDAl30G8h" role="25WWJ7">
+                                    <node concept="Xl_RD" id="1OkDAl30Gqw" role="3K4E3e">
+                                      <property role="Xl_RC" value="1" />
+                                    </node>
+                                    <node concept="Xl_RD" id="1OkDAl30GFI" role="3K4GZi">
+                                      <property role="Xl_RC" value="0" />
+                                    </node>
+                                    <node concept="2OqwBi" id="1OkDAl30EKF" role="3K4Cdx">
+                                      <node concept="37vLTw" id="1OkDAl30Er3" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="1OkDAl30BJH" resolve="it" />
+                                      </node>
+                                      <node concept="2qgKlT" id="1OkDAl30FgV" role="2OqNvi">
+                                        <ref role="37wK5l" node="3Cmss9bwMFB" resolve="evaluate" />
+                                        <node concept="37vLTw" id="1OkDAl30F_D" role="37wK5m">
+                                          <ref role="3cqZAo" node="6oIDTZMP5SH" resolve="valuation" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
                               </node>
                             </node>
+                          </node>
+                          <node concept="Rh6nW" id="1OkDAl30BJH" role="1bW2Oz">
+                            <property role="TrG5h" value="it" />
+                            <node concept="2jxLKc" id="1OkDAl30BJI" role="1tU5fm" />
                           </node>
                         </node>
                       </node>

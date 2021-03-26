@@ -38,14 +38,22 @@ public final class TruthTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static List<List<String>> evalTruthTableToStringTable_id6oIDTZMP5Rt(@NotNull SNode __thisNode__, final SNode formula) {
+  /*package*/ static List<List<String>> evalTruthTableToStringTable_id6oIDTZMP5Rt(@NotNull SNode __thisNode__, SNode formula) {
     final List<List<String>> result = ListSequence.fromList(new ArrayList<List<String>>());
     final List<String> names = ListSequence.fromList(new ArrayList<String>());
     Formula__BehaviorDescriptor.addAtomicFormulaeNames_idJ56wWMX7vv.invoke(formula, names);
+
+    final List<SNode> subFormula = Formula__BehaviorDescriptor.getSubformulaList_id1OkDAl2ZDap.invoke(formula);
+
     //  Add the first row 
-    List<String> headerRow = ListSequence.fromList(new ArrayList<String>());
+    final List<String> headerRow = ListSequence.fromList(new ArrayList<String>());
     ListSequence.fromList(headerRow).addSequence(ListSequence.fromList(names));
-    ListSequence.fromList(headerRow).addElement(Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(formula));
+    //  Plugin string representations of each subformula (a formula is a subformula of itself) 
+    ListSequence.fromList(subFormula).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        ListSequence.fromList(headerRow).addElement(Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(it));
+      }
+    });
     ListSequence.fromList(result).addElement(headerRow);
 
     List<Map<String, Boolean>> unevaluatedTT = TruthTable__BehaviorDescriptor.prepareTruthTable_idJ56wWMYGlt.invoke(__thisNode__, names);
@@ -58,7 +66,12 @@ public final class TruthTable__BehaviorDescriptor extends BaseBHDescriptor {
             ListSequence.fromList(row).addElement((MapSequence.fromMap(valuation).get(name) ? "1" : "0"));
           }
         });
-        ListSequence.fromList(row).addElement(((boolean) Formula__BehaviorDescriptor.evaluate_id3Cmss9bwMFB.invoke(formula, valuation) ? "1" : "0"));
+        //  Iterate over subformula list and evaluate each one with the given valuation. 
+        ListSequence.fromList(subFormula).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode it) {
+            ListSequence.fromList(row).addElement(((boolean) Formula__BehaviorDescriptor.evaluate_id3Cmss9bwMFB.invoke(it, valuation) ? "1" : "0"));
+          }
+        });
         ListSequence.fromList(result).addElement(row);
       }
     });

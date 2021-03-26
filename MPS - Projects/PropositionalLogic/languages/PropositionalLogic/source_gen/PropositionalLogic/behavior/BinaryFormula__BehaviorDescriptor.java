@@ -11,10 +11,11 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -27,8 +28,9 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> evaluatable_id3N5NPiroyCD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("evaluatable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3N5NPiroyCD").build();
   public static final SMethod<String> getBinarySymbol_id7P0OLlYl3ad = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBinarySymbol").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7P0OLlYl3ad").build();
   public static final SMethod<String> toString_id3aaZQdR$$TK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3aaZQdR$$TK").build();
+  public static final SMethod<List<SNode>> getSubformulaList_id1OkDAl2ZDap = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSubformulaList").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1OkDAl2ZDap").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, getBinarySymbol_id7P0OLlYl3ad, toString_id3aaZQdR$$TK);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, getBinarySymbol_id7P0OLlYl3ad, toString_id3aaZQdR$$TK, getSubformulaList_id1OkDAl2ZDap);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,6 +57,12 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return result;
   }
+  /*package*/ static List<SNode> getSubformulaList_id1OkDAl2ZDap(@NotNull SNode __thisNode__) {
+    List<SNode> firstSubformula = Formula__BehaviorDescriptor.getSubformulaList_id1OkDAl2ZDap.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.first$ZhL9));
+    firstSubformula.addAll(Formula__BehaviorDescriptor.getSubformulaList_id1OkDAl2ZDap.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.second$Zifb)));
+    ListSequence.fromList(firstSubformula).addElement(__thisNode__);
+    return firstSubformula;
+  }
 
   /*package*/ BinaryFormula__BehaviorDescriptor() {
   }
@@ -78,6 +86,8 @@ public final class BinaryFormula__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) evaluatable_id3N5NPiroyCD(node));
       case 3:
         return (T) ((String) toString_id3aaZQdR$$TK(node));
+      case 4:
+        return (T) ((List<SNode>) getSubformulaList_id1OkDAl2ZDap(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

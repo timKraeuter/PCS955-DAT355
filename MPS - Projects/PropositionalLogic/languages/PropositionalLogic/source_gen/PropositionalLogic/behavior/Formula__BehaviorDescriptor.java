@@ -12,9 +12,9 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Map;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -27,8 +27,9 @@ public final class Formula__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> evaluatable_id3N5NPiroyCD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("evaluatable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3N5NPiroyCD").build();
   public static final SMethod<Boolean> isAtomic_id7P0OLlYkvyF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAtomic").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7P0OLlYkvyF").build();
   public static final SMethod<String> toString_id3aaZQdR$$TK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3aaZQdR$$TK").build();
+  public static final SMethod<List<SNode>> getSubformulaList_id1OkDAl2ZDap = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSubformulaList").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1OkDAl2ZDap").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluate_id3Cmss9bwMFB, addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, isAtomic_id7P0OLlYkvyF, toString_id3aaZQdR$$TK);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluate_id3Cmss9bwMFB, addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, isAtomic_id7P0OLlYkvyF, toString_id3aaZQdR$$TK, getSubformulaList_id1OkDAl2ZDap);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
