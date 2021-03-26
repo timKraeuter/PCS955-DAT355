@@ -12,4 +12,4 @@ You can see another formula in disjunctive normal form (DNF) in the following ex
 
 ## Setup:
 - Import the project in MPS
-- Install the plugin "MPS Table Editor Component" (https://plugins.jetbrains.com/plugin/13255-mps-table-editor-component)
+- Install the plugin **MPS Table Editor Component** (https://plugins.jetbrains.com/plugin/13255-mps-table-editor-component)
