@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,9 +29,9 @@ public final class Not__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> evaluatable_id3N5NPiroyCD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("evaluatable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3N5NPiroyCD").build();
   public static final SMethod<Boolean> isAtomic_id7P0OLlYkvyF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAtomic").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7P0OLlYkvyF").build();
   public static final SMethod<String> toString_id3aaZQdR$$TK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3aaZQdR$$TK").build();
-  public static final SMethod<List<SNode>> getSubformulaList_id1OkDAl2ZDap = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSubformulaList").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1OkDAl2ZDap").build();
+  public static final SMethod<Void> addToSubformulaList_id1OkDAl31ASe = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addToSubformulaList").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1OkDAl31ASe").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluate_id3Cmss9bwMFB, addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, isAtomic_id7P0OLlYkvyF, toString_id3aaZQdR$$TK, getSubformulaList_id1OkDAl2ZDap);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluate_id3Cmss9bwMFB, addAtomicFormulaeNames_idJ56wWMX7vv, evaluatable_id3N5NPiroyCD, isAtomic_id7P0OLlYkvyF, toString_id3aaZQdR$$TK, addToSubformulaList_id1OkDAl31ASe);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,10 +54,10 @@ public final class Not__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return "¬ " + "( " + Formula__BehaviorDescriptor.toString_id3aaZQdR$$TK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.formula$ZiEM)) + " )";
   }
-  /*package*/ static List<SNode> getSubformulaList_id1OkDAl2ZDap(@NotNull SNode __thisNode__) {
-    List<SNode> subformula = Formula__BehaviorDescriptor.getSubformulaList_id1OkDAl2ZDap.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.formula$ZiEM));
-    ListSequence.fromList(subformula).addElement(__thisNode__);
-    return subformula;
+  /*package*/ static void addToSubformulaList_id1OkDAl31ASe(@NotNull SNode __thisNode__, List<SNode> list) {
+    Formula__BehaviorDescriptor.addToSubformulaList_id1OkDAl31ASe.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.formula$ZiEM), list);
+
+    Formula__BehaviorDescriptor.addToListIfNotContained_id1OkDAl31hrd.invoke(__thisNode__, list);
   }
 
   /*package*/ Not__BehaviorDescriptor() {
@@ -88,7 +87,8 @@ public final class Not__BehaviorDescriptor extends BaseBHDescriptor {
       case 4:
         return (T) ((String) toString_id3aaZQdR$$TK(node));
       case 5:
-        return (T) ((List<SNode>) getSubformulaList_id1OkDAl2ZDap(node));
+        addToSubformulaList_id1OkDAl31ASe(node, (List<SNode>) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
