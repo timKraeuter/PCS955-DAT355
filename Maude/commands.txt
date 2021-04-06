@@ -1,0 +1,3 @@
+maude
+in nat-add.maude
+red s(s(0)) * (s(0) + s(s(0))) .
