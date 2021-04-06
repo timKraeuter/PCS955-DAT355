@@ -34,7 +34,7 @@ endfm
 *** red double(s(0)) . -> result Nat: s(s(0))
 *** red double(s(s(s(0)))) . result Nat: s(s(s(s(s(s(0))))))
 fmod NAT-DOUBLE is
-  protecting NAT-ADD .
+  protecting NAT-MULT .
 
   op double_ : Nat -> Nat .
 
@@ -53,7 +53,7 @@ endfm
 *** red half(s(s(s(s(s(s(0))))))) . result Nat: s(s(s(0))), i.e., half(6) = 3
 *** half(86) = 43, half(87) = 43
 fmod NAT-HALF is
-  protecting NAT-ADD .
+  protecting NAT-DOUBLE .
 
   op half_ : Nat -> Nat .
 
@@ -69,9 +69,9 @@ endfm
 *** red s(0) monus 0 . -> result Nat: s(0)
 *** red 0 monus s(0) . -> result Nat: 0
 *** red s(s(s(0))) monus s(s(0)) . -> result Nat: s(0), i.e., 3 - 2 = 1
-*** red s(s(s(0))) monus s(s(s(s(0)))) . -> result Nat: s(0), i.e., 3 - 4 = 0
+*** red s(s(s(0))) monus s(s(s(s(0)))) . -> result Nat: 0, i.e., 3 - 4 = 0
 fmod NAT-MONUS is
-  protecting NAT-ADD .
+  protecting NAT-HALF .
 
   op _monus_ : Nat Nat -> Nat .
 
@@ -89,7 +89,7 @@ endfm
 *** red s(s(0)) diff s(s(s(s(s(s(s(0))))))) . -> result Nat: s(s(s(s(s(0))))), i.e., diff(2,7)= 5
 *** red s(s(s(s(s(s(s(s(0)))))))) diff s(0) . -> result Nat: s(s(s(s(s(s(s(0))))))), i.e., diff(8,1)= 5
 fmod NAT-DIFF is
-  protecting NAT-ADD .
+  protecting NAT-MONUS .
 
   op _diff_ : Nat Nat -> Nat .
 
