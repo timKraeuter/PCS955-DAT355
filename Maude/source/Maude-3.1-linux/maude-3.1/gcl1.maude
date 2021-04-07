@@ -79,3 +79,56 @@ endfm
 *** red eval(('x |-> true, 'y |-> false), 'y or true) .
 *** red eval(('x |-> true, 'y |-> false), false or (true and 'x)) .
 *** red eval(('x |-> true, 'y |-> false), true and 'x) .
+
+fmod STM is
+    pr EVAL .
+    
+    sort Update Spawn Stm .
+    subsorts Update Spawn < Stm .
+    
+    op _:=_ : Var Expr -> Update [ctor] .
+	
+    var S : Var .
+    var E : Expr .
+    var M : Substitution .
+    var U : Update .
+    
+    op exec : Substitution Stm -> Substitution .
+    eq exec(M, S := E) = insert(S, eval(M,E), M) .
+endfm
+*** red exec(('x |-> true, 'y |-> false), 'x := false) .
+*** red exec(('x |-> true, 'y |-> false), 'x := (true and 'y)) .
+*** red exec(('x |-> true, 'y |-> false), 'y := ('x or 'y)) .
+
+fmod GSTM is
+    pr STM .
+    
+    sort GStm .
+    
+endfm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
