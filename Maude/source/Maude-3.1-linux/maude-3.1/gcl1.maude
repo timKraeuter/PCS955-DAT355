@@ -87,26 +87,51 @@ fmod STM is
     subsorts Update Spawn < Stm .
     
     op _:=_ : Var Expr -> Update [ctor] .
+    op spawn : GStm -> Spawn [ctor] .
 	
     var S : Var .
     var E : Expr .
     var M : Substitution .
-    var U : Update .
+    var G : GStm .
     
     op exec : Substitution Stm -> Substitution .
     eq exec(M, S := E) = insert(S, eval(M,E), M) .
+    eq exec(M, spawn(G)) = M .
+    
+    sort Skip Sequence If IfElse GStm .
+    subsorts Skip Sequence If IfElse < GStm .
+    
+    op seq : GStm GStm -> Sequence [ctor] .
+    op if : Expr Stm -> If [ctor] .
+    op ifElse : Stm Expr Stm -> IfElse [ctor] .
 endfm
 *** red exec(('x |-> true, 'y |-> false), 'x := false) .
 *** red exec(('x |-> true, 'y |-> false), 'x := (true and 'y)) .
 *** red exec(('x |-> true, 'y |-> false), 'y := ('x or 'y)) .
 
-fmod GSTM is
+*** fmod GSTM is
+***    pr STMBase .    
+*** endfm
+
+*** Not 100% sure if needed but changes the console output
+view GStm from TRIV to STM is
+    sort Elt to GStm .
+endv
+
+fmod THREADS is
     pr STM .
-    
-    sort GStm .
-    
+    pr SET{GStm} .
+    sort Threads .
+    subsort Set{GStm} < Threads .   
 endfm
 
+fmod RUNTIME is
+    pr THREADS .
+    pr EVAL .
+    sort Runtime .
+    op run : Substitution Threads -> Runtime [ctor] .
+    
+endfm
 
 
 
