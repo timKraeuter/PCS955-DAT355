@@ -135,18 +135,36 @@ mod SEMANTICS is
     crl [if] : run(M, (if(E1, S := E2), N)) => run(update(M, S := E2), N) if eval(M, E1) .
     crl [if] : run(M, (if(E1, spawn(G1)), N)) => run(M, insert(G1, N)) if eval(M, E1) .
     
-    rl [ifElse] : run(M, (ifElse(S1, E1, S2), N)) => run(M, N) .
+    *** if
+    crl [ifElse] : run(M, (ifElse(spawn(G1), E1, S2), N)) => run(M, insert(G1, N)) if eval(M, E1) .
+    crl [ifElse] : run(M, (ifElse(S := E2, E1, S2), N)) => run(update(M, S := E2), N) if eval(M, E1) .
+    
+    *** else
+    crl [ifElse] : run(M, (ifElse(S1, E1, spawn(G1)), N)) => run(M, insert(G1, N)) if true =/= eval(M, E1) .
+    crl [ifElse] : run(M, (ifElse(S1, E1, S := E2), N)) => run(update(M, S := E2), N) if true =/= eval(M, E1) .
+    
     rl [execSeq] : run(M, (seq(G1, G2), N)) => run(M, insert(G2, N)) .
         
     op update : Substitution Update -> Substitution .
     eq update(M, S := E1) = insert(S, eval(M,E1), M) .
 endm
+*** Skip:
 *** rew run(('x |-> true), (skip, empty)) .
 *** rew [10] run(('x |-> true), (seq(skip, skip), empty)) .
+*** If:
 *** rew [10] run(('x |-> true), (if('x, 'x := false), empty)) .
+*** rew [10] run(('x |-> true, 'y |-> true), (if('x, 'x := false), if('y, 'y := false), empty)) .
 *** rew [10] run(('x |-> false), (if('x, 'x := true), empty)) .
 *** rew [10] run(('x |-> true), (if('x, spawn(skip)), empty)) .
-*** rew [10] run(('x |-> true), (if('x, spawn(if('x, spawn(skip))), empty)) . --> cycle
+*** rew [10] run(('x |-> true), (if('x, spawn(if('x, spawn(skip)))), empty)) .
+*** ifElse: if
+*** rew [10] run(('x |-> true), (ifElse('y := true, 'x, 'y := false), empty)) .
+*** rew [10] run(('x |-> true), (ifElse(spawn(skip), 'x, 'y := false), empty)) .
+*** rew [10] run(('x |-> true), (ifElse(spawn(if('x, 'y := true)), 'x, spawn(if('x, spawn(skip)))), empty)) .
+*** rew [10] run(('x |-> true), (ifElse(spawn('y := true), 'x, 'y := false), empty)) . --> no output
+*** ifElse: else
+*** rew [10] run(('x |-> false), (ifElse('y := true, 'x, 'y := false), empty)) .
+*** rew [10] run(('x |-> false), (ifElse('y := true, 'x, spawn(skip)), empty)) .
 
 
 
