@@ -21,6 +21,7 @@ fmod EXPR is
     
     op _+_ : Expr Expr -> Expr [ditto] .
     op _*_ : Expr Expr -> Expr [ditto] .
+    op _-_ : Expr Expr -> Expr [ditto] . *** added for fib
     op _=:=_ : Expr Expr -> Expr [prec 25] . --- equality
     op _<_ : Expr Expr -> Expr [ditto] .
     op not_ : Expr -> Expr [ditto] .
@@ -61,6 +62,7 @@ fmod EVAL is
 
     eq eval(M, E1 + E2) = eval(M, E1) + eval(M, E2) .
     eq eval(M, E1 * E2) = eval(M, E1) * eval(M, E2) .
+    eq eval(M, E1 - E2) = eval(M, E1) - eval(M, E2) . *** added for fib
 
     eq eval(M, E1 =:= E2) = eval(M, E1) == eval(M, E2) .
     eq eval(M, E1 < E2) = eval(M, E1) < eval(M, E2) .
@@ -142,7 +144,7 @@ mod SEMANTICS is
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S2, M, insert(G2, N)) if true =/= eval(M, E1).
     
-    *** More rewrites but no duplication of the seq formula needed. Should still lead to the same result.
+    *** More rewrites but no duplication of the seq rl's needed. Should still lead to the same result.
     eq seq(seq(G1, G2), G3) = seq(G1, seq(if(true, spawn(G2)), G3)) .
         
     op execute : Stm Substitution Threads -> Runtime .
@@ -179,12 +181,28 @@ endm
 *** seq(seq(seq(...))):
 *** rew run(('x |-> false), (seq(seq(seq(skip, skip), skip), skip), empty)) .
 
+*** historie
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(true, 'P := 'f1), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (seq(if(true, 'P := 'f1), skip), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n, spawn(seq(if(true, 'P := 'f1), skip))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), skip))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), skip)))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), skip))))), empty)) .
 
+*** Fibonacci: f(1)=f(2)=1
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip))))))), empty)) .
 
+*** Fibonacci. : f(3)=2
+*** rew run(('n |-> 2, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))))))))), empty)) .
 
+*** Fibonacci. : f(4)=3
+*** rew run(('n |-> 3, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip))))))))))))))))))))), empty)) .
 
+*** Fibonacci. : f(5)=5
+*** rew run(('n |-> 4, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))))))))))))))))))))))), empty)) .
 
-
+*** Recursive fib part:
+*** if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))
 
 
 
