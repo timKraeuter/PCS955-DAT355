@@ -125,7 +125,7 @@ endfm
 mod SEMANTICS is
 	pr RUNTIME .
     var M : Substitution .
-    vars G1 G2 : GStm .
+    vars G1 G2 G3 : GStm .
     vars S1 S2 : Stm .
     var E1, E2 : Expr .
     var S : Var .
@@ -141,6 +141,9 @@ mod SEMANTICS is
     crl [seqIf] : run(M, (seq(if(E1, S1), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S2, M, insert(G2, N)) if true =/= eval(M, E1).
+    
+    *** More rewrites but no duplication of the seq formula needed. Should still lead to the same result.
+    eq seq(seq(G1, G2), G3) = seq(G1, seq(if(true, spawn(G2)), G3)) .
         
     op execute : Stm Substitution Threads -> Runtime .
     eq execute (spawn(G1), M, N) = run(M, insert(G1, N)) .
@@ -153,23 +156,28 @@ endm
 *** rew run(('x |-> true), (skip, empty)) .
 *** rew [10] run(('x |-> true), (seq(skip, skip), empty)) .
 *** if:
-*** rew [10] run(('x |-> true), (if('x, 'x := false), empty)) .
-*** rew [10] run(('x |-> true, 'y |-> true), (if('x, 'x := false), if('y, 'y := false), empty)) .
-*** rew [10] run(('x |-> false), (if('x, 'x := true), empty)) .
-*** rew [10] run(('x |-> true), (if('x, spawn(skip)), empty)) .
-*** rew [10] run(('x |-> true), (if('x, spawn(if('x, spawn(skip)))), empty)) .
+*** rew run(('x |-> true), (if('x, 'x := false), empty)) .
+*** rew run(('x |-> true, 'y |-> true), (if('x, 'x := false), if('y, 'y := false), empty)) .
+*** rew run(('x |-> false), (if('x, 'x := true), empty)) .
+*** rew run(('x |-> true), (if('x, spawn(skip)), empty)) .
+*** rew run(('x |-> true), (if('x, spawn(if('x, spawn(skip)))), empty)) .
 *** ifElse: if
-*** rew [10] run(('x |-> true), (ifElse('y := true, 'x, 'y := false), empty)) .
-*** rew [10] run(('x |-> true), (ifElse(spawn(skip), 'x, 'y := false), empty)) .
-*** rew [10] run(('x |-> true), (ifElse(spawn(if('x, 'y := true)), 'x, spawn(if('x, spawn(skip)))), empty)) .
+*** rew run(('x |-> true), (ifElse('y := true, 'x, 'y := false), empty)) .
+*** rew run(('x |-> true), (ifElse(spawn(skip), 'x, 'y := false), empty)) .
+*** rew run(('x |-> true), (ifElse(spawn(if('x, 'y := true)), 'x, spawn(if('x, spawn(skip)))), empty)) .
 *** ifElse: else
 *** rew [10] run(('x |-> false), (ifElse('y := true, 'x, 'y := false), empty)) .
 *** rew [10] run(('x |-> false), (ifElse('y := true, 'x, spawn(skip)), empty)) .
 *** seq:
-*** rew [10] run(('x |-> false), (seq(skip, skip), empty)) .
-*** rew [10] run(('x |-> true), (seq(if('x, 'x := false), skip), empty)) .
-*** rew [10] run(('x |-> true), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
-*** rew [10] run(('x |-> false), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
+*** rew run(('x |-> false), (seq(skip, skip), empty)) .
+*** rew run(('x |-> true), (seq(if('x, 'x := false), skip), empty)) .
+*** rew run(('x |-> true), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
+*** rew run(('x |-> false), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
+*** seq(seq(...)):
+*** rew run(('x |-> false), (seq(seq(skip, skip), skip), empty)) .
+*** rew run(('x |-> true, 'y |-> 20), (seq(seq(if('x, 'y := 5), if('y < 5, 'w := 5)), if('y < 5, 'z := 5)), empty)) .
+*** seq(seq(seq(...))):
+*** rew run(('x |-> false), (seq(seq(seq(skip, skip), skip), skip), empty)) .
 
 
 
