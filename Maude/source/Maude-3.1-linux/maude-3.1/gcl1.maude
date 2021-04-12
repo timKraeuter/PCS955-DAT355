@@ -88,26 +88,15 @@ fmod STM is
     
     op _:=_ : Var Expr -> Update [ctor] .
     op spawn : GStm -> Spawn [ctor] .
-	
-    var S : Var .
-    var E : Expr .
-    var M : Substitution .
-    var G : GStm .
-    
-    op exec : Substitution Stm -> Substitution .
-    eq exec(M, S := E) = insert(S, eval(M,E), M) .
-    eq exec(M, spawn(G)) = M .
     
     sort Skip Sequence If IfElse GStm .
     subsorts Skip Sequence If IfElse < GStm .
     
+    op skip : -> Skip [ctor] .
     op seq : GStm GStm -> Sequence [ctor] .
     op if : Expr Stm -> If [ctor] .
     op ifElse : Stm Expr Stm -> IfElse [ctor] .
 endfm
-*** red exec(('x |-> true, 'y |-> false), 'x := false) .
-*** red exec(('x |-> true, 'y |-> false), 'x := (true and 'y)) .
-*** red exec(('x |-> true, 'y |-> false), 'y := ('x or 'y)) .
 
 *** fmod GSTM is
 ***    pr STMBase .    
@@ -133,8 +122,31 @@ fmod RUNTIME is
     
 endfm
 
-
-
+mod SEMANTICS is
+	pr RUNTIME .
+    var M : Substitution .
+    vars G1 G2 : GStm .
+    vars S1 S2 : Stm .
+    var E1, E2 : Expr .
+    var S : Var .
+    var N : Threads .
+    
+    rl [delSkip] : run(M, (skip, N)) => run(M, N) .
+    crl [if] : run(M, (if(E1, S := E2), N)) => run(update(M, S := E2), N) if eval(M, E1) .
+    crl [if] : run(M, (if(E1, spawn(G1)), N)) => run(M, insert(G1, N)) if eval(M, E1) .
+    
+    rl [ifElse] : run(M, (ifElse(S1, E1, S2), N)) => run(M, N) .
+    rl [execSeq] : run(M, (seq(G1, G2), N)) => run(M, insert(G2, N)) .
+        
+    op update : Substitution Update -> Substitution .
+    eq update(M, S := E1) = insert(S, eval(M,E1), M) .
+endm
+*** rew run(('x |-> true), (skip, empty)) .
+*** rew [10] run(('x |-> true), (seq(skip, skip), empty)) .
+*** rew [10] run(('x |-> true), (if('x, 'x := false), empty)) .
+*** rew [10] run(('x |-> false), (if('x, 'x := true), empty)) .
+*** rew [10] run(('x |-> true), (if('x, spawn(skip)), empty)) .
+*** rew [10] run(('x |-> true), (if('x, spawn(if('x, spawn(skip))), empty)) . --> cycle
 
 
 
