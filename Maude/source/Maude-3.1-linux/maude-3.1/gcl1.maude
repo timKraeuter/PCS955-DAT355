@@ -144,7 +144,7 @@ mod SEMANTICS is
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
     crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S2, M, insert(G2, N)) if true =/= eval(M, E1).
     
-    *** More rewrites but no duplication of the seq rl's needed. Should still lead to the same result.
+    *** More rewrites but no duplication of the seq rl's needed. Should still lead to the same result. I interpreted seq differently from the text on slide 16. Not associative so that seq(seq(a,b), c) != seq(a,seq(b,c)). The first will be execute a first and then b and c in any order. The second will execute a, b and then c in the given order.
     eq seq(seq(G1, G2), G3) = seq(G1, seq(if(true, spawn(G2)), G3)) .
         
     op execute : Stm Substitution Threads -> Runtime .
