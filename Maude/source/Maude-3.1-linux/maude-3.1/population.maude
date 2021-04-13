@@ -1,0 +1,41 @@
+*** maude demo hvl april 2021
+
+mod POPULATION is
+    protecting NAT + STRING .
+    protecting CONFIGURATION .
+    sorts Status .
+
+    op single : -> Status [ctor] .
+    ops engaged married : Oid -> Status [ctor] .
+    op age :_ : Nat -> Attribute [ctor].
+    op status :_ : Status -> Attribute [ctor].
+    op Person : -> Cid [ctor] .
+    
+    subsort String < Oid .
+    
+    vars N N' : Nat .   vars X X' : String . var S : Status . var AS : AttributeSet .
+
+    crl [birthday] :  < X : Person | age : N , status : S >  =>
+                      < X : Person | age : (N + 1), status : S >  if N < 999 .
+
+    rl [engagement] :  < X : Person | age : N, status : single >
+                       < X' : Person | age : N', status : single >
+                          =>
+                       < X : Person | age : N, status : engaged(X') >
+                       < X' : Person | age : N', status : engaged(X) > .
+
+    crl [wedding] :  < X : Person | status : engaged(X'), age : N >
+                     < X' : Person | status : engaged(X), age : N' >
+                         =>
+                     < X : Person | status : married(X'), age : N >
+                     < X' : Person | status : married(X), age : N' >
+                         if N > 15 and N' > 15 .
+
+  op greeks : -> Configuration .
+  eq greeks =   
+    < "Gaia" : Person | age : 999, status : single >
+    < "Uranus" : Person | age : 900, status : single >
+    < "Kronos" : Person | age : 800, status : single >
+    < "Rhea" : Person | age : 12, status : single > .
+
+endm
