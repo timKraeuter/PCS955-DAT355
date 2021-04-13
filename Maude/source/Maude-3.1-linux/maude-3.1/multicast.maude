@@ -44,7 +44,7 @@ mod POPULATION is
     op marry?MultCast : Oid Set{Oid} -> Msg .
     *** Unfold the mult cast:
     eq marry?MultCast(X, (Y, R)) = marry?(Y, X) marry?MultCast(X, R) .
-    eq marry?MultCast(X, (Y, empty)) = marry?(X, Y) .
+    eq marry?MultCast(X, (Y, empty)) = marry?(Y, X) .
     
     crl [proposeToThree] :  < X : Person | age : N, status : single >
                             < Y : Person | age : M, status : single >
