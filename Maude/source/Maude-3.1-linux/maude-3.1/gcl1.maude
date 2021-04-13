@@ -113,7 +113,7 @@ fmod THREADS is
     pr STM .
     pr SET{GStm} .
     sort Threads .
-    subsort Set{GStm} < Threads .   
+    subsort Set{GStm} < Threads .   *** This should be multiset as said in the lecture.
 endfm
 
 fmod RUNTIME is
