@@ -24,13 +24,13 @@ mod POPULATION is
     
     *** Communiation begins here:
     
-    op notify? : Oid Oid -> Msg .
+    op notify : Oid Oid -> Msg .
 	        
     op spam : Oid Set{Oid} Configuration Configuration -> SystemConfig .
-    op notify?MultCast : Oid Set{Oid} -> Msg .
+    op notifyMultCast : Oid Set{Oid} -> Msg .
     *** Unfold the mult cast:
-    eq notify?MultCast(X, (Y, R)) = notify?(X, Y) notify?MultCast(X, R) .
-    eq notify?MultCast(X, (Y, empty)) = notify?(X, Y) .
+    eq notifyMultCast(X, (Y, R)) = notify(X, Y) notifyMultCast(X, R) .
+    eq notifyMultCast(X, (Y, empty)) = notify(X, Y) .
     
     rl [spam] :  system(< X : Person | age : N, status : single >
                             < Y : Person | age : M, status : single > C1)
@@ -41,8 +41,8 @@ mod POPULATION is
                        
     eq spam(X, F, C1, < Y : Person | age : M, status : single > C2) =
 			spam(X, (Y, F), < Y : Person | age : M, status : single > C1, C2) .
-			
-    eq spam(X, F, C1, none) = system(C1 notify?MultCast(X, F)) .
+    eq spam(X, F, C1, notify(X,Y) C2) = spam(X, F, notify(X,Y) C1, C2) .		
+    eq spam(X, F, C1, none) = system(C1 notifyMultCast(X, F)) .
 			
   sort SystemConfig .
   op system : Configuration -> SystemConfig .
