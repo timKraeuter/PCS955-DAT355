@@ -746,5 +746,30 @@
       </node>
     </node>
   </node>
+  <node concept="1L_FTf" id="7cl38O5zkcB">
+    <property role="TrG5h" value="Problem 4" />
+    <node concept="2B$Xdd" id="7cl38O5zkcD" role="1L_FTc">
+      <node concept="1L_ynY" id="7cl38O5zkcK" role="1L_y8W">
+        <node concept="1L_y8F" id="7cl38O5zkcR" role="1L_y8W">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="1L_y8F" id="7cl38O5zkcU" role="1L_yn2">
+          <property role="TrG5h" value="B" />
+        </node>
+      </node>
+      <node concept="1L_ynY" id="7cl38O5zkcX" role="1L_yn2">
+        <node concept="1L_y8I" id="7cl38O5zkd4" role="1L_y8W">
+          <node concept="1L_y8F" id="7cl38O5zkd9" role="1L_yn1">
+            <property role="TrG5h" value="B" />
+          </node>
+        </node>
+        <node concept="1L_y8I" id="7cl38O5zkdc" role="1L_yn2">
+          <node concept="1L_y8F" id="7cl38O5zkdh" role="1L_yn1">
+            <property role="TrG5h" value="A" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
