@@ -1,0 +1,103 @@
+*** maude demo hvl april 2021
+
+fmod NAT-ADD is
+   sort Nat .
+
+   op 0 : -> Nat [ctor] .
+   op s : Nat -> Nat [ctor] .
+   op _+_ : Nat Nat -> Nat .
+
+   vars N M : Nat .
+
+   --- Recursive def. of plus
+   eq 0 + N = N .
+   eq s(N) + M = s(N + M) .
+ endfm
+
+*** red 0 .
+*** red s(s(0)) .
+*** red s(s(0)) + (s(0) + 0) .
+
+fmod NAT-MULT is
+  protecting NAT-ADD .
+
+  op _*_ : Nat Nat -> Nat .
+
+  vars N M : Nat .
+
+  eq 0 * M = 0 .
+  eq s(N) * M = M + (N * M) .
+
+endfm
+
+*** red double(0) . -> result Nat: 0
+*** red double(s(0)) . -> result Nat: s(s(0))
+*** red double(s(s(s(0)))) . result Nat: s(s(s(s(s(s(0))))))
+fmod NAT-DOUBLE is
+  protecting NAT-MULT .
+
+  op double_ : Nat -> Nat .
+
+  vars M : Nat .
+
+  eq double(0) = 0 .
+  eq double(s(M)) = s(s(double(M))) .
+
+endfm
+
+*** red half(0) . -> result Nat: 0, i.e., half(0) = 0
+*** red half(s(0)) . -> result Nat: 0, i.e., half(1) = 0
+*** red half(s(s(s(0)))) . result Nat: s(0), i.e., half(3) = 1
+*** red half(s(s(s(s(0))))) . result Nat: s(s(0)), i.e., half(4) = 2
+*** red half(s(s(s(s(s(0)))))) . result Nat: s(s(0)), i.e., half(5) = 2
+*** red half(s(s(s(s(s(s(0))))))) . result Nat: s(s(s(0))), i.e., half(6) = 3
+*** half(86) = 43, half(87) = 43
+fmod NAT-HALF is
+  protecting NAT-DOUBLE .
+
+  op half_ : Nat -> Nat .
+
+  vars M : Nat .
+
+  eq half(0) = 0 .
+  eq half(s(0)) = 0 .
+  eq half(s(s(M))) = s(half(M)) .
+
+endfm
+
+*** red 0 monus 0 . -> result Nat: 0
+*** red s(0) monus 0 . -> result Nat: s(0)
+*** red 0 monus s(0) . -> result Nat: 0
+*** red s(s(s(0))) monus s(s(0)) . -> result Nat: s(0), i.e., 3 - 2 = 1
+*** red s(s(s(0))) monus s(s(s(s(0)))) . -> result Nat: 0, i.e., 3 - 4 = 0
+fmod NAT-MONUS is
+  protecting NAT-HALF .
+
+  op _monus_ : Nat Nat -> Nat .
+
+  vars N M : Nat .
+
+  eq 0 monus M = 0 .
+  eq N monus 0 = N .
+  eq s(N) monus s(M) = N monus M .
+
+endfm
+
+*** red 0 diff 0 . -> result Nat: 0
+*** red s(0) diff 0 . -> result Nat: s(0)
+*** red 0 diff s(0) . -> result Nat: s(0)
+*** red s(s(0)) diff s(s(s(s(s(s(s(0))))))) . -> result Nat: s(s(s(s(s(0))))), i.e., diff(2,7)= 5
+*** red s(s(s(s(s(s(s(s(0)))))))) diff s(0) . -> result Nat: s(s(s(s(s(s(s(0))))))), i.e., diff(8,1)= 5
+fmod NAT-DIFF is
+  protecting NAT-MONUS .
+
+  op _diff_ : Nat Nat -> Nat .
+
+  vars N M : Nat .
+
+  eq N diff 0 = N .
+  eq 0 diff M = M .
+  eq s(N) diff s(M) = N diff M .
+
+endfm
+

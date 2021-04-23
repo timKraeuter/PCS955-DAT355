@@ -771,5 +771,30 @@
       </node>
     </node>
   </node>
+  <node concept="1L_FTf" id="3RbKGTb2PWk">
+    <property role="TrG5h" value="NotImplication" />
+    <node concept="2B$Xdd" id="3RbKGTb2PWY" role="1L_FTc">
+      <node concept="1L_y8I" id="3RbKGTb2PX5" role="1L_y8W">
+        <node concept="1L_ynY" id="3RbKGTb2PXa" role="1L_yn1">
+          <node concept="1L_y8F" id="3RbKGTb2PXh" role="1L_y8W">
+            <property role="TrG5h" value="A" />
+          </node>
+          <node concept="1L_y8F" id="3RbKGTb2PXk" role="1L_yn2">
+            <property role="TrG5h" value="B" />
+          </node>
+        </node>
+      </node>
+      <node concept="1L_ynZ" id="3RbKGTb2PXn" role="1L_yn2">
+        <node concept="1L_y8F" id="3RbKGTb2PXu" role="1L_y8W">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="1L_y8I" id="3RbKGTb2PXx" role="1L_yn2">
+          <node concept="1L_y8F" id="3RbKGTb2PXA" role="1L_yn1">
+            <property role="TrG5h" value="B" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

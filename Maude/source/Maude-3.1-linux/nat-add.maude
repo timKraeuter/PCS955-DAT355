@@ -1,0 +1,32 @@
+*** maude demo hvl april 2021
+
+fmod NAT-ADD is
+   sort Nat .
+
+   op 0 : -> Nat [ctor] .
+   op s : Nat -> Nat [ctor] .
+   op _+_ : Nat Nat -> Nat .
+
+   vars N M : Nat .
+
+   --- Recursive def. of plus
+   eq 0 + N = N .
+   eq s(N) + M = s(N + M) .
+ endfm
+
+*** red 0 .
+*** red s(s(0)) .
+*** red s(s(0)) + (s(0) + 0) .
+
+fmod NAT-MULT is
+  protecting NAT-ADD .
+
+  op _*_ : Nat Nat -> Nat .
+
+  vars N M : Nat .
+
+  eq 0 * M = 0 .
+  eq s(N) * M = M + (N * M) .
+
+endfm
+

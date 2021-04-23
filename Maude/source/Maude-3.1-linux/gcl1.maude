@@ -1,0 +1,220 @@
+*** maude demo hvl april 2021
+
+fmod VAR is
+    including QID .
+    sort Var .
+    subsort Qid < Var .
+endfm
+
+view Var from TRIV to VAR is
+   sort Elt to Var .
+endv
+
+fmod EXPR is
+    pr VAR .
+    pr BOOL .
+    pr INT .
+
+    sort Val Expr .
+    subsorts Bool Int < Val .
+    subsorts Var Val < Expr .
+    
+    op _+_ : Expr Expr -> Expr [ditto] .
+    op _*_ : Expr Expr -> Expr [ditto] .
+    op _-_ : Expr Expr -> Expr [ditto] . *** added for fib
+    op _=:=_ : Expr Expr -> Expr [prec 25] . --- equality
+    op _<_ : Expr Expr -> Expr [ditto] .
+    op not_ : Expr -> Expr [ditto] .
+    op _and_ : Expr Expr -> Expr [ditto] .
+    op _or_ : Expr Expr -> Expr [ditto] .
+    
+endfm
+
+view Val from TRIV to EXPR is
+    sort Elt to Val .
+endv
+
+fmod STATE is
+    pr VAR .
+    pr EXPR .
+    pr MAP{Var, Val} .
+
+    sort Substitution .
+    subsort Map{Var, Val} < Substitution .
+endfm
+
+fmod EVAL is
+    pr EXPR .
+    pr STATE .
+
+    var M : Substitution .
+    var N : Int .
+    var B : Bool .
+    var V : Var .
+    vars E1 E2 : Expr .
+    
+    op eval : Substitution Expr -> Val .
+    *** Observe we are assuming that expressions are type-correct,
+    *** otherwise reduction will get stuck.
+    eq eval(M, N) = N .
+    eq eval(M, B) = B .
+    eq eval(M, V) = M[V] .
+
+    eq eval(M, E1 + E2) = eval(M, E1) + eval(M, E2) .
+    eq eval(M, E1 * E2) = eval(M, E1) * eval(M, E2) .
+    eq eval(M, E1 - E2) = eval(M, E1) - eval(M, E2) . *** added for fib
+
+    eq eval(M, E1 =:= E2) = eval(M, E1) == eval(M, E2) .
+    eq eval(M, E1 < E2) = eval(M, E1) < eval(M, E2) .
+    eq eval(M, E1 and E2) = eval(M, E1) and eval(M, E2) .
+    eq eval(M, E1 or E2) = eval(M, E1) or eval(M, E2) .
+    eq eval(M, not(E1)) = not(eval(M, E1)) .
+	    
+endfm
+
+*** red eval(empty, 5).
+*** red eval('x |-> 5, 'x + 2) .
+*** red eval(('x |-> 5, 'y |-> 7), 'y * ('x + 2)) .
+*** red eval(('x |-> 5, 'y |-> 7), 'y < ('x + 2)) .
+*** red eval(('x |-> 5, 'y |-> 7), 'y < ('x + 3)) .
+*** red eval(('x |-> true, 'y |-> false), 'y or 'x) .
+*** red eval(('x |-> true, 'y |-> false), 'y or true) .
+*** red eval(('x |-> true, 'y |-> false), false or (true and 'x)) .
+*** red eval(('x |-> true, 'y |-> false), true and 'x) .
+
+fmod STM is
+    pr EVAL .
+    
+    sort Update Spawn Stm .
+    subsorts Update Spawn < Stm .
+    
+    op _:=_ : Var Expr -> Update [ctor] .
+    op spawn : GStm -> Spawn [ctor] .
+    
+    sort Skip Sequence If IfElse GStm .
+    subsorts Skip Sequence If IfElse < GStm .
+    
+    op skip : -> Skip [ctor] .
+    op seq : GStm GStm -> Sequence [ctor] .
+    op if : Expr Stm -> If [ctor] .
+    op ifElse : Stm Expr Stm -> IfElse [ctor] .
+endfm
+
+*** fmod GSTM is
+***    pr STMBase .    
+*** endfm
+
+*** Not 100% sure if needed but changes the console output
+view GStm from TRIV to STM is
+    sort Elt to GStm .
+endv
+
+fmod THREADS is
+    pr STM .
+    pr SET{GStm} .
+    sort Threads .
+    subsort Set{GStm} < Threads .   *** This should be multiset as said in the lecture.
+endfm
+
+fmod RUNTIME is
+    pr THREADS .
+    pr EVAL .
+    sort Runtime .
+    op run : Substitution Threads -> Runtime [ctor] .
+    
+endfm
+
+mod SEMANTICS is
+	pr RUNTIME .
+    var M : Substitution .
+    vars G1 G2 G3 : GStm .
+    vars S1 S2 : Stm .
+    var E1, E2 : Expr .
+    var S : Var .
+    var N : Threads .
+    
+    rl [delSkip] : run(M, (skip, N)) => run(M, N) .
+    crl [if] : run(M, (if(E1, S1), N)) => execute(S1, M, N) if eval(M, E1) .
+    
+    crl [ifElse] : run(M, (ifElse(S1, E1, S2), N)) => execute(S1, M, N) if eval(M, E1).
+    crl [ifElse] : run(M, (ifElse(S1, E1, S2), N)) => execute(S2, M, N) if true =/= eval(M, E1) .
+    
+    rl [seqSkip] : run(M, (seq(skip, G2), N)) => run(M, insert(G2, N)).
+    crl [seqIf] : run(M, (seq(if(E1, S1), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
+    crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S1, M, insert(G2, N)) if eval(M, E1).
+    crl [seqIfElse] : run(M, (seq(ifElse(S1, E1, S2), G2), N)) => execute(S2, M, insert(G2, N)) if true =/= eval(M, E1).
+    
+    *** More rewrites but no duplication of the seq rl's needed. Should still lead to the same result. I interpreted seq differently from the text on slide 16. Not associative so that seq(seq(a,b), c) != seq(a,seq(b,c)). The first will be execute a first and then b and c in any order. The second will execute a, b and then c in the given order.
+    eq seq(seq(G1, G2), G3) = seq(G1, seq(if(true, spawn(G2)), G3)) .
+        
+    op execute : Stm Substitution Threads -> Runtime .
+    eq execute (spawn(G1), M, N) = run(M, insert(G1, N)) .
+    eq execute (S := E1, M, N) = run(update(M, S := E1), N) .
+    
+    op update : Substitution Update -> Substitution .
+    eq update(M, S := E1) = insert(S, eval(M,E1), M) .
+endm
+*** Skip:
+*** rew run(('x |-> true), (skip, empty)) .
+*** rew [10] run(('x |-> true), (seq(skip, skip), empty)) .
+*** if:
+*** rew run(('x |-> true), (if('x, 'x := false), empty)) .
+*** rew run(('x |-> true, 'y |-> true), (if('x, 'x := false), if('y, 'y := false), empty)) .
+*** rew run(('x |-> false), (if('x, 'x := true), empty)) .
+*** rew run(('x |-> true), (if('x, spawn(skip)), empty)) .
+*** rew run(('x |-> true), (if('x, spawn(if('x, spawn(skip)))), empty)) .
+*** ifElse: if
+*** rew run(('x |-> true), (ifElse('y := true, 'x, 'y := false), empty)) .
+*** rew run(('x |-> true), (ifElse(spawn(skip), 'x, 'y := false), empty)) .
+*** rew run(('x |-> true), (ifElse(spawn(if('x, 'y := true)), 'x, spawn(if('x, spawn(skip)))), empty)) .
+*** ifElse: else
+*** rew [10] run(('x |-> false), (ifElse('y := true, 'x, 'y := false), empty)) .
+*** rew [10] run(('x |-> false), (ifElse('y := true, 'x, spawn(skip)), empty)) .
+*** seq:
+*** rew run(('x |-> false), (seq(skip, skip), empty)) .
+*** rew run(('x |-> true), (seq(if('x, 'x := false), skip), empty)) .
+*** rew run(('x |-> true), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
+*** rew run(('x |-> false), (seq(ifElse('y := true, 'x, 'y := false), skip), empty)) .
+*** seq(seq(...)):
+*** rew run(('x |-> false), (seq(seq(skip, skip), skip), empty)) .
+*** rew run(('x |-> true, 'y |-> 20), (seq(seq(if('x, 'y := 5), if('y < 5, 'w := 5)), if('y < 5, 'z := 5)), empty)) .
+*** seq(seq(seq(...))):
+*** rew run(('x |-> false), (seq(seq(seq(skip, skip), skip), skip), empty)) .
+
+*** historie
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(true, 'P := 'f1), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (seq(if(true, 'P := 'f1), skip), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n, spawn(seq(if(true, 'P := 'f1), skip))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), skip))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), skip)))), empty)) .
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), skip))))), empty)) .
+
+*** Fibonacci: f(1)=f(2)=1
+*** rew run(('n |-> 1, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip))))))), empty)) .
+
+*** Fibonacci. : f(3)=2
+*** rew run(('n |-> 2, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))))))))), empty)) .
+
+*** Fibonacci. : f(4)=3
+*** rew run(('n |-> 3, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip))))))))))))))))))))), empty)) .
+
+*** Fibonacci. : f(5)=5
+*** rew run(('n |-> 4, 'f0 |-> 0, 'f1 |-> 1, 'P |-> 0), (if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))))))))))))))))))))))), empty)) .
+
+*** Recursive fib part:
+*** if(0 < 'n and 'P =:= 0, spawn(seq(if(true, 'P := 'f1), seq(if(true, 'n := 'n - 1), seq(if(true, 'f1 := 'f1 + 'f0), seq(if(true, 'f0 := 'P), seq(if(true, 'P := 0), skip)))))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

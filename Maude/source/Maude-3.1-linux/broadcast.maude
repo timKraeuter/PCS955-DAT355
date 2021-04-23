@@ -1,0 +1,56 @@
+*** maude demo hvl april 2021
+view Oid from TRIV to CONFIGURATION is
+    sort Elt to Oid .
+endv
+
+mod POPULATION is
+    protecting NAT + STRING .
+    protecting CONFIGURATION .
+    pr SET{Oid} .
+    sorts Status .
+
+    op single : -> Status [ctor] .
+    ops engaged married : Oid -> Status [ctor] .
+    op age :_ : Nat -> Attribute [ctor].
+    op status :_ : Status -> Attribute [ctor].
+    op Person : -> Cid [ctor] .
+    
+    subsort String < Oid .
+    
+    vars N N' M A : Nat .   vars X X' Y Z : String . var S : Status . var AS : AttributeSet .
+    var R : NeSet{Oid} .
+    var F : Set{Oid} .
+    var C1 C2 : Configuration .
+    
+    *** Communiation begins here:
+    
+    op notify : Oid Oid -> Msg .
+	        
+    op spam : Oid Set{Oid} Configuration Configuration -> SystemConfig .
+    op notifyMultCast : Oid Set{Oid} -> Msg .
+    *** Unfold the mult cast:
+    eq notifyMultCast(X, (Y, R)) = notify(X, Y) notifyMultCast(X, R) .
+    eq notifyMultCast(X, (Y, empty)) = notify(X, Y) .
+    
+    rl [spam] :  system(< X : Person | age : N, status : single >
+                            < Y : Person | age : M, status : single > C1)
+			=>
+			spam(X, (Y),
+			< X : Person | age : N, status : single >
+                       < Y : Person | age : M, status : single >, C1).
+                       
+    eq spam(X, F, C1, < Y : Person | age : M, status : single > C2) =
+			spam(X, (Y, F), < Y : Person | age : M, status : single > C1, C2) .
+    eq spam(X, F, C1, notify(X,Y) C2) = spam(X, F, notify(X,Y) C1, C2) .		
+    eq spam(X, F, C1, none) = system(C1 notifyMultCast(X, F)) .
+			
+  sort SystemConfig .
+  op system : Configuration -> SystemConfig .
+  op greeks : -> SystemConfig .
+  eq greeks =   system(
+    < "Gaia" : Person | age : 999, status : single >
+    < "Uranus" : Person | age : 900, status : single >
+    < "Kronos" : Person | age : 800, status : single >
+    < "Rhea" : Person | age : 12, status : single >) .
+
+endm
