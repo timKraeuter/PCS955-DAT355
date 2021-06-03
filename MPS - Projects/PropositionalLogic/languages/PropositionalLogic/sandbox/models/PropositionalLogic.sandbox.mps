@@ -1404,5 +1404,23 @@
       </node>
     </node>
   </node>
+  <node concept="1L_FTf" id="2zNXjvKshEJ">
+    <property role="TrG5h" value="EKS-20" />
+    <node concept="1L_ynY" id="2zNXjvKshEL" role="1L_FTc">
+      <node concept="1L_y8F" id="2zNXjvKshES" role="1L_y8W">
+        <property role="TrG5h" value="A" />
+      </node>
+      <node concept="1L_ynY" id="2zNXjvKshEV" role="1L_yn2">
+        <node concept="1L_y8I" id="2zNXjvKshF2" role="1L_y8W">
+          <node concept="1L_y8F" id="2zNXjvKshF7" role="1L_yn1">
+            <property role="TrG5h" value="B" />
+          </node>
+        </node>
+        <node concept="1L_y8F" id="2zNXjvKshFa" role="1L_yn2">
+          <property role="TrG5h" value="C" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
