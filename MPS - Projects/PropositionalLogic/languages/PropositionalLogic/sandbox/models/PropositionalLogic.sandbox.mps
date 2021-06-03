@@ -1477,5 +1477,116 @@
       </node>
     </node>
   </node>
+  <node concept="2BBEZ2" id="6g2AP0v1pep">
+    <property role="TrG5h" value="5.9.(5)" />
+    <node concept="1L_FTf" id="6g2AP0v1peq" role="2BBEZ3">
+      <property role="TrG5h" value="&lt;-&gt;" />
+      <node concept="2B$Xdd" id="6g2AP0v1peu" role="1L_FTc">
+        <node concept="1L_ynY" id="6g2AP0v1peA" role="1L_y8W">
+          <node concept="1L_ynW" id="6g2AP0v1peB" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1peC" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1peD" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+          <node concept="1L_y8F" id="6g2AP0v1peE" role="1L_yn2">
+            <property role="TrG5h" value="C" />
+          </node>
+        </node>
+        <node concept="1L_ynW" id="6g2AP0v1pev" role="1L_yn2">
+          <node concept="1L_ynY" id="6g2AP0v1pew" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1pex" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pey" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+          <node concept="1L_ynY" id="6g2AP0v1pez" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1pe$" role="1L_y8W">
+              <property role="TrG5h" value="B" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pe_" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1L_FTf" id="6g2AP0v1peS" role="2BBEZ3">
+      <property role="TrG5h" value="-&gt;" />
+      <node concept="1L_ynY" id="6g2AP0v1pfN" role="1L_FTc">
+        <node concept="1L_ynY" id="6g2AP0v1pfU" role="1L_y8W">
+          <node concept="1L_ynW" id="6g2AP0v1pfV" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1pfW" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pfX" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+          <node concept="1L_y8F" id="6g2AP0v1pfY" role="1L_yn2">
+            <property role="TrG5h" value="C" />
+          </node>
+        </node>
+        <node concept="1L_ynW" id="6g2AP0v1pgb" role="1L_yn2">
+          <node concept="1L_ynY" id="6g2AP0v1pgc" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1pgd" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pge" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+          <node concept="1L_ynY" id="6g2AP0v1pgf" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1pgg" role="1L_y8W">
+              <property role="TrG5h" value="B" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pgh" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1L_FTf" id="6g2AP0v1pgp" role="2BBEZ3">
+      <property role="TrG5h" value="&lt;-" />
+      <node concept="1L_ynY" id="6g2AP0v1pgT" role="1L_FTc">
+        <node concept="1L_ynW" id="6g2AP0v1ph0" role="1L_y8W">
+          <node concept="1L_ynY" id="6g2AP0v1ph1" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1ph2" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1ph3" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+          <node concept="1L_ynY" id="6g2AP0v1ph4" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1ph5" role="1L_y8W">
+              <property role="TrG5h" value="B" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1ph6" role="1L_yn2">
+              <property role="TrG5h" value="C" />
+            </node>
+          </node>
+        </node>
+        <node concept="1L_ynY" id="6g2AP0v1phe" role="1L_yn2">
+          <node concept="1L_ynW" id="6g2AP0v1phf" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1phg" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1phh" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+          <node concept="1L_y8F" id="6g2AP0v1phi" role="1L_yn2">
+            <property role="TrG5h" value="C" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
