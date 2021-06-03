@@ -1422,5 +1422,60 @@
       </node>
     </node>
   </node>
+  <node concept="2BBEZ2" id="6g2AP0v1pbb">
+    <property role="TrG5h" value="5.8" />
+    <node concept="1L_FTf" id="6g2AP0v1pbc" role="2BBEZ3">
+      <property role="TrG5h" value="(1)" />
+      <node concept="1L_ynY" id="6g2AP0v1pbm" role="1L_FTc">
+        <node concept="1L_ynZ" id="6g2AP0v1pbt" role="1L_y8W">
+          <node concept="1L_y8F" id="6g2AP0v1pb$" role="1L_y8W">
+            <property role="TrG5h" value="A" />
+          </node>
+          <node concept="1L_ynY" id="6g2AP0v1pbB" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1pbI" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pbL" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+        </node>
+        <node concept="1L_y8F" id="6g2AP0v1pbO" role="1L_yn2">
+          <property role="TrG5h" value="B" />
+        </node>
+      </node>
+    </node>
+    <node concept="1L_FTf" id="6g2AP0v1pbg" role="2BBEZ3">
+      <property role="TrG5h" value="(2)" />
+      <node concept="2B$Xdd" id="6g2AP0v1pbR" role="1L_FTc">
+        <node concept="1L_ynY" id="6g2AP0v1pbY" role="1L_y8W">
+          <node concept="1L_y8F" id="6g2AP0v1pc5" role="1L_y8W">
+            <property role="TrG5h" value="A1" />
+          </node>
+          <node concept="1L_ynY" id="6g2AP0v1pc8" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1pcf" role="1L_y8W">
+              <property role="TrG5h" value="A2" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pci" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+        </node>
+        <node concept="1L_ynY" id="6g2AP0v1pcl" role="1L_yn2">
+          <node concept="1L_ynZ" id="6g2AP0v1pcs" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1pcz" role="1L_y8W">
+              <property role="TrG5h" value="A1" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1pcA" role="1L_yn2">
+              <property role="TrG5h" value="A2" />
+            </node>
+          </node>
+          <node concept="1L_y8F" id="6g2AP0v1pcD" role="1L_yn2">
+            <property role="TrG5h" value="B" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
