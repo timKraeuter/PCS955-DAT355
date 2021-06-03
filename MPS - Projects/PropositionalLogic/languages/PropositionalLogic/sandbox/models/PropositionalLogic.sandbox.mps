@@ -1014,7 +1014,7 @@
     </node>
   </node>
   <node concept="1L_FTf" id="53uJTdLxnRm">
-    <property role="TrG5h" value="Eks16_2.3" />
+    <property role="TrG5h" value="Eks16_2.4" />
     <node concept="2B$Xdd" id="53uJTdLxnRo" role="1L_FTc">
       <node concept="1L_y8I" id="53uJTdLxnRv" role="1L_y8W">
         <node concept="1L_ynY" id="53uJTdLxnR$" role="1L_yn1">
@@ -1685,6 +1685,31 @@
         </node>
         <node concept="1L_y8F" id="6g2AP0v1pkH" role="1L_yn2">
           <property role="TrG5h" value="Z" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1L_FTf" id="6g2AP0v1plG">
+    <property role="TrG5h" value="Eks16_2.3" />
+    <node concept="1L_ynY" id="6g2AP0v1plI" role="1L_FTc">
+      <node concept="1L_ynY" id="6g2AP0v1plP" role="1L_y8W">
+        <node concept="1L_y8F" id="6g2AP0v1plW" role="1L_y8W">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="1L_y8F" id="6g2AP0v1plZ" role="1L_yn2">
+          <property role="TrG5h" value="B" />
+        </node>
+      </node>
+      <node concept="1L_y8I" id="6g2AP0v1pm2" role="1L_yn2">
+        <node concept="1L_ynY" id="6g2AP0v1pm7" role="1L_yn1">
+          <node concept="1L_y8F" id="6g2AP0v1pme" role="1L_y8W">
+            <property role="TrG5h" value="A" />
+          </node>
+          <node concept="1L_y8I" id="6g2AP0v1pmh" role="1L_yn2">
+            <node concept="1L_y8F" id="6g2AP0v1pmm" role="1L_yn1">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
