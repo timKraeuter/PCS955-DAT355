@@ -982,6 +982,36 @@
         </node>
       </node>
     </node>
+    <node concept="1L_FTf" id="6g2AP0v1pkK" role="2BBEZ3">
+      <property role="TrG5h" value="CNF/DNF" />
+      <node concept="2B$Xdd" id="6g2AP0v1plg" role="1L_FTc">
+        <node concept="1L_y8F" id="6g2AP0v1plD" role="1L_yn2">
+          <property role="TrG5h" value="A" />
+        </node>
+        <node concept="1L_ynY" id="6g2AP0v1pln" role="1L_y8W">
+          <node concept="1L_ynY" id="6g2AP0v1plo" role="1L_y8W">
+            <node concept="1L_y8F" id="6g2AP0v1plp" role="1L_y8W">
+              <property role="TrG5h" value="A" />
+            </node>
+            <node concept="1L_y8F" id="6g2AP0v1plq" role="1L_yn2">
+              <property role="TrG5h" value="B" />
+            </node>
+          </node>
+          <node concept="1L_y8I" id="6g2AP0v1plr" role="1L_yn2">
+            <node concept="1L_ynY" id="6g2AP0v1pls" role="1L_yn1">
+              <node concept="1L_y8F" id="6g2AP0v1plt" role="1L_y8W">
+                <property role="TrG5h" value="A" />
+              </node>
+              <node concept="1L_y8I" id="6g2AP0v1plu" role="1L_yn2">
+                <node concept="1L_y8F" id="6g2AP0v1plv" role="1L_yn1">
+                  <property role="TrG5h" value="B" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="1L_FTf" id="53uJTdLxnRm">
     <property role="TrG5h" value="Eks16_2.3" />
