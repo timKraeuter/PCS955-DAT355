@@ -19,4 +19,12 @@
 ![persons](https://raw.githubusercontent.com/timKraeuter/PCS955-DAT355/main/ATL_Tutorial/persons_result.png)
 
 ## Epsilon
-- Can be found in the subfolder mt-lecture with its own readme file.
+- Can be found in the subfolder "mt-lecture" with its own readme file.
+
+
+## MPS
+- A couple of projects in the MPS can be found in the subfolder "MPS - Projects".
+
+
+## Maude
+- The lecture notes, exercises and exercise solutions regarding the rewriting logik Maude can be found in the subfolder "Maude".
