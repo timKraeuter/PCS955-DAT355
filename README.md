@@ -28,3 +28,7 @@
 
 ## Maude
 - The lecture notes, exercises and exercise solutions regarding the rewriting logik Maude can be found in the subfolder "Maude".
+
+
+## BX
+- The lecture notes, exercises and exercise solutions regarding bidirectional transformations can be found in the subfolder "bx-lecture".
