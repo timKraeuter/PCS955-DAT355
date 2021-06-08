@@ -1,0 +1,112 @@
+*** maude demo hvl april 2021       ***
+*** Einar Broch Johnsen, 14.04.2021 ***
+
+load model-checker.maude .
+
+mod TRAFFICLIGHT is pr CONFIGURATION . pr STRING . pr NAT .
+    *** Simple model of trafficlights 
+    sort Color .
+    ops Red Yellow Green : -> Color [ctor] .
+    op state :_ : Color -> Attribute [ctor] .
+    op timer :_ : Nat -> Attribute [ctor] .
+    op TrafficLight : -> Cid [ctor] .
+
+     subsort String < Oid .
+
+    var X : Oid . var N : Nat . var S : Color . var C : Configuration .
+    
+    rl [green2yellow] :  < X : TrafficLight | state : Green, timer : 0 > 
+                          => < X : TrafficLight | state : Yellow, timer : 5 > .
+
+    rl [yellow2red] :  < X : TrafficLight | state : Yellow, timer : 0 > 
+                        => < X : TrafficLight | state : Red, timer : 20 > .
+
+    rl [red2green] :  < X : TrafficLight | state : Red, timer : 0 >
+                      => < X : TrafficLight | state : Green, timer : 15 > .
+
+    crl [tick] : < X : TrafficLight | state : S, timer : N > 
+      => < X : TrafficLight | state : S, timer : sd(N,1) > if N > 0 .
+
+    ops initial1 initial2 : -> Configuration . 
+    eq initial1 = < "tl" : TrafficLight | state : Red, timer : 2 > . 
+    eq initial2 = < "tl1" : TrafficLight | state : Red, timer : 2 >
+	          < "tl2" : TrafficLight | state : Red, timer : 2 > . 
+endm
+
+*** red initial1 .
+*** rew [1] initial1 .
+*** rew [1000] initial1 .
+
+
+*** search [1] initial1 =>* < X : TrafficLight | state : Yellow, timer : N > .
+*** search initial1 =>* < X : TrafficLight | state : Yellow,timer : N > .
+*** show path 3 .
+    
+*** search [1] initial2 =>* < X : TrafficLight | state : Yellow,timer : N > .
+*** search [1] initial2 =>* < X : TrafficLight | state : Yellow,timer : N > C .
+*** search in TRAFFICLIGHT : initial2 =>* < X : TrafficLight | state : Yellow,timer : N > C .
+    
+mod TRAFFICLIGHT-PREDS is
+    *** This module defines the state predicates (atomic propositions)
+    protecting TRAFFICLIGHT . 
+    including SATISFACTION . 
+    subsort Configuration < State . 
+    op red : Oid -> Prop . 
+    op green : Oid -> Prop . 
+    op yellow : Oid -> Prop .
+    
+    vars X Y : Oid . var S : Color . vars N M : Nat . var C : Configuration . var P : Prop .
+    
+    eq < X : TrafficLight | state : Red, timer : N > C |= red(X) = true . 
+    eq < X : TrafficLight | state : Yellow, timer : N > C |= yellow(X) = true . 
+    eq < X : TrafficLight | state : Green, timer : N > C |= green(X) = true . 
+
+    op same-color : Oid Oid -> Prop .
+    eq < X : TrafficLight | state : S, timer : N > < Y : TrafficLight | state : S, timer : M > C |= same-color(X,Y) = true .
+
+    eq (C |= P) = false [owise] .
+endm
+
+     
+mod TRAFFICLIGHT-CHECK is
+    *** This module pulls everything together.
+    protecting TRAFFICLIGHT-PREDS . 
+    including MODEL-CHECKER . 
+    including LTL-SIMPLIFIER . 
+
+endm
+
+eof
+
+red initial1 .
+    
+reduce modelCheck(initial1, red("tl")) .
+
+reduce in TRAFFICLIGHT-CHECK : 
+modelCheck(initial1, green("tl")) .
+
+reduce in TRAFFICLIGHT-CHECK : 
+ modelCheck(initial1, <> ~ yellow("tl")) . 
+
+reduce in TRAFFICLIGHT-CHECK : 
+ modelCheck(initial1, [] (red("tl") -> <> yellow("tl")) ) . 
+
+reduce in TRAFFICLIGHT-CHECK : 
+modelCheck(initial1, [] (red("tl") -> (red("tl") U green("tl")) )) .
+
+reduce in TRAFFICLIGHT-CHECK : 
+modelCheck(initial1, red("tl") U green("tl")) .
+
+*** gives counterexample:
+reduce in TRAFFICLIGHT-CHECK : 
+modelCheck(initial1, red("tl") U yellow("tl")) .
+    
+reduce in TRAFFICLIGHT-CHECK : 
+ modelCheck(initial1, [] <> ~ yellow("tl") -> [] <> red("tl") ) . 
+
+    
+reduce in TRAFFICLIGHT-CHECK : 
+ modelCheck(initial2, [] (same-color("tl1", "tl2") -> <> ~ same-color("tl1", "tl2"))).
+
+reduce in TRAFFICLIGHT-CHECK : 
+ modelCheck(initial2, [] <> ~ same-color("tl1", "tl2")) .
